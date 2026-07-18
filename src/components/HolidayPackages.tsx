@@ -58,7 +58,7 @@ export default function HolidayPackages() {
     },
   ];
   return (
-    <section id="packages" className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
+    <section id="packages" className="py-24 md:py-32 bg-[#FAF9F6] relative overflow-hidden">
       {/* Decorative vertical coordinates watermark */}
       <div className="absolute left-6 top-1/4 z-10 hidden xl:block select-none font-mono text-[9px] text-slate-300 tracking-[0.3em] uppercase origin-left rotate-90">
         CURATED ESCAPES // DIRECT TICKETING INCLUDED
@@ -92,7 +92,7 @@ export default function HolidayPackages() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.7 }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-3xl overflow-hidden border border-slate-150/60 premium-shadow group items-stretch"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm group items-stretch"
               >
                 {/* Horizontal featured image */}
                 <div className="lg:col-span-7 h-80 lg:h-auto relative overflow-hidden">
@@ -183,7 +183,7 @@ export default function HolidayPackages() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.7, delay: 0.1 }}
-                  className="lg:col-span-7 bg-white rounded-3xl overflow-hidden border border-slate-150/60 premium-shadow group flex flex-col justify-between"
+                  className="lg:col-span-7 bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm group flex flex-col justify-between"
                 >
                   <div className="h-64 relative overflow-hidden">
                     <div className="absolute top-6 left-6 z-10">
@@ -247,7 +247,7 @@ export default function HolidayPackages() {
                         href={siteConfig.contact.whatsapp}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-teal-55 hover:bg-teal-600 text-teal-650 hover:text-white font-bold py-3 px-6 rounded-xl text-xs md:text-sm tracking-wide transition-all duration-300 min-h-[44px] hover:scale-[1.03]"
+                        className="inline-flex items-center gap-2 bg-teal-50 hover:bg-teal-600 text-teal-650 hover:text-white font-bold py-3 px-6 rounded-xl text-xs md:text-sm tracking-wide transition-all duration-300 min-h-[44px] hover:scale-[1.03]"
                       >
                         <span>Enquire</span>
                         <ArrowUpRight className="w-4 h-4" />
@@ -331,7 +331,7 @@ export default function HolidayPackages() {
                         href={siteConfig.contact.whatsapp}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-teal-55 hover:bg-teal-600 text-teal-650 hover:text-white font-bold py-3 px-6 rounded-xl text-xs md:text-sm tracking-wide transition-all duration-300 min-h-[44px] hover:scale-[1.03]"
+                        className="inline-flex items-center gap-2 bg-teal-50 hover:bg-teal-600 text-teal-650 hover:text-white font-bold py-3 px-6 rounded-xl text-xs md:text-sm tracking-wide transition-all duration-300 min-h-[44px] hover:scale-[1.03]"
                       >
                         <span>Enquire</span>
                         <ArrowUpRight className="w-4 h-4" />
