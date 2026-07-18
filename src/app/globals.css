@@ -1,26 +1,186 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-plus-jakarta), sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+
+  /* Premium Custom Palette */
+  --color-primary-950: #040914;
+  --color-primary-900: #0a1128;
+  --color-primary-800: #101c3d;
+  --color-primary-700: #172c5c;
+  --color-primary-600: #1f3e82;
+  --color-primary-500: #2953a8;
+  --color-primary-400: #4272ce;
+  --color-primary-300: #6f95e2;
+  --color-primary-200: #a1bbee;
+  --color-primary-100: #d0def7;
+  --color-primary-50: #eef3fc;
+
+  /* Gulf Sand / Premium Sunset Accent Gold */
+  --color-gold-500: #eab308;
+  --color-gold-600: #ca8a04;
+  --color-gold-400: #facc15;
+  --color-gold-300: #fde047;
+
+  /* Sea & Sky Teal */
+  --color-teal-500: #0ea5e9;
+  --color-teal-600: #0284c7;
+  --color-teal-400: #38bdf8;
+  --color-teal-300: #7dd3fc;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #0a0f1d;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* Custom premium design classes */
+
+/* Frosted glass layout */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glassmorphism-dark {
+  background: rgba(10, 17, 40, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Custom card shadow for premium feel */
+.premium-shadow {
+  box-shadow: 0 10px 30px -10px rgba(10, 25, 60, 0.06),
+              0 1px 3px rgba(10, 25, 60, 0.02);
+}
+
+.premium-shadow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.premium-shadow-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(10, 25, 60, 0.12),
+              0 1px 10px rgba(10, 25, 60, 0.03);
+}
+
+/* Animated gradient mesh background for Hero */
+.mesh-bg {
+  background-color: #040914;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(234, 179, 8, 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(41, 83, 168, 0.15) 0px, transparent 50%);
+  background-size: 200% 200%;
+  animation: meshFlow 15s ease infinite;
+}
+
+@keyframes meshFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hide scrollbar for clean carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom focus states */
+a:focus-visible, 
+button:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 4px;
+}
+
+/* Custom dotted route animation */
+@keyframes dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+.animate-dash {
+  stroke-dasharray: 8 4;
+  animation: dash 3s linear infinite;
+}
+
+/* Editorial & Print-Magazine Style Utilities */
+.editorial-border-gold {
+  border-color: rgba(234, 179, 8, 0.25);
+}
+
+.editorial-border-slate {
+  border-color: rgba(31, 62, 130, 0.15);
+}
+
+.editorial-line-gold {
+  height: 1px;
+  background: linear-gradient(to right, rgba(234, 179, 8, 0.35) 0%, rgba(14, 165, 233, 0.1) 80%, transparent 100%);
+}
+
+.serif-italic {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-style: italic;
+}
+
+.editorial-coord {
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: rgba(148, 163, 184, 0.35);
+  text-transform: uppercase;
+}
+
+/* Premium asymmetric photo frames */
+.asymmetric-frame-left {
+  position: relative;
+}
+.asymmetric-frame-left::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: 12px;
+  bottom: 12px;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.asymmetric-frame-right {
+  position: relative;
+}
+.asymmetric-frame-right::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: -12px;
+  bottom: -12px;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  pointer-events: none;
+  z-index: 0;
+}
+
