@@ -65,7 +65,7 @@ export default function Navbar() {
               <img
                 src="/logo.png"
                 alt="AirTix Holidays"
-                className={`h-9 md:h-12 object-contain transition-all duration-300 ${
+                className={`h-12 md:h-16 object-contain transition-all duration-300 ${
                   isScrolled ? "" : "brightness-0 invert"
                 }`}
               />

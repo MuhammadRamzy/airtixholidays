@@ -27,7 +27,7 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="AirTix Holidays"
-                className="h-10 md:h-12 object-contain brightness-0 invert"
+                className="h-14 md:h-16 object-contain brightness-0 invert"
               />
             </a>
             
