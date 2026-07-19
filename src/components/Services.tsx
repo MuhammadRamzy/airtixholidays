@@ -102,7 +102,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-16 md:py-20 bg-white relative overflow-hidden">
+    <section id="services" className="py-10 md:py-12 bg-white relative overflow-hidden">
       {/* Background design elements */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -145,7 +145,7 @@ export default function Services() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className="relative bg-white border border-slate-200/70 rounded-2xl p-6 md:p-8 flex flex-col justify-between group hover:border-teal-650/45 hover:shadow-xl hover:shadow-slate-100 transition-all duration-300"
+                className="relative bg-white border border-slate-200/70 rounded-2xl p-6 md:p-8 flex flex-col justify-between group hover:-translate-y-1 hover:border-teal-650/45 hover:shadow-xl hover:shadow-slate-100 transition-all duration-300"
               >
                 {/* Decorative index and Icon */}
                 <div className="flex items-center justify-between mb-6">

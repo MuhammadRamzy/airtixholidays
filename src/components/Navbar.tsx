@@ -56,20 +56,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
-            {/* Logo */}
-            <a
-              href="#home"
-              onClick={(e) => handleNavLinkClick(e, "#home")}
-              className="flex items-center gap-1.5 group cursor-pointer"
-            >
-              <img
-                src="/logo.png"
-                alt="AirTix Holidays"
-                className={`h-12 md:h-16 object-contain transition-all duration-300 ${
-                  isScrolled ? "" : "brightness-0 invert"
-                }`}
-              />
-            </a>
+            {/* Left alignment space / Editorial Nav */}
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-7">

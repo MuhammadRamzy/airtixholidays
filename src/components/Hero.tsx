@@ -94,13 +94,13 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-7 text-left flex flex-col items-start"
           >
-            {/* Trust Chip & Fine Line */}
-            <motion.div variants={itemVariants} className="w-full mb-6">
-              <div className="inline-flex items-center gap-2.5 text-xs md:text-sm font-semibold tracking-widest text-gold-400 uppercase mb-3">
-                <Sparkles className="w-4 h-4 text-gold-400" />
-                <span>Kerala's Premier Flight & Holiday Partner</span>
-              </div>
-              <div className="h-[1px] bg-gradient-to-r from-gold-500/50 to-transparent w-3/4" />
+            {/* Brand Logo placement inside Hero left column */}
+            <motion.div variants={itemVariants} className="mb-8">
+              <img
+                src="/logo.png"
+                alt="AirTix Holidays"
+                className="h-14 md:h-16 object-contain brightness-0 invert"
+              />
             </motion.div>
 
             {/* Title */}

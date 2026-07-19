@@ -37,7 +37,7 @@ export default function RouteHighlights() {
   }, []);
 
   return (
-    <section id="routes" className="py-16 md:py-20 bg-[#FAF9F6] relative text-slate-900 overflow-hidden">
+    <section id="routes" className="py-10 md:py-12 bg-[#FAF9F6] relative text-slate-900 overflow-hidden">
       {/* Editorial layout markings */}
       <div className="absolute top-12 left-12 font-mono text-[9px] text-slate-400 tracking-[0.3em] uppercase hidden lg:block">
         AirTix Index / Routes & Departures

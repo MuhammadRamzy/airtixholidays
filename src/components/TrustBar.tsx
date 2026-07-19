@@ -41,7 +41,7 @@ export default function TrustBar() {
     },
   ];
   return (
-    <section className="bg-white border-y border-slate-200/80 py-12 md:py-16 relative z-20">
+    <section className="bg-white border-y border-slate-200/80 py-6 md:py-8 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
           {stats.map((stat, index) => (

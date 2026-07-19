@@ -7,7 +7,7 @@ import { Compass, Sparkles } from "lucide-react";
 
 export default function CTABanner() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-primary-950 text-white z-20 border-t border-white/10">
+    <section className="relative py-12 md:py-16 overflow-hidden bg-primary-950 text-white z-20 border-t border-white/10">
       {/* High-quality radial gradient background mesh for dynamic contrast */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.08)_0,transparent_65%)] pointer-events-none" />
       

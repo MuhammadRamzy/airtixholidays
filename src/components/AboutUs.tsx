@@ -40,7 +40,7 @@ export default function AboutUs() {
   };
 
   return (
-    <section id="about" className="py-16 md:py-20 bg-[#FAF9F6] relative overflow-hidden border-b border-slate-200/60">
+    <section id="about" className="py-10 md:py-12 bg-[#FAF9F6] relative overflow-hidden border-b border-slate-200/60">
       {/* Editorial layout markings */}
       <div className="absolute top-12 left-12 font-mono text-[9px] text-slate-400 tracking-[0.3em] uppercase hidden lg:block">
         AIRTIX STATEMENT // FOUNDATION & POLICY
@@ -178,12 +178,12 @@ export default function AboutUs() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Director 1: MUHAMMED AZHAR AK */}
-            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
               <div className="w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
                 <img
                   src="/directors/MUHAMMED AZHAR AK.png"
                   alt="MUHAMMED AZHAR AK"
-                  className="w-full h-full object-cover rounded-full bg-slate-50"
+                  className="w-full h-full object-cover rounded-full bg-slate-50 transition-transform duration-500 group-hover:scale-105"
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80";
                   }}
@@ -204,12 +204,12 @@ export default function AboutUs() {
             </div>
 
             {/* Director 2: ISHAQ VANIMAL */}
-            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
               <div className="w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
                 <img
                   src="/directors/ISHAQ VANIMAL.png"
                   alt="ISHAQ VANIMAL"
-                  className="w-full h-full object-cover rounded-full bg-slate-50"
+                  className="w-full h-full object-cover rounded-full bg-slate-50 transition-transform duration-500 group-hover:scale-105"
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80";
                   }}
@@ -230,12 +230,12 @@ export default function AboutUs() {
             </div>
 
             {/* Director 3: SAMEER VP */}
-            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
               <div className="w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
                 <img
                   src="/directors/SAMEER VP.png"
                   alt="SAMEER VP"
-                  className="w-full h-full object-cover rounded-full bg-slate-50"
+                  className="w-full h-full object-cover rounded-full bg-slate-50 transition-transform duration-500 group-hover:scale-105"
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80";
                   }}
@@ -256,12 +256,12 @@ export default function AboutUs() {
             </div>
 
             {/* Director 4: MUHAMMED SAFVAN TP */}
-            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
               <div className="w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
                 <img
                   src="/directors/Muhammad Safvan TP.png"
                   alt="MUHAMMED SAFVAN TP"
-                  className="w-full h-full object-cover rounded-full bg-slate-50"
+                  className="w-full h-full object-cover rounded-full bg-slate-50 transition-transform duration-500 group-hover:scale-105"
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80";
                   }}

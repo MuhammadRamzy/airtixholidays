@@ -98,7 +98,7 @@ export default function HolidayPackages() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, delay: delayIndex * 0.1 }}
-        className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:shadow-slate-100 transition-all duration-550 group flex flex-col justify-between"
+        className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100 transition-all duration-550 group flex flex-col justify-between"
       >
         <div className="h-64 relative overflow-hidden">
           <div className="absolute top-6 left-6 z-10">
@@ -175,7 +175,7 @@ export default function HolidayPackages() {
   };
 
   return (
-    <section id="packages" className="py-16 md:py-20 bg-[#FAF9F6] relative overflow-hidden border-b border-slate-200/60">
+    <section id="packages" className="py-10 md:py-12 bg-[#FAF9F6] relative overflow-hidden border-b border-slate-200/60">
       {/* Decorative vertical coordinates watermark */}
       <div className="absolute left-6 top-1/4 z-10 hidden xl:block select-none font-mono text-[9px] text-slate-300 tracking-[0.3em] uppercase origin-left rotate-90">
         CURATED ESCAPES // HAJJ & UMRAH PILGRIMAGE DEPT

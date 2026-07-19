@@ -85,7 +85,7 @@ export default function VisaServices() {
   };
 
   return (
-    <section id="visas" className="py-16 md:py-20 bg-white relative overflow-hidden border-b border-slate-200/60">
+    <section id="visas" className="py-10 md:py-12 bg-white relative overflow-hidden border-b border-slate-200/60">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

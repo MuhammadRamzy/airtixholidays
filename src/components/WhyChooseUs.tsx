@@ -59,7 +59,7 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <section id="why-us" className="py-16 md:py-20 bg-white relative overflow-hidden">
+    <section id="why-us" className="py-10 md:py-12 bg-white relative overflow-hidden">
       {/* Repeating flight-path motif running subtly in background */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

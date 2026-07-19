@@ -84,7 +84,7 @@ export default function ResortsHotels() {
   };
 
   return (
-    <section id="resorts" className="py-16 md:py-20 bg-[#FAF9F6] relative overflow-hidden border-b border-slate-200/60">
+    <section id="resorts" className="py-10 md:py-12 bg-[#FAF9F6] relative overflow-hidden border-b border-slate-200/60">
       {/* Repeating background grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +129,7 @@ export default function ResortsHotels() {
               <motion.div
                 key={stay.id}
                 variants={cardVariants}
-                className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-slate-100/80 transition-all duration-500 group flex flex-col justify-between"
+                className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100/80 transition-all duration-500 group flex flex-col justify-between"
               >
                 {/* Stay Card Image Frame */}
                 <div className="h-72 sm:h-80 relative overflow-hidden">
