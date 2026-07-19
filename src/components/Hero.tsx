@@ -99,12 +99,12 @@ export default function Hero() {
               <img
                 src="/logo.png"
                 alt="AirTix Holidays"
-                className="h-14 md:h-16 object-contain brightness-0 invert"
+                className="h-20 md:h-24 object-contain brightness-0 invert"
               />
             </motion.div>
 
             {/* Title */}
-            <motion.h1 variants={itemVariants} className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.9] tracking-tighter mb-6 text-white">
+            <motion.h1 variants={itemVariants} className="font-display font-black text-[2.6rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.9] tracking-tighter mb-6 text-white">
               Connecting <br />
               <span className="serif-italic font-normal text-gold-400 font-serif lowercase italic tracking-normal block my-1">
                 kerala
@@ -162,7 +162,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 w-full"
           >
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+            <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl relative overflow-hidden">
               {/* Header inside Widget */}
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
                 <div className="flex items-center gap-2">
@@ -222,13 +222,13 @@ export default function Hero() {
                             <select 
                               value={origin} 
                               onChange={(e) => setOrigin(e.target.value)}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
                             >
                               <option className="bg-slate-950 text-white" value="Kozhikode (CCJ)">Kozhikode (CCJ)</option>
                               <option className="bg-slate-950 text-white" value="Kochi (COK)">Kochi (COK)</option>
                               <option className="bg-slate-950 text-white" value="Trivandrum (TRV)">Trivandrum (TRV)</option>
                             </select>
-                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                           </div>
                         </div>
 
@@ -238,7 +238,7 @@ export default function Hero() {
                             <select 
                               value={destination} 
                               onChange={(e) => setDestination(e.target.value)}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
                             >
                               <option className="bg-slate-950 text-white" value="Dubai (DXB)">Dubai (DXB)</option>
                               <option className="bg-slate-950 text-white" value="Doha (DOH)">Doha (DOH)</option>
@@ -246,7 +246,7 @@ export default function Hero() {
                               <option className="bg-slate-950 text-white" value="Riyadh (RUH)">Riyadh (RUH)</option>
                               <option className="bg-slate-950 text-white" value="Jeddah (JED)">Jeddah (JED)</option>
                             </select>
-                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                           </div>
                         </div>
                       </div>
@@ -259,7 +259,7 @@ export default function Hero() {
                             <select 
                               value={passengers} 
                               onChange={(e) => setPassengers(e.target.value)}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
                             >
                               <option className="bg-slate-950 text-white" value="1">1 Passenger</option>
                               <option className="bg-slate-950 text-white" value="2">2 Passengers</option>
@@ -267,7 +267,7 @@ export default function Hero() {
                               <option className="bg-slate-950 text-white" value="4">4 Passengers</option>
                               <option className="bg-slate-950 text-white" value="5+">5+ Passengers</option>
                             </select>
-                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                           </div>
                         </div>
 
@@ -277,14 +277,14 @@ export default function Hero() {
                             <select 
                               value={classType} 
                               onChange={(e) => setClassType(e.target.value)}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
                             >
                               <option className="bg-slate-950 text-white" value="Economy">Economy</option>
                               <option className="bg-slate-950 text-white" value="Premium Eco">Premium Eco</option>
                               <option className="bg-slate-950 text-white" value="Business">Business</option>
                               <option className="bg-slate-950 text-white" value="First Class">First Class</option>
                             </select>
-                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                           </div>
                         </div>
                       </div>
@@ -321,7 +321,7 @@ export default function Hero() {
                           <select 
                             value={visaCountry} 
                             onChange={(e) => setVisaCountry(e.target.value)}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
                           >
                             <option className="bg-slate-950 text-white" value="United Arab Emirates (UAE)">United Arab Emirates (UAE)</option>
                             <option className="bg-slate-950 text-white" value="Saudi Arabia (Tourist/Umrah)">Saudi Arabia (Tourist/Umrah)</option>
@@ -331,7 +331,7 @@ export default function Hero() {
                             <option className="bg-slate-950 text-white" value="United Kingdom (UK)">United Kingdom (UK)</option>
                             <option className="bg-slate-950 text-white" value="Southeast Asia (Malaysia/Thailand)">Southeast Asia (Malaysia/Thailand)</option>
                           </select>
-                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                         </div>
                       </div>
 
@@ -359,7 +359,7 @@ export default function Hero() {
                           <select 
                             value={holidayType} 
                             onChange={(e) => setHolidayType(e.target.value)}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
                           >
                             <option className="bg-slate-950 text-white" value="Premium Alleppey Houseboat Cruise">Premium Alleppey Houseboat Cruise</option>
                             <option className="bg-slate-950 text-white" value="Munnar Mist Valley Hill Resort stay">Munnar Mist Valley Hill Resort Stay</option>
@@ -367,7 +367,7 @@ export default function Hero() {
                             <option className="bg-slate-950 text-white" value="Premium 5-Star Umrah Package">Premium 5-Star Umrah Package</option>
                             <option className="bg-slate-950 text-white" value="Deluxe Malaysia/Thailand Holiday">Deluxe Malaysia/Thailand Holiday</option>
                           </select>
-                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                         </div>
                       </div>
 
