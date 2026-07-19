@@ -13,7 +13,9 @@ import {
   Hotel, 
   FileText,
   MessageSquare,
-  ArrowUpRight
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
@@ -101,6 +103,19 @@ export default function Services() {
     },
   };
 
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const handleScroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollAmount = clientWidth * 0.75;
+      scrollRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <section id="services" className="py-10 md:py-12 bg-white relative overflow-hidden">
       {/* Background design elements */}
@@ -113,26 +128,48 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 lg:mb-24">
-          <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
-            Our Offerings // Full Expat & Leisure Suite
-          </span>
-          <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-950 leading-[0.95] tracking-tighter">
-            Services We Provide <br />
-            <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
-              everything you need, from documentation to destination
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div className="max-w-3xl">
+            <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
+              Our Offerings // Full Expat & Leisure Suite
             </span>
-          </h2>
-          <div className="editorial-line-gold w-1/3 mt-6" />
+            <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-950 leading-[0.95] tracking-tighter">
+              Services We Provide <br />
+              <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
+                everything you need, from documentation to destination
+              </span>
+            </h2>
+            <div className="editorial-line-gold w-1/3 mt-6" />
+          </div>
+
+          {/* Carousel Control Buttons */}
+          <div className="flex items-center gap-2 self-end">
+            <button
+              onClick={() => handleScroll("left")}
+              className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => handleScroll("right")}
+              className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
-        {/* Services Grid */}
+        {/* Services Carousel */}
         <motion.div
+          ref={scrollRef}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {services.map((service, index) => {
             // Build a WhatsApp message URL specific to this service
@@ -145,7 +182,7 @@ export default function Services() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className="relative bg-white border border-slate-200/70 rounded-2xl p-6 md:p-8 flex flex-col justify-between group hover:-translate-y-1 hover:border-teal-650/45 hover:shadow-xl hover:shadow-slate-100 transition-all duration-300"
+                className="relative bg-white border border-slate-200/70 rounded-2xl p-6 md:p-8 flex flex-col justify-between group hover:-translate-y-1 hover:border-teal-650/45 hover:shadow-xl hover:shadow-slate-100 transition-all duration-300 w-[285px] sm:w-[350px] md:w-[380px] shrink-0 snap-start"
               >
                 {/* Decorative index and Icon */}
                 <div className="flex items-center justify-between mb-6">
@@ -176,7 +213,7 @@ export default function Services() {
                     href={waLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-600 hover:text-teal-700 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-650 hover:text-teal-700 transition-colors"
                   >
                     <span>Inquire</span>
                     <MessageSquare className="w-3.5 h-3.5 text-teal-500 group-hover:scale-110 transition-transform" />

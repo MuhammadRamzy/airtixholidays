@@ -57,12 +57,13 @@ export default function AboutUs() {
               <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
                 Who We Are // Executive Team
               </span>
-              <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-950 leading-[0.95] tracking-tighter">
-                AIRTIX <br />
-                <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
-                  holidays
-                </span>
-              </h2>
+              <div className="mb-4">
+                <img
+                  src="/logo.png"
+                  alt="AirTix Holidays"
+                  className="h-16 sm:h-20 md:h-24 object-contain"
+                />
+              </div>
             </div>
             
             <div className="editorial-line-gold w-1/3" />

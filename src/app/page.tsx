@@ -4,8 +4,6 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import AboutUs from "@/components/AboutUs";
 import Services from "@/components/Services";
-import RouteHighlights from "@/components/RouteHighlights";
-import ResortsHotels from "@/components/ResortsHotels";
 import HolidayPackages from "@/components/HolidayPackages";
 import VisaServices from "@/components/VisaServices";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -26,8 +24,6 @@ export default function Home() {
         <TrustBar />
         <AboutUs />
         <Services />
-        <RouteHighlights />
-        <ResortsHotels />
         <HolidayPackages />
         <VisaServices />
         <WhyChooseUs />

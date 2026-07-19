@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Star, ArrowUpRight, MessageSquare } from "lucide-react";
+import { Calendar, MapPin, Star, ArrowUpRight, MessageSquare, ChevronLeft, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 interface PackageData {
@@ -98,7 +98,7 @@ export default function HolidayPackages() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, delay: delayIndex * 0.1 }}
-        className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100 transition-all duration-550 group flex flex-col justify-between"
+        className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100 transition-all duration-550 group flex flex-col justify-between h-full"
       >
         <div className="h-64 relative overflow-hidden">
           <div className="absolute top-6 left-6 z-10">
@@ -174,6 +174,20 @@ export default function HolidayPackages() {
     );
   };
 
+  const leisureScrollRef = React.useRef<HTMLDivElement>(null);
+  const umrahScrollRef = React.useRef<HTMLDivElement>(null);
+
+  const handleScroll = (ref: React.RefObject<HTMLDivElement | null>, direction: "left" | "right") => {
+    if (ref.current) {
+      const { scrollLeft, clientWidth } = ref.current;
+      const scrollAmount = clientWidth * 0.75;
+      ref.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <section id="packages" className="py-10 md:py-12 bg-[#FAF9F6] relative overflow-hidden border-b border-slate-200/60">
       {/* Decorative vertical coordinates watermark */}
@@ -184,45 +198,101 @@ export default function HolidayPackages() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header: Leisure Holiday Packages */}
-        <div className="max-w-3xl mb-12">
-          <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
-            Curated Escapes // Leisure Division
-          </span>
-          <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-900 leading-[0.95] tracking-tighter">
-            Holiday Packages <br />
-            <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
-              expertly planned for families and expatriates
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div className="max-w-3xl">
+            <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
+              Curated Escapes // Leisure Division
             </span>
-          </h2>
-          <p className="text-slate-500 mt-6 text-base md:text-lg leading-relaxed font-medium">
-            Handpicked itineraries by our travel directors. From Kerala's green waterways to the landmarks of the Gulf and luxury island retreats.
-          </p>
+            <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-900 leading-[0.95] tracking-tighter">
+              Holiday Packages <br />
+              <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
+                expertly planned for families and expatriates
+              </span>
+            </h2>
+            <p className="text-slate-500 mt-6 text-base md:text-lg leading-relaxed font-medium">
+              Handpicked itineraries by our travel directors. From Kerala's green waterways to the landmarks of the Gulf and luxury island retreats.
+            </p>
+          </div>
+
+          {/* Leisure Controls */}
+          <div className="flex items-center gap-2 self-end">
+            <button
+              onClick={() => handleScroll(leisureScrollRef, "left")}
+              className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => handleScroll(leisureScrollRef, "right")}
+              className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
-        {/* Holiday Packages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {holidayPackages.map((pkg, idx) => renderCard(pkg, idx))}
+        {/* Holiday Packages Carousel */}
+        <div
+          ref={leisureScrollRef}
+          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 mb-16"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {holidayPackages.map((pkg, idx) => (
+            <div key={pkg.id} className="w-[285px] sm:w-[350px] md:w-[380px] shrink-0 snap-start">
+              {renderCard(pkg, idx)}
+            </div>
+          ))}
         </div>
 
         {/* Section Header: Hajj & Umrah Pilgrimage Packages */}
-        <div className="max-w-3xl mb-12 pt-8 border-t border-slate-200/60">
-          <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
-            Holy Journey // Pilgrimage Division
-          </span>
-          <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-900 leading-[0.95] tracking-tighter">
-            Hajj & Umrah Packages <br />
-            <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
-              spiritual journeys managed with experience and trust
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 pt-8 border-t border-slate-200/60">
+          <div className="max-w-3xl">
+            <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
+              Holy Journey // Pilgrimage Division
             </span>
-          </h2>
-          <p className="text-slate-500 mt-6 text-base md:text-lg leading-relaxed font-medium">
-            Meticulously structured pilgrimage services. Benefit from our 12+ years of expertise in catering to Holy trips with nearby hotels, flights, and guide clearance.
-          </p>
+            <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-900 leading-[0.95] tracking-tighter">
+              Hajj & Umrah Packages <br />
+              <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
+                spiritual journeys managed with experience and trust
+              </span>
+            </h2>
+            <p className="text-slate-500 mt-6 text-base md:text-lg leading-relaxed font-medium">
+              Meticulously structured pilgrimage services. Benefit from our 12+ years of expertise in catering to Holy trips with nearby hotels, flights, and guide clearance.
+            </p>
+          </div>
+
+          {/* Umrah Controls */}
+          <div className="flex items-center gap-2 self-end">
+            <button
+              onClick={() => handleScroll(umrahScrollRef, "left")}
+              className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => handleScroll(umrahScrollRef, "right")}
+              className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
-        {/* Umrah Packages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {umrahPackages.map((pkg, idx) => renderCard(pkg, idx + 3))}
+        {/* Umrah Packages Carousel */}
+        <div
+          ref={umrahScrollRef}
+          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {umrahPackages.map((pkg, idx) => (
+            <div key={pkg.id} className="w-[285px] sm:w-[350px] md:w-[380px] shrink-0 snap-start">
+              {renderCard(pkg, idx + 3)}
+            </div>
+          ))}
         </div>
 
         {/* Custom Customization CTA block */}
