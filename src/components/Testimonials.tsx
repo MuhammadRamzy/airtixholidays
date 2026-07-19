@@ -103,7 +103,7 @@ export default function Testimonials() {
   }, [emblaApi, isPaused]);
 
   return (
-    <section id="testimonials" className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-20 bg-white relative overflow-hidden">
       {/* Editorial layout markings */}
       <div className="absolute top-12 left-12 font-mono text-[9px] text-slate-400 tracking-[0.3em] uppercase hidden lg:block">
         AirTix Vol. IV / Passenger Testimonials
@@ -115,7 +115,7 @@ export default function Testimonials() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
             Boarding Success
           </span>

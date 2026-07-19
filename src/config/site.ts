@@ -1,18 +1,39 @@
 export const siteConfig = {
-  name: "AirTixHoliday",
+  name: "AirTixHolidays",
   description: "Premium flight tickets and holiday packages from Kerala to the Middle East and worldwide.",
   
-  // External Booking Engine URL (configurable in one place)
+  // External Booking Engine URL
   bookingUrl: "https://book.airtixholiday.com",
   
-  // Contact details (standard for Kerala-based holiday travel agents)
+  // Contact details
   contact: {
-    phone: "+91 484 234 5678",
-    phoneDial: "+914842345678",
-    whatsapp: "https://wa.me/919876543210?text=Hi%20AirTixHoliday%20Team,%20I'm%20interested%20in%20booking%20a%20flight/holiday%20package.",
-    email: "support@airtixholiday.com",
-    address: "AirTixHoliday, 2nd Floor, Skyline Plaza, Marine Drive, Kochi, Kerala, India - 682031",
+    email: "sales@airtixholidays.com",
+    address: "AirTixHolidays, 2nd Floor, Skyline Plaza, Marine Drive, Kochi, Kerala, India - 682031",
     officeHours: "Mon - Sat: 9:00 AM - 7:00 PM (IST)",
+    officePhone: "0496 222 5771",
+    officePhoneDial: "+914962225771",
+  },
+
+  // Departmental Contacts
+  departments: {
+    visa: {
+      name: "Asmina",
+      role: "Global Visa Services",
+      phone: "+91 95442 57771",
+      phoneDial: "919544257771",
+    },
+    holidays: {
+      name: "Shahana",
+      role: "Holidays & Resorts",
+      phone: "+91 99473 57771",
+      phoneDial: "919947357771",
+    },
+    sales: [
+      { name: "Amaya", role: "Flight Sales Specialist", phone: "+91 99461 57771", phoneDial: "919946157771" },
+      { name: "Irfana", role: "Flight Sales Specialist", phone: "+91 99478 57771", phoneDial: "919947857771" },
+      { name: "Shabana", role: "Flight Sales Specialist", phone: "+91 99479 57771", phoneDial: "919947957771" },
+      { name: "Safna", role: "Flight Sales Specialist", phone: "+91 99472 57771", phoneDial: "919947257771" },
+    ]
   },
 
   // Social URLs
@@ -25,9 +46,18 @@ export const siteConfig = {
   // Navigation menu items
   navItems: [
     { label: "Home", href: "#home" },
-    { label: "Gulf Routes", href: "#routes" },
-    { label: "Holiday Packages", href: "#packages" },
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Resorts & Stays", href: "#resorts" },
+    { label: "Packages", href: "#packages" },
+    { label: "Visas", href: "#visas" },
     { label: "Why Choose Us", href: "#why-us" },
     { label: "Testimonials", href: "#testimonials" },
   ]
 };
+
+// Helper function to get a default WhatsApp link for flight sales
+export function getGeneralSalesWhatsApp(message: string = "Hi AirTixHolidays Team, I am interested in booking a flight ticket.") {
+  const defaultRep = siteConfig.departments.sales[0]; // Amaya as default
+  return `https://wa.me/${defaultRep.phoneDial}?text=${encodeURIComponent(message)}`;
+}

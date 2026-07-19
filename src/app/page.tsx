@@ -2,8 +2,12 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
+import AboutUs from "@/components/AboutUs";
+import Services from "@/components/Services";
 import RouteHighlights from "@/components/RouteHighlights";
+import ResortsHotels from "@/components/ResortsHotels";
 import HolidayPackages from "@/components/HolidayPackages";
+import VisaServices from "@/components/VisaServices";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
 import CTABanner from "@/components/CTABanner";
@@ -20,8 +24,12 @@ export default function Home() {
       <main className="flex flex-col flex-1">
         <Hero />
         <TrustBar />
+        <AboutUs />
+        <Services />
         <RouteHighlights />
+        <ResortsHotels />
         <HolidayPackages />
+        <VisaServices />
         <WhyChooseUs />
         <Testimonials />
         <CTABanner />

@@ -37,7 +37,7 @@ export default function RouteHighlights() {
   }, []);
 
   return (
-    <section id="routes" className="py-24 md:py-32 bg-[#FAF9F6] relative text-slate-900 overflow-hidden">
+    <section id="routes" className="py-16 md:py-20 bg-[#FAF9F6] relative text-slate-900 overflow-hidden">
       {/* Editorial layout markings */}
       <div className="absolute top-12 left-12 font-mono text-[9px] text-slate-400 tracking-[0.3em] uppercase hidden lg:block">
         AirTix Index / Routes & Departures
@@ -49,7 +49,7 @@ export default function RouteHighlights() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header - Editorial layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10 items-end">
           <div className="lg:col-span-7">
             <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
               Expat Specialization

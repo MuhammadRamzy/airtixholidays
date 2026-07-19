@@ -33,7 +33,7 @@ export default function MobileStickyCTA() {
         >
           {/* Left Button: WhatsApp Live Support */}
           <a
-            href={siteConfig.contact.whatsapp}
+            href={`https://wa.me/${siteConfig.departments.sales[0].phoneDial}?text=${encodeURIComponent("Hi AirTixHolidays Team, I need immediate assistance.")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-full text-xs transition-colors border border-slate-200 min-h-[44px]"

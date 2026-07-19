@@ -59,7 +59,7 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <section id="why-us" className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section id="why-us" className="py-16 md:py-20 bg-white relative overflow-hidden">
       {/* Repeating flight-path motif running subtly in background */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header - Editorial placement */}
-        <div className="max-w-3xl mb-16 lg:mb-24">
+        <div className="max-w-3xl mb-10 lg:mb-12">
           <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
             The AirTix Difference
           </span>

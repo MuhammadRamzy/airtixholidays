@@ -22,14 +22,13 @@ export default function Footer() {
             <a
               href="#home"
               onClick={handleScrollToTop}
-              className="flex items-baseline gap-2 group cursor-pointer"
+              className="flex items-center gap-2 group cursor-pointer"
             >
-              <span className="font-display font-black text-2xl tracking-tighter uppercase text-white">
-                AIRTIX
-              </span>
-              <span className="serif-italic font-normal font-serif text-gold-500 text-sm lowercase italic select-none">
-                holidays
-              </span>
+              <img
+                src="/logo.png"
+                alt="AirTix Holidays"
+                className="h-10 md:h-12 object-contain brightness-0 invert"
+              />
             </a>
             
             <p className="text-xs md:text-sm font-medium text-slate-400 leading-relaxed">
@@ -141,21 +140,69 @@ export default function Footer() {
             {/* Click-to-call and WhatsApp buttons */}
             <div className="flex flex-col gap-2.5">
               <a
-                href={`tel:${siteConfig.contact.phoneDial}`}
+                href={`tel:${siteConfig.contact.officePhoneDial}`}
                 className="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white font-bold py-2.5 px-4 rounded-xl border border-white/10 transition-colors text-xs font-mono tracking-widest uppercase min-h-[44px]"
               >
                 <Phone className="w-3.5 h-3.5 text-gold-500" />
-                Call Support: {siteConfig.contact.phone}
+                Office: {siteConfig.contact.officePhone}
               </a>
               <a
-                href={siteConfig.contact.whatsapp}
+                href={`https://wa.me/${siteConfig.departments.sales[0].phoneDial}?text=${encodeURIComponent("Hi AirTixHolidays Team, I am interested in booking a flight ticket.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 font-bold py-2.5 px-4 rounded-xl border border-teal-550/20 transition-colors text-xs font-mono tracking-widest uppercase min-h-[44px]"
               >
                 <MessageSquare className="w-3.5 h-3.5 text-teal-500" />
-                WhatsApp Live Chat
+                WhatsApp Live Support
               </a>
+            </div>
+
+            {/* Department Direct Lines */}
+            <div className="pt-4 border-t border-white/10 space-y-3">
+              <span className="text-[10px] font-mono tracking-widest text-slate-500 uppercase block font-bold">
+                Direct WhatsApp Lines
+              </span>
+              <ul className="space-y-2 text-xs">
+                <li>
+                  <a
+                    href={`https://wa.me/${siteConfig.departments.visa.phoneDial}?text=${encodeURIComponent("Hi Asmina, I need visa assistance.")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gold-450 flex justify-between transition-colors"
+                  >
+                    <span>Visas ({siteConfig.departments.visa.name}):</span>
+                    <span className="font-mono text-slate-400">{siteConfig.departments.visa.phone}</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodeURIComponent("Hi Shahana, I want to book a holiday package.")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gold-450 flex justify-between transition-colors"
+                  >
+                    <span>Holidays ({siteConfig.departments.holidays.name}):</span>
+                    <span className="font-mono text-slate-400">{siteConfig.departments.holidays.phone}</span>
+                  </a>
+                </li>
+                <li className="pt-1.5">
+                  <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-2 font-bold">Flight Booking Specialists:</div>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px]">
+                    {siteConfig.departments.sales.map((rep) => (
+                      <a
+                        key={rep.name}
+                        href={`https://wa.me/${rep.phoneDial}?text=${encodeURIComponent(`Hi ${rep.name}, I want to book a flight ticket.`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gold-450 flex justify-between transition-colors"
+                      >
+                        <span>{rep.name}</span>
+                        <span className="text-slate-500 font-mono">{rep.phone.replace("+91", "").trim()}</span>
+                      </a>
+                    ))}
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
