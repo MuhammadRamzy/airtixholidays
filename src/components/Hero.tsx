@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site";
 const showcaseSlides = [
   {
     id: "flights",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop",
     badge: "Direct Routes",
     tagline: "Premium Flight Ticketing",
     title: "Connecting Kerala & The Gulf",
@@ -17,7 +17,7 @@ const showcaseSlides = [
   },
   {
     id: "visas",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
     badge: "Express Processing",
     tagline: "Global Visit Visas",
     title: "Hassle-Free Documentation",
@@ -25,7 +25,7 @@ const showcaseSlides = [
   },
   {
     id: "umrah",
-    image: "https://images.unsplash.com/photo-1580418826893-67e1f7210ff1?auto=format&fit=crop&w=800&q=80",
+    image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Kaaba_mirror_edit_jj.jpg",
     badge: "Spiritual Journeys",
     tagline: "Hajj & Umrah Services",
     title: "Meticulously Planned Pilgrimages",
@@ -33,7 +33,7 @@ const showcaseSlides = [
   },
   {
     id: "holidays",
-    image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop",
     badge: "Curated Escapes",
     tagline: "Bespoke Holiday Plans",
     title: "Crafting Seamless Leisure Trips",
@@ -91,9 +91,9 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Decorative colored glow circles */}
-      <div className="absolute top-1/4 left-1/4 w-[35rem] h-[35rem] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[40rem] h-[40rem] bg-gold-500/10 rounded-full blur-[140px] pointer-events-none" />
+      {/* Decorative colored glow circles - Updated to Brand Red */}
+      <div className="absolute top-1/4 left-1/4 w-[35rem] h-[35rem] bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[40rem] h-[40rem] bg-red-800/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -103,36 +103,44 @@ export default function Hero() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 text-left flex flex-col items-start"
+            className="lg:col-span-7 text-left flex flex-col items-start relative"
           >
-            {/* Brand Logo placement inside Hero left column - massive size with elegant background glow */}
-            <motion.div variants={itemVariants} className="mb-10 lg:mb-12 relative inline-flex items-center justify-start">
-              {/* Intense but soft radial glow for perfect contrast against black text */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-white/25 blur-[45px] rounded-full pointer-events-none" />
+            {/* Brand Logo - Creative Full-Width Airline Banner */}
+            <motion.div variants={itemVariants} className="mb-12 lg:mb-16 relative z-10 py-5 lg:py-6">
+              {/* Massive Full-Width White Strip with Creative Styling */}
+              <div className="absolute inset-y-0 -left-[100vw] -right-[100vw] bg-gradient-to-r from-slate-100 via-white to-slate-50 shadow-[0_20px_40px_rgba(0,0,0,0.4)] border-t border-white overflow-hidden">
+                {/* Subtle aviation micro-grid texture */}
+                <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:12px_12px]" />
+                {/* Bold Red architectural accent line running the full length */}
+                <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-red-700 via-red-500 to-red-600" />
+                {/* Speed lines accent */}
+                <div className="absolute top-0 bottom-0 right-[20vw] w-[30vw] bg-gradient-to-r from-transparent via-slate-200/50 to-transparent skew-x-12 opacity-50" />
+              </div>
+
               <img
                 src="/logo.png"
                 alt="AirTix Holidays"
-                className="relative z-10 h-28 sm:h-32 md:h-40 lg:h-48 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] origin-left"
+                className="relative z-10 h-16 sm:h-20 md:h-24 lg:h-[7rem] w-auto object-contain origin-left drop-shadow-sm"
               />
             </motion.div>
 
-            {/* Title */}
+            {/* Title - Updated highlight to Brand Red */}
             <motion.h1 variants={itemVariants} className="font-display font-black text-[2.6rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.9] tracking-tighter mb-6 text-white">
               Connecting <br />
-              <span className="serif-italic font-normal text-gold-400 font-serif lowercase italic tracking-normal block my-1">
+              <span className="serif-italic font-normal text-red-600 font-serif lowercase italic tracking-normal block my-1">
                 kerala
               </span> 
               with your Gulf family.
             </motion.h1>
 
-            {/* Geographic Marker coordinates for Kerala and Middle East */}
+            {/* Geographic Marker coordinates - Updated accents */}
             <motion.div variants={itemVariants} className="flex gap-6 mb-6 font-mono text-[10px] text-slate-550 tracking-wider">
               <div>
-                <span className="text-gold-500/80 block font-bold">CCJ / COK / TRV</span>
+                <span className="text-red-500/80 block font-bold">CCJ / COK / TRV</span>
                 <span>Kozhikode / Kochi / Trivandrum</span>
               </div>
               <div className="border-l border-slate-800 pl-6">
-                <span className="text-teal-450 block font-bold">DXB / DOH / MCT / RUH</span>
+                <span className="text-red-500/80 block font-bold">DXB / DOH / MCT / RUH</span>
                 <span>UAE / Qatar / Oman / Saudi</span>
               </div>
             </motion.div>
@@ -145,37 +153,41 @@ export default function Hero() {
             {/* Trust features */}
             <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4 mb-8 max-w-md w-full">
               <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-teal-500" />
+                <ShieldCheck className="w-4 h-4 text-red-600" />
                 <span>MKTA & TASK ACCREDITED</span>
               </div>
               <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-teal-500" />
+                <ShieldCheck className="w-4 h-4 text-red-600" />
                 <span>24/7 GULF HELPLINE DESK</span>
               </div>
             </motion.div>
 
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-6 w-full">
-              <BookingButton variant="primary" className="!px-10 !py-4.5 text-sm shadow-2xl shadow-gold-500/10 hover:scale-[1.02] transition-transform" />
+              {/* Primary button is styled via its own component, but we will ensure it matches red/black globally later if needed */}
+              <BookingButton variant="primary" className="!px-10 !py-4.5 text-sm shadow-2xl shadow-red-600/20 hover:scale-[1.02] transition-transform" />
               <a
                 href="#services"
                 onClick={handleScrollToPackages}
-                className="inline-flex items-center justify-center font-display font-bold border-b-2 border-white/20 hover:border-white text-white py-2 text-xs tracking-widest transition-all uppercase group"
+                className="inline-flex items-center justify-center font-display font-bold border-b-2 border-white/20 hover:border-red-500 text-white hover:text-red-400 py-2 text-xs tracking-widest transition-all uppercase group"
               >
                 <span>Explore Services</span>
-                <ArrowRight className="w-4 h-4 ml-2.5 text-gold-400 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 ml-2.5 text-red-500 group-hover:translate-x-1 transition-transform" />
               </a>
             </motion.div>
           </motion.div>
 
           {/* Right Column: Dynamic Services Carousel */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 w-full flex justify-center perspective-[1000px]"
+            className="lg:col-span-5 w-full flex justify-center lg:justify-end xl:justify-center relative mt-12 lg:mt-0 z-30"
           >
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group bg-slate-900">
+            {/* Extremely subtle backdrop glow to anchor it to the dark mode */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-red-600/10 blur-[100px] rounded-full pointer-events-none" />
+
+            <div className="relative w-full max-w-lg aspect-[3/4] lg:aspect-[4/5.5] rounded-[2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/10 group bg-slate-900 lg:-translate-y-8">
               <AnimatePresence initial={false} mode="wait">
                 <motion.div
                   key={currentSlide}
@@ -192,38 +204,38 @@ export default function Hero() {
                     className="w-full h-full object-cover"
                   />
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
                   
                   {/* Editorial Badge */}
-                  <div className="absolute top-6 left-6 z-10 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 shadow-md">
-                    <span className="text-[10px] font-mono font-bold tracking-widest text-slate-900 uppercase">
+                  <div className="absolute top-6 left-6 z-10 bg-black/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-red-600/30 shadow-md">
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-red-400 uppercase">
                       {showcaseSlides[currentSlide].badge}
                     </span>
                   </div>
 
                   {/* Editorial Frame Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-8 text-left z-10 space-y-3">
-                    <span className="text-[10px] font-mono tracking-widest text-gold-400 uppercase font-extrabold block">
+                    <span className="text-[10px] font-mono tracking-widest text-red-500 uppercase font-extrabold block">
                       {showcaseSlides[currentSlide].tagline}
                     </span>
-                    <h3 className="font-display font-black text-2xl uppercase leading-tight tracking-tight text-white">
+                    <h3 className="font-display font-black text-2xl uppercase leading-tight tracking-tight text-white drop-shadow-md">
                       {showcaseSlides[currentSlide].title}
                     </h3>
-                    <p className="text-xs text-slate-350 leading-relaxed font-medium">
+                    <p className="text-xs text-slate-300 leading-relaxed font-medium drop-shadow-sm">
                       {showcaseSlides[currentSlide].desc}
                     </p>
                   </div>
                 </motion.div>
               </AnimatePresence>
               
-              {/* Carousel Indicators */}
+              {/* Carousel Indicators - Updated to Brand Red */}
               <div className="absolute bottom-4 right-8 z-20 flex items-center gap-2">
                 {showcaseSlides.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentSlide(idx)}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
-                      currentSlide === idx ? "w-6 bg-gold-400" : "w-1.5 bg-white/30 hover:bg-white/50"
+                      currentSlide === idx ? "w-6 bg-red-600 shadow-[0_0_8px_rgba(220,38,38,0.8)]" : "w-1.5 bg-white/40 hover:bg-white/70"
                     }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
@@ -236,7 +248,7 @@ export default function Hero() {
       </div>
 
       {/* Decorative Editorial line transitions */}
-      <div className="absolute bottom-0 left-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-600/20 to-transparent z-10" />
     </section>
   );
 }

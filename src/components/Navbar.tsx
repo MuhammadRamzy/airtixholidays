@@ -253,13 +253,13 @@ export default function Navbar() {
             {/* Scrollable container for mobile items */}
             <div className="space-y-8 mt-2 relative z-10">
               <div className="flex items-center justify-start pb-4 border-b border-white/10 relative">
-                {/* Spotlight glow for logo contrast */}
-                <div className="absolute top-2 left-4 w-24 h-8 bg-white/10 blur-xl pointer-events-none" />
-                <img
-                  src="/logo.png"
-                  alt="AirTix Holidays"
-                  className="relative z-10 h-12 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)]"
-                />
+                <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-4 py-2 border border-white/20 shadow-lg inline-flex">
+                  <img
+                    src="/logo.png"
+                    alt="AirTix Holidays"
+                    className="relative z-10 h-10 w-auto object-contain"
+                  />
+                </div>
               </div>
               <div className="flex flex-col gap-3">
                 {siteConfig.navItems.map((item, idx) => (

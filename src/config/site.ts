@@ -50,6 +50,19 @@ export const siteConfig = {
     { label: "Services", href: "#services" },
     { label: "Visas", href: "#visas" },
     { label: "Why Choose Us", href: "#why-us" },
+  ],
+
+  // Core Services List (From Signboard)
+  servicesList: [
+    "Hajj & Umrah",
+    "Air Tickets",
+    "Bus & Train Tickets",
+    "Global Visit Visa",
+    "Holiday Packages",
+    "Emigration",
+    "Certificate Attestation",
+    "Resort & Hotel Booking",
+    "Passport Application"
   ]
 };
 

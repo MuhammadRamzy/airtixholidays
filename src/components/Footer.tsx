@@ -2,7 +2,7 @@
 
 import React from "react";
 import { siteConfig } from "@/config/site";
-import { Phone, Mail, MapPin, MessageSquare, Facebook, Instagram, Twitter, ArrowUp } from "lucide-react";
+import { Phone, MapPin, MessageSquare, Facebook, Instagram, Twitter, ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -11,220 +11,211 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-primary-950 border-t border-white/10 text-slate-400 py-12 md:py-16 relative z-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-primary-950 border-t border-white/5 text-slate-400 relative z-20">
+      
+      {/* 1. Hero Map Section with Glassmorphism Overlays */}
+      <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden border-b border-white/5">
+        {/* Interactive Map */}
+        <iframe
+          title="AirTix Head Office Map"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          loading="lazy"
+          allowFullScreen
+          src="https://maps.google.com/maps?q=11.689523,75.666240+(AirTix%20Holidays)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+          className="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700 w-full h-full object-cover absolute inset-0 z-0"
+        />
         
-        {/* Top Grid Area */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
-          {/* Column 1: Brand details */}
-          <div className="space-y-6">
-            <a
-              href="#home"
-              onClick={handleScrollToTop}
-              className="relative inline-block group cursor-pointer"
-            >
-              <div className="absolute inset-0 bg-white/10 blur-xl rounded-full pointer-events-none scale-150 transition-opacity group-hover:bg-white/20" />
-              <img
-                src="/logo.png"
-                alt="AirTix Holidays"
-                className="relative z-10 h-16 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)] transition-transform group-hover:scale-[1.02]"
-              />
-            </a>
+        {/* Gradient fades to blend the map into the dark theme */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-950/80 via-transparent to-primary-950 pointer-events-none z-10" />
+        
+        {/* Floating Contact Card */}
+        <div className="absolute bottom-10 left-4 right-4 md:left-10 lg:left-1/2 lg:-translate-x-1/2 max-w-4xl w-full z-20 pointer-events-none">
+          <div className="bg-black/60 backdrop-blur-xl border border-red-600/20 shadow-2xl shadow-red-900/10 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 pointer-events-auto">
             
-            <p className="text-xs md:text-sm font-medium text-slate-400 leading-relaxed">
-              Kerala's premium flights and holiday specialist. Connecting families, tourists, and Gulf expatriates with premium travel solutions since 2011.
-            </p>
-            
-            {/* Social Icons */}
-            <div className="flex items-center gap-3">
-              <a
-                href={siteConfig.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-teal-650 hover:text-white border border-white/10 transition-all flex items-center justify-center"
-                aria-label="Facebook Link"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href={siteConfig.social.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-teal-650 hover:text-white border border-white/10 transition-all flex items-center justify-center"
-                aria-label="Instagram Link"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href={siteConfig.social.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-teal-650 hover:text-white border border-white/10 transition-all flex items-center justify-center"
-                aria-label="Twitter Link"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Column 2: Quick Links */}
-          <div>
-            <h4 className="font-display font-bold text-white text-xs uppercase tracking-widest mb-6 relative">
-              Quick Links
-              <span className="absolute -bottom-2 left-0 w-8 h-[1px] bg-gold-500" />
-            </h4>
-            <ul className="space-y-3.5 text-xs md:text-sm font-medium">
-              {siteConfig.navItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const target = document.querySelector(item.href);
-                      if (target) target.scrollIntoView({ behavior: "smooth" });
-                    }}
-                    className="hover:text-gold-450 transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a
-                  href={siteConfig.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gold-400 hover:text-gold-300 font-semibold"
+            {/* Address */}
+            <div className="flex-1 flex gap-4 items-start">
+              <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center flex-shrink-0 mt-1">
+                <MapPin className="w-5 h-5 text-red-500" />
+              </div>
+              <div>
+                <h4 className="font-display font-bold text-white text-lg uppercase tracking-wide mb-1">
+                  Our Office
+                </h4>
+                <p className="text-sm text-slate-300 leading-relaxed mb-3">
+                  {siteConfig.contact.address}
+                </p>
+                <a 
+                  href="https://maps.app.goo.gl/s7mAHo8UWX4oBeLZ6" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-1.5 text-red-500 hover:text-red-400 text-xs font-bold uppercase tracking-widest transition-colors group"
                 >
-                  Booking Center →
+                  Open in Google Maps <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </a>
-              </li>
-            </ul>
-          </div>
+              </div>
+            </div>
 
-          {/* Column 3: Key Destinations */}
-          <div>
-            <h4 className="font-display font-bold text-white text-xs uppercase tracking-widest mb-6 relative">
-              Gulf Destinations
-              <span className="absolute -bottom-2 left-0 w-8 h-[1px] bg-gold-500" />
-            </h4>
-            <ul className="space-y-3.5 text-xs md:text-sm font-medium">
-              <li><a href="#routes" className="hover:text-gold-450 transition-colors">Kochi ⇄ Dubai, UAE</a></li>
-              <li><a href="#routes" className="hover:text-gold-450 transition-colors">Kozhikode ⇄ Doha, Qatar</a></li>
-              <li><a href="#routes" className="hover:text-gold-450 transition-colors">Trivandrum ⇄ Riyadh, Saudi</a></li>
-              <li><a href="#routes" className="hover:text-gold-450 transition-colors">Kochi ⇄ Abu Dhabi, UAE</a></li>
-              <li><a href="#routes" className="hover:text-gold-450 transition-colors">Kozhikode ⇄ Muscat, Oman</a></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Kerala HQ Address & Quick Contacts */}
-          <div className="space-y-6">
-            <h4 className="font-display font-bold text-white text-xs uppercase tracking-widest mb-6 relative">
-              Kerala Head Office
-              <span className="absolute -bottom-2 left-0 w-8 h-[1px] bg-gold-500" />
-            </h4>
-            
-            <ul className="space-y-3 text-xs md:text-sm font-medium">
-              <li className="flex gap-3 items-start">
-                <MapPin className="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" />
-                <span className="leading-relaxed">{siteConfig.contact.address}</span>
-              </li>
-              <li className="flex gap-3 items-center">
-                <Mail className="w-4 h-4 text-gold-500 flex-shrink-0" />
-                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-gold-450 transition-colors">
-                  {siteConfig.contact.email}
-                </a>
-              </li>
-            </ul>
-
-            {/* Click-to-call and WhatsApp buttons */}
-            <div className="flex flex-col gap-2.5">
+            {/* Quick Actions */}
+            <div className="flex flex-col gap-3 w-full md:w-auto min-w-[240px]">
               <a
                 href={`tel:${siteConfig.contact.officePhoneDial}`}
-                className="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white font-bold py-2.5 px-4 rounded-xl border border-white/10 transition-colors text-xs font-mono tracking-widest uppercase min-h-[44px]"
+                className="w-full flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-5 rounded-xl border border-white/10 transition-colors text-xs font-mono tracking-widest uppercase"
               >
-                <Phone className="w-3.5 h-3.5 text-gold-500" />
-                Office: {siteConfig.contact.officePhone}
+                <Phone className="w-4 h-4 text-red-500" />
+                {siteConfig.contact.officePhone}
               </a>
               <a
                 href={`https://wa.me/${siteConfig.departments.sales[0].phoneDial}?text=${encodeURIComponent("Hi AirTixHolidays Team, I am interested in booking a flight ticket.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 font-bold py-2.5 px-4 rounded-xl border border-teal-550/20 transition-colors text-xs font-mono tracking-widest uppercase min-h-[44px]"
+                className="w-full flex items-center justify-center gap-3 bg-red-600/10 hover:bg-red-600/20 text-red-400 font-bold py-3 px-5 rounded-xl border border-red-500/20 transition-colors text-xs font-mono tracking-widest uppercase"
               >
-                <MessageSquare className="w-3.5 h-3.5 text-teal-500" />
-                WhatsApp Live Support
+                <MessageSquare className="w-4 h-4 text-red-500" />
+                Live Support
               </a>
             </div>
 
-            {/* Department Direct Lines */}
-            <div className="pt-4 border-t border-white/10 space-y-3">
-              <span className="text-[10px] font-mono tracking-widest text-slate-500 uppercase block font-bold">
-                Direct WhatsApp Lines
-              </span>
-              <ul className="space-y-2 text-xs">
-                <li>
-                  <a
-                    href={`https://wa.me/${siteConfig.departments.visa.phoneDial}?text=${encodeURIComponent("Hi Asmina, I need visa assistance.")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-gold-450 flex justify-between transition-colors"
-                  >
-                    <span>Visas ({siteConfig.departments.visa.name}):</span>
-                    <span className="font-mono text-slate-400">{siteConfig.departments.visa.phone}</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodeURIComponent("Hi Shahana, I want to book a holiday package.")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-gold-450 flex justify-between transition-colors"
-                  >
-                    <span>Holidays ({siteConfig.departments.holidays.name}):</span>
-                    <span className="font-mono text-slate-400">{siteConfig.departments.holidays.phone}</span>
-                  </a>
-                </li>
-                <li className="pt-1.5">
-                  <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-2 font-bold">Flight Booking Specialists:</div>
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px]">
-                    {siteConfig.departments.sales.map((rep) => (
-                      <a
-                        key={rep.name}
-                        href={`https://wa.me/${rep.phoneDial}?text=${encodeURIComponent(`Hi ${rep.name}, I want to book a flight ticket.`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-gold-450 flex justify-between transition-colors"
-                      >
-                        <span>{rep.name}</span>
-                        <span className="text-slate-500 font-mono">{rep.phone.replace("+91", "").trim()}</span>
-                      </a>
-                    ))}
-                  </div>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom copyright area */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500 font-medium">
+      {/* 2. Full-Width Logo Banner */}
+      <div className="w-full bg-white/95 border-y border-slate-200 py-6 shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <a
+            href="#home"
+            onClick={handleScrollToTop}
+            className="inline-block group cursor-pointer"
+          >
+            <img
+              src="/logo.png"
+              alt="AirTix Holidays"
+              className="h-16 md:h-20 w-auto object-contain transition-transform group-hover:scale-[1.02] origin-left"
+            />
+          </a>
+        </div>
+      </div>
+
+      {/* 3. Editorial Grid Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
+          
+          {/* Brand Text Column */}
+          <div className="md:col-span-5 space-y-6">
+            
+            <p className="text-sm md:text-base font-medium text-slate-400 leading-relaxed max-w-md">
+              Kerala's premium flights and holiday specialist. Connecting families, tourists, and Gulf expatriates with premium travel solutions since 2011.
+            </p>
+            
+            {/* Social Icons */}
+            <div className="flex items-center gap-4 pt-2">
+              <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-red-600 hover:text-white border border-white/10 transition-all flex items-center justify-center" aria-label="Facebook">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-red-600 hover:text-white border border-white/10 transition-all flex items-center justify-center" aria-label="Instagram">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href={siteConfig.social.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-red-600 hover:text-white border border-white/10 transition-all flex items-center justify-center" aria-label="Twitter">
+                <Twitter className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Links Columns */}
+          <div className="md:col-span-7 grid grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Core Services List (Complete Signboard Mapping) */}
+            <div>
+              <h4 className="font-display font-bold text-white text-xs uppercase tracking-widest mb-6 relative">
+                Our Services
+                <span className="absolute -bottom-2 left-0 w-8 h-[2px] bg-red-600" />
+              </h4>
+              <ul className="space-y-3.5 text-xs font-medium text-slate-300">
+                {siteConfig.servicesList.map((service) => (
+                  <li key={service}>
+                    <a
+                      href="#services"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const target = document.querySelector("#services");
+                        if (target) target.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="hover:text-red-400 transition-colors flex items-center gap-2"
+                    >
+                      <span className="w-1 h-1 rounded-full bg-red-600/50" />
+                      {service}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Departments */}
+            <div className="col-span-2 lg:col-span-2">
+              <h4 className="font-display font-bold text-white text-xs uppercase tracking-widest mb-6 relative">
+                Direct WhatsApp Desks
+                <span className="absolute -bottom-2 left-0 w-8 h-[2px] bg-red-600" />
+              </h4>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-4 text-sm font-medium">
+                  <a href={`https://wa.me/${siteConfig.departments.visa.phoneDial}`} target="_blank" rel="noopener noreferrer" className="block hover:text-red-400 transition-colors bg-white/5 border border-white/5 rounded-xl p-3">
+                    <span className="block text-[10px] text-red-500 tracking-wider uppercase mb-1">Visa Processing</span>
+                    <span className="flex justify-between items-center text-white">
+                      {siteConfig.departments.visa.name}
+                      <span className="font-mono text-xs text-slate-500 group-hover:text-red-400">{siteConfig.departments.visa.phone}</span>
+                    </span>
+                  </a>
+                  <a href={`https://wa.me/${siteConfig.departments.holidays.phoneDial}`} target="_blank" rel="noopener noreferrer" className="block hover:text-red-400 transition-colors bg-white/5 border border-white/5 rounded-xl p-3">
+                    <span className="block text-[10px] text-red-500 tracking-wider uppercase mb-1">Holiday Packages</span>
+                    <span className="flex justify-between items-center text-white">
+                      {siteConfig.departments.holidays.name}
+                      <span className="font-mono text-xs text-slate-500">{siteConfig.departments.holidays.phone}</span>
+                    </span>
+                  </a>
+                </div>
+                
+                <div className="space-y-4 text-sm font-medium">
+                  <div className="bg-white/5 border border-white/5 rounded-xl p-3">
+                    <span className="block text-[10px] text-red-500 tracking-wider uppercase mb-3">Flight Booking Desk</span>
+                    <ul className="space-y-3">
+                      {siteConfig.departments.sales.map((rep) => (
+                        <li key={rep.name}>
+                          <a href={`https://wa.me/${rep.phoneDial}`} target="_blank" rel="noopener noreferrer" className="hover:text-red-400 text-white flex justify-between items-center transition-colors">
+                            {rep.name}
+                            <span className="font-mono text-xs text-slate-500">{rep.phone.replace("+91", "").trim()}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* 3. Bottom Copyright Bar */}
+      <div className="border-t border-white/10 bg-black/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500 font-medium">
           <p>
             &copy; {new Date().getFullYear()} AirTix. All rights reserved. 
-            <span className="block md:inline md:ml-2 text-[10px] text-slate-650">
+            <span className="block md:inline md:ml-2 text-[10px] text-slate-600">
               (Designed for Kerala/Gulf travel corridor operations)
             </span>
           </p>
 
           <div className="flex items-center gap-6">
-            <span className="font-mono text-[9px] text-slate-650 hidden md:inline">
-              GDS SYNC INTERACTION v4.0 // PORT 5432
+            <span className="font-mono text-[9px] text-slate-600 hidden md:inline tracking-widest uppercase">
+              GDS SYNC INTERACTION v4.0
             </span>
             <a
               href="#home"
               onClick={handleScrollToTop}
-              className="p-2.5 rounded-full bg-white/5 hover:bg-teal-650 hover:text-white border border-white/10 transition-all flex items-center gap-1.5 min-h-[38px]"
+              className="p-3 rounded-full bg-white/5 hover:bg-red-600 hover:text-white border border-white/10 transition-all flex items-center gap-2"
               aria-label="Scroll to top"
             >
               <span className="text-[10px] font-bold uppercase tracking-wider">Top</span>

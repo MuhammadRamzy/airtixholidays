@@ -17,17 +17,17 @@
   --color-primary-100: #d0def7;
   --color-primary-50: #eef3fc;
 
-  /* Gulf Sand / Premium Sunset Accent Gold */
-  --color-gold-500: #eab308;
-  --color-gold-600: #ca8a04;
-  --color-gold-400: #facc15;
-  --color-gold-300: #fde047;
+  /* Primary Brand Accent (Formerly Gold) -> Re-mapped to Deep Red */
+  --color-gold-600: #991b1b; /* red-800 equivalent */
+  --color-gold-500: #dc2626; /* red-600 equivalent */
+  --color-gold-400: #ef4444; /* red-500 equivalent */
+  --color-gold-300: #f87171; /* red-400 equivalent */
 
-  /* Sea & Sky Teal */
-  --color-teal-500: #0ea5e9;
-  --color-teal-600: #0284c7;
-  --color-teal-400: #38bdf8;
-  --color-teal-300: #7dd3fc;
+  /* Secondary Accent (Formerly Teal) -> Re-mapped to Sleek Slate/Silver */
+  --color-teal-600: #334155; /* slate-700 equivalent */
+  --color-teal-500: #475569; /* slate-600 equivalent */
+  --color-teal-400: #94a3b8; /* slate-400 equivalent */
+  --color-teal-300: #cbd5e1; /* slate-300 equivalent */
 }
 
 :root {
@@ -80,9 +80,9 @@ body {
 .mesh-bg {
   background-color: #040914;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(234, 179, 8, 0.1) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(41, 83, 168, 0.15) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(220, 38, 38, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(239, 68, 68, 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(71, 85, 105, 0.15) 0px, transparent 50%);
   background-size: 200% 200%;
   animation: meshFlow 15s ease infinite;
 }
@@ -111,7 +111,7 @@ body {
 /* Custom focus states */
 a:focus-visible, 
 button:focus-visible {
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid #dc2626;
   outline-offset: 4px;
 }
 
@@ -128,7 +128,7 @@ button:focus-visible {
 
 /* Editorial & Print-Magazine Style Utilities */
 .editorial-border-gold {
-  border-color: rgba(234, 179, 8, 0.25);
+  border-color: rgba(220, 38, 38, 0.25);
 }
 
 .editorial-border-slate {
@@ -137,7 +137,7 @@ button:focus-visible {
 
 .editorial-line-gold {
   height: 1px;
-  background: linear-gradient(to right, rgba(234, 179, 8, 0.35) 0%, rgba(14, 165, 233, 0.1) 80%, transparent 100%);
+  background: linear-gradient(to right, rgba(220, 38, 38, 0.35) 0%, rgba(220, 38, 38, 0.1) 80%, transparent 100%);
 }
 
 .serif-italic {
@@ -164,7 +164,7 @@ button:focus-visible {
   left: -12px;
   right: 12px;
   bottom: 12px;
-  border: 1px solid rgba(234, 179, 8, 0.3);
+  border: 1px solid rgba(220, 38, 38, 0.3);
   pointer-events: none;
   z-index: 0;
 }
@@ -179,7 +179,7 @@ button:focus-visible {
   left: 12px;
   right: -12px;
   bottom: -12px;
-  border: 1px solid rgba(14, 165, 233, 0.25);
+  border: 1px solid rgba(71, 85, 105, 0.25);
   pointer-events: none;
   z-index: 0;
 }
