@@ -50,7 +50,6 @@ export const siteConfig = {
     { label: "Services", href: "#services" },
     { label: "Visas", href: "#visas" },
     { label: "Why Choose Us", href: "#why-us" },
-    { label: "Testimonials", href: "#testimonials" },
   ]
 };
 

@@ -105,14 +105,14 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-7 text-left flex flex-col items-start"
           >
-            {/* Brand Logo placement inside Hero left column - elegant glow instead of white box */}
-            <motion.div variants={itemVariants} className="mb-8 relative inline-block">
-              {/* Diffused spotlight for contrast */}
-              <div className="absolute inset-0 bg-white/15 blur-2xl rounded-full pointer-events-none scale-150" />
+            {/* Brand Logo placement inside Hero left column - massive size with elegant background glow */}
+            <motion.div variants={itemVariants} className="mb-10 lg:mb-12 relative inline-flex items-center justify-start">
+              {/* Intense but soft radial glow for perfect contrast against black text */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-white/25 blur-[45px] rounded-full pointer-events-none" />
               <img
                 src="/logo.png"
                 alt="AirTix Holidays"
-                className="relative z-10 h-22 md:h-26 object-contain drop-shadow-[0_2px_10px_rgba(255,255,255,0.4)]"
+                className="relative z-10 h-28 sm:h-32 md:h-40 lg:h-48 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] origin-left"
               />
             </motion.div>
 
