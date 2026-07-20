@@ -34,14 +34,29 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Lock body scroll when mobile menu is active
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
     setIsSupportDropdownOpen(false);
-    const targetElement = document.querySelector(href);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
+    // Slight delay to allow drawer closing animation to clean up layout coordinates
+    setTimeout(() => {
+      const targetElement = document.querySelector(href);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 150);
   };
 
   return (
@@ -205,8 +220,12 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden p-2 focus:outline-none transition-colors duration-300 ${
-                isScrolled ? "text-primary-950 hover:text-teal-650" : "text-white hover:text-gold-400"
+              className={`lg:hidden p-2 focus:outline-none transition-colors duration-300 relative z-50 ${
+                isMobileMenuOpen
+                  ? "text-white hover:text-gold-450"
+                  : isScrolled
+                  ? "text-primary-950 hover:text-teal-650"
+                  : "text-white hover:text-gold-400"
               }`}
               aria-label="Toggle mobile menu"
             >
@@ -233,6 +252,15 @@ export default function Navbar() {
 
             {/* Scrollable container for mobile items */}
             <div className="space-y-8 mt-2 relative z-10">
+              <div className="flex items-center justify-start pb-4 border-b border-white/10 relative">
+                {/* Spotlight glow for logo contrast */}
+                <div className="absolute top-2 left-4 w-24 h-8 bg-white/10 blur-xl pointer-events-none" />
+                <img
+                  src="/logo.png"
+                  alt="AirTix Holidays"
+                  className="relative z-10 h-12 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)]"
+                />
+              </div>
               <div className="flex flex-col gap-3">
                 {siteConfig.navItems.map((item, idx) => (
                   <motionBase.a
@@ -278,7 +306,7 @@ export default function Navbar() {
                   </div>
                   <a
                     href={`https://wa.me/${siteConfig.departments.visa.phoneDial}?text=${encodeURIComponent("Hi Asmina, I need visa assistance.")}`}
-                    className="inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white font-bold py-1.5 px-3 rounded-lg text-[10px] tracking-wider uppercase font-mono transition-colors min-h-[32px]"
+                    className="inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs tracking-wider uppercase font-mono transition-colors min-h-[44px]"
                   >
                     Chat Visa
                   </a>
@@ -297,7 +325,7 @@ export default function Navbar() {
                   </div>
                   <a
                     href={`https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodeURIComponent("Hi Shahana, I'm interested in booking a package.")}`}
-                    className="inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white font-bold py-1.5 px-3 rounded-lg text-[10px] tracking-wider uppercase font-mono transition-colors min-h-[32px]"
+                    className="inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs tracking-wider uppercase font-mono transition-colors min-h-[44px]"
                   >
                     Chat Holidays
                   </a>
@@ -311,7 +339,7 @@ export default function Navbar() {
                       <a
                         key={rep.name}
                         href={`https://wa.me/${rep.phoneDial}?text=${encodeURIComponent(`Hi ${rep.name}, I want to book a flight ticket.`)}`}
-                        className="p-2 rounded-lg bg-white/5 border border-white/5 text-left text-white block hover:bg-white/10 hover:border-white/10 transition-all group"
+                        className="p-3 rounded-xl bg-white/5 border border-white/5 text-left text-white block hover:bg-white/10 hover:border-white/10 transition-all group min-h-[48px]"
                       >
                         <span className="text-[10px] font-black block group-hover:text-gold-400 transition-colors">{rep.name}</span>
                         <span className="text-[8px] text-white/40 block font-mono mt-0.5">{rep.phone.replace("+91 ", "")}</span>
@@ -326,28 +354,28 @@ export default function Navbar() {
                     href="https://wa.me/919946157771?text=Hi%20AirTixHolidays%20Team%2C%20I%20have%20a%20general%20inquiry."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-mono text-[9px] uppercase tracking-widest font-black py-2 rounded-lg transition-colors shadow-sm"
+                    className="w-full flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-mono text-[10px] uppercase tracking-widest font-black py-3 rounded-xl transition-colors shadow-sm min-h-[44px]"
                   >
-                    <MessageSquare className="w-3 h-3" />
+                    <MessageSquare className="w-3.5 h-3.5" />
                     WhatsApp
                   </a>
                   
                   <a
                     href={`mailto:${siteConfig.contact.email}`}
-                    className="w-full flex items-center justify-center gap-1.5 bg-white/10 hover:bg-white/15 text-white font-mono text-[9px] uppercase tracking-widest font-black py-2 rounded-lg transition-colors shadow-sm"
+                    className="w-full flex items-center justify-center gap-1.5 bg-white/10 hover:bg-white/15 text-white font-mono text-[10px] uppercase tracking-widest font-black py-3 rounded-xl transition-colors shadow-sm min-h-[44px]"
                   >
-                    <Mail className="w-3 h-3 text-gold-400" />
+                    <Mail className="w-3.5 h-3.5 text-gold-400" />
                     Email
                   </a>
                 </div>
 
                 {/* Landline */}
-                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs">
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs min-h-[44px]">
                   <div className="flex items-center gap-1.5 text-white/60">
                     <Building className="w-3.5 h-3.5 text-white/30" />
                     <span>Office Landline:</span>
                   </div>
-                  <a href={`tel:${siteConfig.contact.officePhoneDial}`} className="font-mono font-black text-gold-400 hover:underline">
+                  <a href={`tel:${siteConfig.contact.officePhoneDial}`} className="font-mono font-black text-gold-400 hover:underline py-1">
                     {siteConfig.contact.officePhone}
                   </a>
                 </div>

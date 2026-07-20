@@ -1,51 +1,62 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
-import { Plane, ArrowRight, Sparkles, Calendar, Globe, ChevronDown, MessageSquare, ShieldCheck, MapPin } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import BookingButton from "./BookingButton";
 import { siteConfig } from "@/config/site";
 
-export default function Hero() {
-  const [activeTab, setActiveTab] = useState<"flights" | "visas" | "holidays">("flights");
-  
-  // Flight form state
-  const [origin, setOrigin] = useState("CCJ");
-  const [destination, setDestination] = useState("DXB");
-  const [passengers, setPassengers] = useState("1");
-  const [classType, setClassType] = useState("Economy");
+const showcaseSlides = [
+  {
+    id: "flights",
+    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
+    badge: "Direct Routes",
+    tagline: "Premium Flight Ticketing",
+    title: "Connecting Kerala & The Gulf",
+    desc: "Instant low-fare bookings on all major domestic and international carriers.",
+  },
+  {
+    id: "visas",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+    badge: "Express Processing",
+    tagline: "Global Visit Visas",
+    title: "Hassle-Free Documentation",
+    desc: "Fast-tracked visa assistance for UAE, Saudi Arabia, Qatar, and worldwide.",
+  },
+  {
+    id: "umrah",
+    image: "https://images.unsplash.com/photo-1580418826893-67e1f7210ff1?auto=format&fit=crop&w=800&q=80",
+    badge: "Spiritual Journeys",
+    tagline: "Hajj & Umrah Services",
+    title: "Meticulously Planned Pilgrimages",
+    desc: "Complete holy packages with premium stays, visa processing, and guidance.",
+  },
+  {
+    id: "holidays",
+    image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+    badge: "Curated Escapes",
+    tagline: "Bespoke Holiday Plans",
+    title: "Crafting Seamless Leisure Trips",
+    desc: "Custom family itineraries, luxury resort stays, and corporate group tours.",
+  }
+];
 
-  // Visa form state
-  const [visaCountry, setVisaCountry] = useState("United Arab Emirates (UAE)");
-  
-  // Holiday form state
-  const [holidayType, setHolidayType] = useState("Premium Alleppey Houseboat Cruise");
+export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % showcaseSlides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleScrollToPackages = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const target = document.querySelector("#packages");
+    const target = document.querySelector("#services");
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  const getWhatsAppLink = () => {
-    if (activeTab === "flights") {
-      const msg = `Hi AirTix Holidays, I would like to check ticket fares and availability from ${origin} to ${destination} for ${passengers} passenger(s) (${classType} class).`;
-      return `https://wa.me/${siteConfig.departments.sales[0].phoneDial}?text=${encodeURIComponent(msg)}`;
-    } else if (activeTab === "visas") {
-      const msg = `Hi AirTix Holidays, I'm looking for visit visa processing and assistance for ${visaCountry}. Please share the requirements and details.`;
-      return `https://wa.me/${siteConfig.departments.visa.phoneDial}?text=${encodeURIComponent(msg)}`;
-    } else {
-      const msg = `Hi AirTix Holidays, I want to inquire about a holiday package for ${holidayType}. Please send itineraries and details.`;
-      return `https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodeURIComponent(msg)}`;
-    }
-  };
-
-  const getActionText = () => {
-    if (activeTab === "flights") return "Send Ticket Query on WhatsApp";
-    if (activeTab === "visas") return "Inquire Visa Requirements on WhatsApp";
-    return "Request Holiday Plan on WhatsApp";
   };
 
   // Staggered animation variants
@@ -94,12 +105,14 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-7 text-left flex flex-col items-start"
           >
-            {/* Brand Logo placement inside Hero left column */}
-            <motion.div variants={itemVariants} className="mb-8">
+            {/* Brand Logo placement inside Hero left column - elegant glow instead of white box */}
+            <motion.div variants={itemVariants} className="mb-8 relative inline-block">
+              {/* Diffused spotlight for contrast */}
+              <div className="absolute inset-0 bg-white/15 blur-2xl rounded-full pointer-events-none scale-150" />
               <img
                 src="/logo.png"
                 alt="AirTix Holidays"
-                className="h-20 md:h-24 object-contain brightness-0 invert"
+                className="relative z-10 h-22 md:h-26 object-contain drop-shadow-[0_2px_10px_rgba(255,255,255,0.4)]"
               />
             </motion.div>
 
@@ -145,254 +158,76 @@ export default function Hero() {
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-6 w-full">
               <BookingButton variant="primary" className="!px-10 !py-4.5 text-sm shadow-2xl shadow-gold-500/10 hover:scale-[1.02] transition-transform" />
               <a
-                href="#packages"
+                href="#services"
                 onClick={handleScrollToPackages}
                 className="inline-flex items-center justify-center font-display font-bold border-b-2 border-white/20 hover:border-white text-white py-2 text-xs tracking-widest transition-all uppercase group"
               >
-                <span>Explore Packages</span>
+                <span>Explore Services</span>
                 <ArrowRight className="w-4 h-4 ml-2.5 text-gold-400 group-hover:translate-x-1 transition-transform" />
               </a>
             </motion.div>
           </motion.div>
 
-          {/* Right Column: High Fidelity Interactive Booking Widget */}
+          {/* Right Column: Dynamic Services Carousel */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 w-full"
+            className="lg:col-span-5 w-full flex justify-center perspective-[1000px]"
           >
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl relative overflow-hidden">
-              {/* Header inside Widget */}
-              <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="font-mono text-[10px] tracking-widest text-slate-350 font-bold uppercase">
-                    AIRTIX LIVE BOOKING DESK
-                  </span>
-                </div>
-                <span className="text-[9px] font-mono text-slate-500 bg-white/5 px-2 py-0.5 rounded uppercase">
-                  GDS Active
-                </span>
-              </div>
-
-              {/* Tabs */}
-              <div className="grid grid-cols-3 gap-1 bg-white/5 p-1 rounded-xl mb-6">
-                {[
-                  { id: "flights", label: "Flights", icon: Plane },
-                  { id: "visas", label: "Visas", icon: Globe },
-                  { id: "holidays", label: "Holidays", icon: Calendar }
-                ].map((tab) => {
-                  const Icon = tab.icon;
-                  const isActive = activeTab === tab.id;
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab.id as any)}
-                      className={`flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-bold transition-all ${
-                        isActive 
-                          ? "bg-gold-500 text-slate-950 shadow" 
-                          : "text-slate-400 hover:text-white hover:bg-white/5"
-                      }`}
-                    >
-                      <Icon className="w-3.5 h-3.5" />
-                      <span>{tab.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Form Content Container with AnimatePresence */}
-              <div className="min-h-[220px]">
-                <AnimatePresence mode="wait">
-                  {activeTab === "flights" && (
-                    <motion.div
-                      key="flights-form"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="space-y-4"
-                    >
-                      {/* Origin & Destination Select */}
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-1.5 text-left">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Origin (Kerala)</label>
-                          <div className="relative">
-                            <select 
-                              value={origin} 
-                              onChange={(e) => setOrigin(e.target.value)}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
-                            >
-                              <option className="bg-slate-950 text-white" value="Kozhikode (CCJ)">Kozhikode (CCJ)</option>
-                              <option className="bg-slate-950 text-white" value="Kochi (COK)">Kochi (COK)</option>
-                              <option className="bg-slate-950 text-white" value="Trivandrum (TRV)">Trivandrum (TRV)</option>
-                            </select>
-                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                          </div>
-                        </div>
-
-                        <div className="space-y-1.5 text-left">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Destination (Gulf)</label>
-                          <div className="relative">
-                            <select 
-                              value={destination} 
-                              onChange={(e) => setDestination(e.target.value)}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
-                            >
-                              <option className="bg-slate-950 text-white" value="Dubai (DXB)">Dubai (DXB)</option>
-                              <option className="bg-slate-950 text-white" value="Doha (DOH)">Doha (DOH)</option>
-                              <option className="bg-slate-950 text-white" value="Muscat (MCT)">Muscat (MCT)</option>
-                              <option className="bg-slate-950 text-white" value="Riyadh (RUH)">Riyadh (RUH)</option>
-                              <option className="bg-slate-950 text-white" value="Jeddah (JED)">Jeddah (JED)</option>
-                            </select>
-                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Passengers & Class Select */}
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-1.5 text-left">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Passengers</label>
-                          <div className="relative">
-                            <select 
-                              value={passengers} 
-                              onChange={(e) => setPassengers(e.target.value)}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
-                            >
-                              <option className="bg-slate-950 text-white" value="1">1 Passenger</option>
-                              <option className="bg-slate-950 text-white" value="2">2 Passengers</option>
-                              <option className="bg-slate-950 text-white" value="3">3 Passengers</option>
-                              <option className="bg-slate-950 text-white" value="4">4 Passengers</option>
-                              <option className="bg-slate-950 text-white" value="5+">5+ Passengers</option>
-                            </select>
-                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                          </div>
-                        </div>
-
-                        <div className="space-y-1.5 text-left">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Travel Class</label>
-                          <div className="relative">
-                            <select 
-                              value={classType} 
-                              onChange={(e) => setClassType(e.target.value)}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
-                            >
-                              <option className="bg-slate-950 text-white" value="Economy">Economy</option>
-                              <option className="bg-slate-950 text-white" value="Premium Eco">Premium Eco</option>
-                              <option className="bg-slate-950 text-white" value="Business">Business</option>
-                              <option className="bg-slate-950 text-white" value="First Class">First Class</option>
-                            </select>
-                            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Flight connection preview arc */}
-                      <div className="bg-white/5 rounded-xl p-3 border border-white/5 flex items-center justify-between text-xs text-slate-350">
-                        <div className="flex items-center gap-1.5 font-bold">
-                          <MapPin className="w-3.5 h-3.5 text-gold-500" />
-                          <span>{origin.split(" ")[1] || origin}</span>
-                        </div>
-                        <div className="flex-1 px-4 border-t border-dashed border-slate-700 relative mx-2">
-                          <Plane className="w-3.5 h-3.5 text-teal-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90" />
-                        </div>
-                        <div className="flex items-center gap-1.5 font-bold">
-                          <MapPin className="w-3.5 h-3.5 text-teal-500" />
-                          <span>{destination.split(" ")[1] || destination}</span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {activeTab === "visas" && (
-                    <motion.div
-                      key="visas-form"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="space-y-4"
-                    >
-                      <div className="space-y-1.5 text-left">
-                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Destination Country</label>
-                        <div className="relative">
-                          <select 
-                            value={visaCountry} 
-                            onChange={(e) => setVisaCountry(e.target.value)}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
-                          >
-                            <option className="bg-slate-950 text-white" value="United Arab Emirates (UAE)">United Arab Emirates (UAE)</option>
-                            <option className="bg-slate-950 text-white" value="Saudi Arabia (Tourist/Umrah)">Saudi Arabia (Tourist/Umrah)</option>
-                            <option className="bg-slate-950 text-white" value="Qatar">Qatar (Hayya Visa)</option>
-                            <option className="bg-slate-950 text-white" value="Oman">Oman</option>
-                            <option className="bg-slate-950 text-white" value="Europe (Schengen)">Europe (Schengen)</option>
-                            <option className="bg-slate-950 text-white" value="United Kingdom (UK)">United Kingdom (UK)</option>
-                            <option className="bg-slate-950 text-white" value="Southeast Asia (Malaysia/Thailand)">Southeast Asia (Malaysia/Thailand)</option>
-                          </select>
-                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                        </div>
-                      </div>
-
-                      <div className="bg-white/5 rounded-xl p-4 border border-white/5 space-y-2 text-xs text-left">
-                        <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider block">Visa Division Service Pledge</span>
-                        <p className="text-slate-350 leading-normal">
-                          Full documentation checks, health insurance registration, bio-metric appointment scheduling, and express processing support managed by Asmina (Visa Dept).
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {activeTab === "holidays" && (
-                    <motion.div
-                      key="holidays-form"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="space-y-4"
-                    >
-                      <div className="space-y-1.5 text-left">
-                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Holiday Package Focus</label>
-                        <div className="relative">
-                          <select 
-                            value={holidayType} 
-                            onChange={(e) => setHolidayType(e.target.value)}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-2.5 py-2 sm:px-3.5 sm:py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
-                          >
-                            <option className="bg-slate-950 text-white" value="Premium Alleppey Houseboat Cruise">Premium Alleppey Houseboat Cruise</option>
-                            <option className="bg-slate-950 text-white" value="Munnar Mist Valley Hill Resort stay">Munnar Mist Valley Hill Resort Stay</option>
-                            <option className="bg-slate-950 text-white" value="Wayanad Canopy Pool Villa Holiday">Wayanad Canopy Pool Villa Holiday</option>
-                            <option className="bg-slate-950 text-white" value="Premium 5-Star Umrah Package">Premium 5-Star Umrah Package</option>
-                            <option className="bg-slate-950 text-white" value="Deluxe Malaysia/Thailand Holiday">Deluxe Malaysia/Thailand Holiday</option>
-                          </select>
-                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                        </div>
-                      </div>
-
-                      <div className="bg-white/5 rounded-xl p-4 border border-white/5 space-y-2 text-xs text-left">
-                        <span className="text-[10px] font-bold text-gold-400 uppercase tracking-wider block">Custom Family Itineraries</span>
-                        <p className="text-slate-350 leading-normal">
-                          Direct transfers, premium hotel rooms, custom sightseeing activities, and regional Kerala food coordinators managed by Shahana (Holidays Dept).
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Action Button: Book/Inquire via WhatsApp */}
-              <div className="mt-6">
-                <a
-                  href={getWhatsAppLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 bg-emerald-650 hover:bg-emerald-700 text-white font-bold py-4 px-4 rounded-xl shadow-lg transition-colors text-xs font-mono uppercase tracking-wider min-h-[48px]"
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group bg-slate-900">
+              <AnimatePresence initial={false} mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0"
                 >
-                  <MessageSquare className="w-4.5 h-4.5" />
-                  <span>{getActionText()}</span>
-                </a>
+                  {/* Feature Image */}
+                  <img
+                    src={showcaseSlides[currentSlide].image}
+                    alt={showcaseSlides[currentSlide].title}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                  
+                  {/* Editorial Badge */}
+                  <div className="absolute top-6 left-6 z-10 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 shadow-md">
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-slate-900 uppercase">
+                      {showcaseSlides[currentSlide].badge}
+                    </span>
+                  </div>
+
+                  {/* Editorial Frame Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 text-left z-10 space-y-3">
+                    <span className="text-[10px] font-mono tracking-widest text-gold-400 uppercase font-extrabold block">
+                      {showcaseSlides[currentSlide].tagline}
+                    </span>
+                    <h3 className="font-display font-black text-2xl uppercase leading-tight tracking-tight text-white">
+                      {showcaseSlides[currentSlide].title}
+                    </h3>
+                    <p className="text-xs text-slate-350 leading-relaxed font-medium">
+                      {showcaseSlides[currentSlide].desc}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+              
+              {/* Carousel Indicators */}
+              <div className="absolute bottom-4 right-8 z-20 flex items-center gap-2">
+                {showcaseSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      currentSlide === idx ? "w-6 bg-gold-400" : "w-1.5 bg-white/30 hover:bg-white/50"
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </motion.div>

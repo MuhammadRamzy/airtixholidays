@@ -22,12 +22,13 @@ export default function Footer() {
             <a
               href="#home"
               onClick={handleScrollToTop}
-              className="flex items-center gap-2 group cursor-pointer"
+              className="relative inline-block group cursor-pointer"
             >
+              <div className="absolute inset-0 bg-white/10 blur-xl rounded-full pointer-events-none scale-150 transition-opacity group-hover:bg-white/20" />
               <img
                 src="/logo.png"
                 alt="AirTix Holidays"
-                className="h-18 md:h-20 object-contain brightness-0 invert"
+                className="relative z-10 h-16 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)] transition-transform group-hover:scale-[1.02]"
               />
             </a>
             

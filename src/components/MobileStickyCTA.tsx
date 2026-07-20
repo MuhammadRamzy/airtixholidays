@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/config/site";
-import { Phone, ArrowRight } from "lucide-react";
+import { MessageSquare, ArrowRight } from "lucide-react";
 
 export default function MobileStickyCTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,7 +38,7 @@ export default function MobileStickyCTA() {
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-full text-xs transition-colors border border-slate-200 min-h-[44px]"
           >
-            <Phone className="w-3.5 h-3.5 text-teal-600 animate-pulse" />
+            <MessageSquare className="w-3.5 h-3.5 text-teal-600 animate-pulse" />
             WhatsApp HELP
           </a>
 

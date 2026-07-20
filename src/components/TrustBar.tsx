@@ -43,7 +43,7 @@ export default function TrustBar() {
   return (
     <section className="bg-white border-y border-slate-200/80 py-6 md:py-8 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 lg:gap-0">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.id}
@@ -52,7 +52,9 @@ export default function TrustBar() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               className={`flex flex-col items-start text-left lg:px-8 first:pl-0 last:pr-0 ${
-                index < 3 ? "lg:border-r border-slate-200/80" : ""
+                index % 2 === 0 ? "border-r border-slate-200/50 lg:border-none" : ""
+              } ${
+                index < 3 ? "lg:border-r lg:border-slate-200/80" : ""
               }`}
             >
               <div className="flex items-center gap-3 mb-3">

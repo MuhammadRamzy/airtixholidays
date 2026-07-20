@@ -223,6 +223,13 @@ export default function Services() {
             );
           })}
         </motion.div>
+
+        {/* Mobile Swipe Indicator */}
+        <div className="flex items-center justify-center gap-2 mt-4 lg:hidden">
+          <span className="text-[10px] font-mono tracking-widest text-slate-400 uppercase">
+            ← Swipe to view all services →
+          </span>
+        </div>
       </div>
     </section>
   );

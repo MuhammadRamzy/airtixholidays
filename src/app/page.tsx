@@ -4,10 +4,10 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import AboutUs from "@/components/AboutUs";
 import Services from "@/components/Services";
-import HolidayPackages from "@/components/HolidayPackages";
 import VisaServices from "@/components/VisaServices";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
+import BookingDeskSection from "@/components/BookingDeskSection";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
@@ -24,10 +24,10 @@ export default function Home() {
         <TrustBar />
         <AboutUs />
         <Services />
-        <HolidayPackages />
         <VisaServices />
         <WhyChooseUs />
         <Testimonials />
+        <BookingDeskSection />
         <CTABanner />
       </main>
 

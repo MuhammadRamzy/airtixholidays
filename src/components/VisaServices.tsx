@@ -114,7 +114,7 @@ export default function VisaServices() {
           
           {/* Left Column: General Visa Inquiries & Document Checklist */}
           <div className="lg:col-span-4 space-y-8 lg:sticky lg:top-28">
-            <div className="bg-[#FAF9F6] border border-slate-200/70 rounded-3xl p-8 shadow-sm">
+            <div className="bg-[#FAF9F6] border border-slate-200/70 rounded-3xl p-6 sm:p-8 shadow-sm">
               <h3 className="font-display font-black text-lg text-primary-950 uppercase tracking-tight mb-4">
                 Common Document Checklist
               </h3>

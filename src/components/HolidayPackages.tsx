@@ -66,7 +66,7 @@ export default function HolidayPackages() {
       duration: "14 Days Spiritual Journey",
       rating: 5.0,
       reviews: 320,
-      image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1580418826893-67e1f7210ff1?auto=format&fit=crop&w=800&q=80",
       tag: "Luxury Pilgrimage",
       highlights: ["5-Star Hotel close to Makkah Haram", "Luxury Hotel in Madinah", "Detailed Ziyarah Tours", "Specialized Spiritual Guides"],
       inclusions: "Flights + 5★ Hotels + Visa + Guided Tours + Luxury Transfers",
