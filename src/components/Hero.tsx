@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site";
 const showcaseSlides = [
   {
     id: "flights",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Air_India_Boeing_787-8_Dreamliner_at_Frankfurt_Airport.jpg",
+    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop",
     badge: "Direct Routes",
     tagline: "Premium Flight Ticketing",
     title: "Connecting Kerala & The Gulf",
@@ -17,7 +17,7 @@ const showcaseSlides = [
   },
   {
     id: "visas",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Passport_stamps.jpg",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
     badge: "Express Processing",
     tagline: "Global Visit Visas",
     title: "Hassle-Free Documentation",
@@ -33,7 +33,7 @@ const showcaseSlides = [
   },
   {
     id: "holidays",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Munnar_hillstation_kerala.jpg",
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop",
     badge: "Curated Escapes",
     tagline: "Bespoke Holiday Packages",
     title: "Crafting Seamless Leisure Trips",
@@ -41,7 +41,7 @@ const showcaseSlides = [
   },
   {
     id: "bus-train",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Vande_Bharat_Express_on_the_move.jpg",
+    image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=800&auto=format&fit=crop",
     badge: "Domestic Transit",
     tagline: "Bus & Train Tickets",
     title: "Reliable Domestic Connections",
@@ -49,7 +49,7 @@ const showcaseSlides = [
   },
   {
     id: "emigration",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Immigration_Control_at_Changi_Airport.jpg",
+    image: "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?q=80&w=800&auto=format&fit=crop",
     badge: "Clearance Support",
     tagline: "Emigration Services",
     title: "Streamlined Emigration Check",
@@ -57,7 +57,7 @@ const showcaseSlides = [
   },
   {
     id: "attestation",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Notary_seal.jpg",
+    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop",
     badge: "Legal Documentation",
     tagline: "Certificate Attestation",
     title: "Verified Document Processing",
@@ -65,7 +65,7 @@ const showcaseSlides = [
   },
   {
     id: "resort",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kumarakom_Lake_Resort.jpg",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop",
     badge: "Luxury Stays",
     tagline: "Resort & Hotel Booking",
     title: "Premium Accommodation",
@@ -73,7 +73,7 @@ const showcaseSlides = [
   },
   {
     id: "passport",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Indian_Passport_2021_Edition.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Indian_Passport_2021_Edition.jpg",
     badge: "Govt Services",
     tagline: "Passport Application",
     title: "Hassle-Free Passport Services",
