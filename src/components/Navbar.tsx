@@ -91,20 +91,40 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Support Dropdown Desk */}
-            <div className="hidden md:block relative" ref={dropdownRef}>
-              <button
-                onClick={() => setIsSupportDropdownOpen(!isSupportDropdownOpen)}
-                className={`flex items-center gap-2 font-bold text-xs uppercase tracking-widest px-4 py-2.5 rounded-xl transition-all duration-300 border ${
+            {/* Desktop Action Buttons */}
+            <div className="hidden md:flex items-center gap-4">
+              {/* Direct Booking Button */}
+              <a
+                href="#booking-desk"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector("#booking-desk");
+                  if (target) target.scrollIntoView({ behavior: "smooth" });
+                }}
+                className={`flex items-center gap-2 font-bold text-xs uppercase tracking-widest px-4 py-2.5 rounded-xl transition-all duration-300 shadow-sm ${
                   isScrolled
-                    ? "bg-primary-950 text-white border-transparent hover:bg-teal-650 hover:scale-[1.02]"
-                    : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-primary-950 hover:border-transparent"
+                    ? "bg-red-600 text-white hover:bg-red-700 hover:scale-[1.02] shadow-red-600/20"
+                    : "bg-red-600 text-white hover:bg-red-500 hover:scale-[1.02] border border-white/10"
                 }`}
               >
-                <Phone className="w-3.5 h-3.5" />
-                <span>Contact Desk</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isSupportDropdownOpen ? "rotate-180" : ""}`} />
-              </button>
+                <span>Book Ticket</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+
+              {/* Support Dropdown Desk */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setIsSupportDropdownOpen(!isSupportDropdownOpen)}
+                  className={`flex items-center gap-2 font-bold text-xs uppercase tracking-widest px-4 py-2.5 rounded-xl transition-all duration-300 border ${
+                    isScrolled
+                      ? "bg-primary-950 text-white border-transparent hover:bg-teal-650 hover:scale-[1.02]"
+                      : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-primary-950 hover:border-transparent"
+                  }`}
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>Contact Desk</span>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isSupportDropdownOpen ? "rotate-180" : ""}`} />
+                </button>
 
               <AnimatePresenceBase>
                 {isSupportDropdownOpen && (
@@ -215,6 +235,7 @@ export default function Navbar() {
                   </motionBase.div>
                 )}
               </AnimatePresenceBase>
+            </div>
             </div>
 
             {/* Mobile Menu Button */}
