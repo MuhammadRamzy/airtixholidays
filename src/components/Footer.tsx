@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { Phone, MapPin, MessageSquare, Facebook, Instagram, Twitter, ArrowUp } from "lucide-react";
 
@@ -81,9 +82,22 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* 2. Full-Width Logo Banner */}
-      <div className="w-full bg-white/95 border-y border-slate-200 py-6 shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 2. Full-Width Logo Banner with Hero-Style Cinematic Effects */}
+      <div className="relative w-full bg-gradient-to-r from-slate-100 via-white to-slate-50 border-y border-white py-6 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.3)] z-10">
+        {/* Subtle aviation micro-grid texture */}
+        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:12px_12px]" />
+        
+        {/* Animated Futuristic Scanner / Sweeping Glare */}
+        <motion.div 
+          animate={{ x: ["-50vw", "150vw"] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+          className="absolute top-0 bottom-0 left-0 w-[50vw] bg-gradient-to-r from-transparent via-slate-300/40 to-transparent skew-x-12 mix-blend-overlay pointer-events-none" 
+        />
+        
+        {/* Bold Red architectural accent line running the full length with a glowing pulse */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700 shadow-[0_0_15px_rgba(220,38,38,0.6)]" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <a
             href="#home"
             onClick={handleScrollToTop}
@@ -92,7 +106,7 @@ export default function Footer() {
             <img
               src="/logo.png"
               alt="AirTix Holidays"
-              className="h-16 md:h-20 w-auto object-contain transition-transform group-hover:scale-[1.02] origin-left"
+              className="h-16 md:h-20 w-auto object-contain transition-transform group-hover:scale-[1.03] origin-left drop-shadow-md"
             />
           </a>
         </div>
