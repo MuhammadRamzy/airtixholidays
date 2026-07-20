@@ -29,29 +29,47 @@ export default function BookingButton({
   };
 
   return (
-    <motion.a
-      href={siteConfig.bookingUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${baseStyles} ${variants[variant]} ${className}`}
-      whileHover={{ y: -2, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-    >
-      {/* Subtle pulse/glow element for primary button to draw eyes */}
+    <div className="relative group inline-block">
+      {/* Intense pulsing halo for primary button to grab maximum attention */}
       {variant === "primary" && (
-        <span className="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full hover:animate-none group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+        <motion.div 
+          className="absolute -inset-1.5 bg-red-600/40 rounded-full blur-lg -z-10"
+          animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        />
       )}
-      
-      <span className="relative z-10 flex items-center gap-2">
-        {variant === "primary" && <Plane className="w-4 h-4 mr-1 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />}
-        Book Tickets Now
-        {showIcon && <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />}
-      </span>
-      
-      {/* Reusable pulsing ambient ring in the background */}
-      {variant === "primary" && (
-        <span className="absolute -inset-1 rounded-full bg-red-600/30 blur opacity-70 group-hover:opacity-100 animate-pulse -z-10" />
-      )}
-    </motion.a>
+
+      <motion.a
+        href={siteConfig.bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${baseStyles} ${variants[variant]} ${className}`}
+        whileHover={{ y: -2, scale: 1.03 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        {/* Continuous Shimmer Sweep Animation using Framer Motion */}
+        {variant === "primary" && (
+          <motion.span
+            className="absolute top-0 bottom-0 w-[50%] bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 z-0"
+            initial={{ left: "-100%" }}
+            animate={{ left: "200%" }}
+            transition={{ repeat: Infinity, duration: 2.5, ease: "linear", repeatDelay: 0.5 }}
+          />
+        )}
+        
+        <span className="relative z-10 flex items-center gap-2">
+          {variant === "primary" && (
+            <motion.div
+              animate={{ y: [0, -3, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            >
+              <Plane className="w-5 h-5 mr-1" />
+            </motion.div>
+          )}
+          <span className="font-black tracking-widest uppercase">Book Tickets Now</span>
+          {showIcon && <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />}
+        </span>
+      </motion.a>
+    </div>
   );
 }
