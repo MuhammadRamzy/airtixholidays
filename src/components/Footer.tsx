@@ -13,29 +13,29 @@ export default function Footer() {
   return (
     <footer className="bg-primary-950 border-t border-white/5 text-slate-400 relative z-20">
       
-      {/* 1. Hero Map Section with Glassmorphism Overlays */}
-      <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden border-b border-white/5">
+      {/* 1. Hero Map & Contact Card Wrapper */}
+      <div className="relative w-full">
         {/* Interactive Map */}
-        <iframe
-          title="AirTix Head Office Map"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          loading="lazy"
-          allowFullScreen
-          src="https://maps.google.com/maps?q=11.689523,75.666240+(AirTix%20Holidays)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
-          className="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700 w-full h-full object-cover absolute inset-0 z-0"
-        />
+        <div className="relative w-full h-[250px] md:h-[500px] overflow-hidden border-b border-white/5">
+          <iframe
+            title="AirTix Head Office Map"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowFullScreen
+            src="https://maps.google.com/maps?q=11.689523,75.666240+(AirTix%20Holidays)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+            className="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700 w-full h-full object-cover absolute inset-0 z-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-950/80 via-transparent to-primary-950 pointer-events-none z-10" />
+        </div>
         
-        {/* Gradient fades to blend the map into the dark theme */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-950/80 via-transparent to-primary-950 pointer-events-none z-10" />
-        
-        {/* Floating Contact Card */}
-        <div className="absolute bottom-10 left-4 right-4 md:left-10 lg:left-1/2 lg:-translate-x-1/2 max-w-4xl w-full z-20 pointer-events-none">
-          <div className="bg-black/60 backdrop-blur-xl border border-red-600/20 shadow-2xl shadow-red-900/10 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 pointer-events-auto">
+        {/* Docked (Mobile) / Floating (Desktop) Contact Card */}
+        <div className="relative -mt-12 mb-8 md:mt-0 md:mb-0 md:absolute md:bottom-10 md:left-10 lg:left-1/2 lg:-translate-x-1/2 max-w-4xl w-full z-20 px-4 md:px-0 mx-auto">
+          <div className="bg-[#0f0f13] md:bg-black/60 backdrop-blur-xl border border-red-600/20 shadow-2xl shadow-red-900/10 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
             
             {/* Address */}
-            <div className="flex-1 flex gap-4 items-start">
+            <div className="flex-1 flex gap-4 items-start w-full">
               <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center flex-shrink-0 mt-1">
                 <MapPin className="w-5 h-5 text-red-500" />
               </div>
@@ -58,10 +58,10 @@ export default function Footer() {
             </div>
 
             {/* Quick Actions */}
-            <div className="flex flex-col gap-3 w-full md:w-auto min-w-[240px]">
+            <div className="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto min-w-[240px]">
               <a
                 href={`tel:${siteConfig.contact.officePhoneDial}`}
-                className="w-full flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-5 rounded-xl border border-white/10 transition-colors text-xs font-mono tracking-widest uppercase"
+                className="w-full flex-1 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-5 rounded-xl border border-white/10 transition-colors text-xs font-mono tracking-widest uppercase"
               >
                 <Phone className="w-4 h-4 text-red-500" />
                 {siteConfig.contact.officePhone}
@@ -70,7 +70,7 @@ export default function Footer() {
                 href={`https://wa.me/${siteConfig.departments.sales[0].phoneDial}?text=${encodeURIComponent("Hi AirTixHolidays Team, I am interested in booking a flight ticket.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-3 bg-red-600/10 hover:bg-red-600/20 text-red-400 font-bold py-3 px-5 rounded-xl border border-red-500/20 transition-colors text-xs font-mono tracking-widest uppercase"
+                className="w-full flex-1 flex items-center justify-center gap-3 bg-red-600/10 hover:bg-red-600/20 text-red-400 font-bold py-3 px-5 rounded-xl border border-red-500/20 transition-colors text-xs font-mono tracking-widest uppercase"
               >
                 <MessageSquare className="w-4 h-4 text-red-500" />
                 Live Support
@@ -79,6 +79,7 @@ export default function Footer() {
 
           </div>
         </div>
+      </div>
       </div>
 
       {/* 2. Full-Width Logo Banner */}

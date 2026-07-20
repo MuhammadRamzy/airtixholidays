@@ -151,14 +151,16 @@ export default function Hero() {
             </motion.p>
 
             {/* Trust features */}
-            <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4 mb-8 max-w-md w-full">
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-red-600" />
-                <span>MKTA & TASK ACCREDITED</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-red-600" />
-                <span>24/7 GULF HELPLINE DESK</span>
+            <motion.div variants={itemVariants}>
+              <div className="flex items-center gap-6 pt-2 overflow-x-auto no-scrollbar pb-2 whitespace-nowrap" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+                <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-slate-500 uppercase flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4 text-red-600" />
+                  <span>IATA & TAFI Accredited</span>
+                </div>
+                <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-slate-500 uppercase flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4 text-red-600" />
+                  <span>24/7 Gulf Helpline Desk</span>
+                </div>
               </div>
             </motion.div>
 

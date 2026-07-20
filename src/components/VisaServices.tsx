@@ -156,14 +156,15 @@ export default function VisaServices() {
             </div>
           </div>
 
-          {/* Right Column: Visas Grid */}
+          {/* Right Column: Visa Packages Grid / Carousel */}
           <div className="lg:col-span-8">
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-2 gap-6 pb-6 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 no-scrollbar"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {visas.map((visa) => {
                 const encodedMsg = encodeURIComponent(
@@ -175,7 +176,7 @@ export default function VisaServices() {
                   <motion.div
                     key={visa.id}
                     variants={itemVariants}
-                    className="bg-white border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between group hover:border-teal-650/45 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300"
+                    className="flex-shrink-0 w-[85vw] sm:w-[350px] lg:w-auto snap-center bg-white border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between group hover:border-teal-650/45 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300"
                   >
                     <div>
                       {/* Badge & Title */}

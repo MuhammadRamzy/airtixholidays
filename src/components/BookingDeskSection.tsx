@@ -48,14 +48,14 @@ export default function BookingDeskSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
         {/* Section Header */}
         <div className="mb-12">
-          <span className="text-teal-650 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
-            Live GDS Query Desk // Instant WhatsApp Fares
+          <span className="text-red-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
+            Direct WhatsApp Inquiry Desk // Fast Responses
           </span>
           <h2 className="font-display font-black text-3xl sm:text-4xl text-primary-950 uppercase tracking-tight mb-4">
             Route Your Enquiry Directly
           </h2>
           <p className="text-sm sm:text-base text-slate-650 font-medium max-w-2xl mx-auto leading-relaxed">
-            Select your division, enter your travel parameters, and connect instantly with our specialized department desk to secure current pricing.
+            Select your division, enter your travel parameters, and connect instantly with our specialized department desk to get current details via WhatsApp.
           </p>
         </div>
 
@@ -66,11 +66,11 @@ export default function BookingDeskSection() {
             <div className="flex items-center gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="font-mono text-[10px] tracking-widest text-slate-350 font-bold uppercase">
-                AIRTIX LIVE BOOKING DESK
+                AIRTIX WHATSAPP INQUIRY DESK
               </span>
             </div>
-            <span className="text-[9px] font-mono text-slate-500 bg-white/5 px-2 py-0.5 rounded uppercase">
-              GDS Active
+            <span className="text-[9px] font-mono text-slate-500 bg-white/5 px-2 py-0.5 rounded uppercase flex items-center gap-1.5">
+              <MessageSquare className="w-3 h-3 text-emerald-500" /> Agents Online
             </span>
           </div>
 

@@ -104,6 +104,31 @@ export default function Services() {
   };
 
   const scrollRef = React.useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = React.useState(false);
+
+  React.useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+    
+    const startAutoScroll = () => {
+      intervalId = setInterval(() => {
+        if (scrollRef.current && !isPaused) {
+          const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+          
+          if (scrollLeft + clientWidth >= scrollWidth - 10) {
+            scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            scrollRef.current.scrollBy({ left: clientWidth * 0.75, behavior: "smooth" });
+          }
+        }
+      }, 4000);
+    };
+
+    if (window.innerWidth < 768) {
+      startAutoScroll();
+    }
+
+    return () => clearInterval(intervalId);
+  }, [isPaused]);
 
   const handleScroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -168,6 +193,8 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
           className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >

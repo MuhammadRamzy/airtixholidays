@@ -43,7 +43,7 @@ export default function TrustBar() {
   return (
     <section className="bg-white border-y border-slate-200/80 py-6 md:py-8 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 lg:gap-0">
+        <div className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-4 gap-6 lg:gap-0 pb-6 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 no-scrollbar" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
           {stats.map((stat, index) => (
             <motion.div
               key={stat.id}
@@ -51,11 +51,11 @@ export default function TrustBar() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className={`flex flex-col items-start text-left lg:px-8 first:pl-0 last:pr-0 ${
-                index % 2 === 0 ? "border-r border-slate-200/50 lg:border-none" : ""
+              className={`flex-shrink-0 w-[75vw] sm:w-[45vw] lg:w-auto snap-center flex flex-col items-start text-left lg:px-8 lg:first:pl-0 lg:last:pr-0 ${
+                index % 2 === 0 ? "lg:border-none" : ""
               } ${
                 index < 3 ? "lg:border-r lg:border-slate-200/80" : ""
-              }`}
+              } border border-slate-200/50 lg:border-none rounded-2xl lg:rounded-none p-5 lg:p-0 bg-slate-50 lg:bg-transparent`}
             >
               <div className="flex items-center gap-3 mb-3">
                 <span className="serif-italic font-normal font-serif text-teal-650 text-xs italic select-none">
