@@ -145,22 +145,42 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-7 text-left flex flex-col items-start relative"
           >
-            {/* Brand Logo - Creative Full-Width Airline Banner */}
+            {/* Brand Logo - Highly Animated Full-Width Airline Banner */}
             <motion.div variants={itemVariants} className="mb-12 lg:mb-16 relative z-10 py-5 lg:py-6">
-              {/* Massive Full-Width White Strip with Creative Styling */}
-              <div className="absolute inset-y-0 -left-[100vw] -right-[100vw] bg-gradient-to-r from-slate-100 via-white to-slate-50 shadow-[0_20px_40px_rgba(0,0,0,0.4)] border-t border-white overflow-hidden">
+              {/* Massive Full-Width White Strip with Dynamic Runway Entrance */}
+              <motion.div 
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                className="absolute inset-y-0 -left-[100vw] -right-[100vw] bg-gradient-to-r from-slate-100 via-white to-slate-50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-t border-white overflow-hidden origin-left"
+              >
                 {/* Subtle aviation micro-grid texture */}
                 <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:12px_12px]" />
-                {/* Bold Red architectural accent line running the full length */}
-                <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-red-700 via-red-500 to-red-600" />
-                {/* Speed lines accent */}
-                <div className="absolute top-0 bottom-0 right-[20vw] w-[30vw] bg-gradient-to-r from-transparent via-slate-200/50 to-transparent skew-x-12 opacity-50" />
-              </div>
+                
+                {/* Bold Red architectural accent line running the full length with a glowing pulse */}
+                <motion.div 
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 1.5, ease: "easeOut", delay: 0.8 }}
+                  className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-red-700 via-red-500 to-red-700 origin-left shadow-[0_0_20px_rgba(220,38,38,0.8)]" 
+                />
+                
+                {/* Animated Futuristic Scanner / Sweeping Glare */}
+                <motion.div 
+                  animate={{ x: ["-50vw", "150vw"] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+                  className="absolute top-0 bottom-0 left-0 w-[50vw] bg-gradient-to-r from-transparent via-slate-300/40 to-transparent skew-x-12 mix-blend-overlay" 
+                />
+              </motion.div>
 
-              <img
+              {/* Cinematic Logo Reveal */}
+              <motion.img
+                initial={{ opacity: 0, filter: "blur(10px)", x: -20 }}
+                animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+                transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
                 src="/logo.png"
                 alt="AirTix Holidays"
-                className="relative z-10 h-16 sm:h-20 md:h-24 lg:h-[7rem] w-auto object-contain origin-left drop-shadow-sm"
+                className="relative z-10 h-16 sm:h-20 md:h-24 lg:h-[7rem] w-auto object-contain origin-left drop-shadow-md"
               />
             </motion.div>
 
