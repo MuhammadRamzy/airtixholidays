@@ -80,7 +80,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      </div>
 
       {/* 2. Full-Width Logo Banner */}
       <div className="w-full bg-white/95 border-y border-slate-200 py-6 shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
