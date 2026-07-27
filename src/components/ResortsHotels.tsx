@@ -2,8 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Hotel, Briefcase, Bed, Ship } from "lucide-react";
+import { ChevronLeft, ChevronRight, Hotel, Briefcase, Bed, Ship } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import InquireButton from "./InquireButton";
 
 interface StayService {
   id: string;
@@ -150,8 +151,8 @@ export default function ResortsHotels() {
             <div className="editorial-line-gold w-1/3 mt-6" />
           </div>
 
-          {/* Carousel Control Buttons */}
-          <div className="flex items-center gap-2 self-end">
+          {/* Carousel Control Buttons (mobile/tablet only — desktop shows a full grid) */}
+          <div className="flex items-center gap-2 self-end lg:hidden">
             <button
               onClick={() => handleScroll("left")}
               className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
@@ -169,14 +170,14 @@ export default function ResortsHotels() {
           </div>
         </div>
 
-        {/* Stays Carousel */}
+        {/* Stays Carousel (mobile/tablet) — full grid on desktop so every stay type is visible at once */}
         <motion.div
           ref={scrollRef}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
+          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 lg:grid lg:grid-cols-2 xl:grid-cols-4 lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {stays.map((stay) => {
@@ -189,7 +190,7 @@ export default function ResortsHotels() {
               <motion.div
                 key={stay.id}
                 variants={cardVariants}
-                className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100/80 transition-all duration-500 group flex flex-col justify-between h-full w-[290px] sm:w-[380px] md:w-[420px] shrink-0 snap-start"
+                className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100/80 transition-all duration-500 group flex flex-col justify-between h-full w-[290px] sm:w-[380px] md:w-[420px] lg:w-auto shrink-0 snap-start lg:shrink"
               >
                 {/* Stay Card Decorative Header - Replaced image with high-end graphic pattern */}
                 <div className="h-44 relative overflow-hidden bg-gradient-to-br from-primary-950 to-primary-900 flex items-center justify-center border-b border-slate-200/20">
@@ -236,25 +237,17 @@ export default function ResortsHotels() {
                   </div>
 
                   {/* Pricing/Inclusions & WhatsApp Inquiry */}
-                  <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-auto">
+                  <div className="pt-6 border-t border-slate-100 flex flex-col gap-4 mt-auto">
                     <div>
                       <span className="text-[9px] text-slate-450 uppercase font-black tracking-widest block">
                         Service Scope
                       </span>
-                      <span className="text-xs sm:text-sm font-bold text-slate-650 block mt-0.5 max-w-[280px]">
+                      <span className="text-xs sm:text-sm font-bold text-slate-650 block mt-0.5">
                         {stay.inclusions}
                       </span>
                     </div>
 
-                    <a
-                      href={waLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 bg-teal-50 hover:bg-teal-600 text-teal-650 hover:text-white font-bold py-3 px-5 rounded-xl text-xs md:text-sm tracking-wide transition-all duration-300 min-h-[44px] hover:scale-[1.02]"
-                    >
-                      <span>Inquire Booking</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
+                    <InquireButton href={waLink} fullWidth />
                   </div>
                 </div>
               </motion.div>

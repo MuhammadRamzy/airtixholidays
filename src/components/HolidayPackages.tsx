@@ -2,8 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Star, ArrowUpRight, MessageSquare, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import InquireButton from "./InquireButton";
 
 interface PackageData {
   id: string;
@@ -149,7 +150,7 @@ export default function HolidayPackages() {
             </ul>
           </div>
 
-          <div className="flex items-center justify-between pt-6 border-t border-slate-100 mt-auto">
+          <div className="flex flex-col gap-4 pt-6 border-t border-slate-100 mt-auto">
             <div>
               <span className="text-[10px] text-slate-450 uppercase font-black tracking-widest block">
                 Included Services
@@ -159,15 +160,7 @@ export default function HolidayPackages() {
               </span>
             </div>
 
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-teal-50 hover:bg-teal-600 text-teal-650 hover:text-white font-bold py-3 px-6 rounded-xl text-xs md:text-sm tracking-wide transition-all duration-300 min-h-[44px] hover:scale-[1.03]"
-            >
-              <span>Enquire</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+            <InquireButton href={waLink} fullWidth />
           </div>
         </div>
       </motion.div>
@@ -214,8 +207,8 @@ export default function HolidayPackages() {
             </p>
           </div>
 
-          {/* Leisure Controls */}
-          <div className="flex items-center gap-2 self-end">
+          {/* Leisure Controls (mobile/tablet only — desktop shows a full grid) */}
+          <div className="flex items-center gap-2 self-end lg:hidden">
             <button
               onClick={() => handleScroll(leisureScrollRef, "left")}
               className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
@@ -233,14 +226,14 @@ export default function HolidayPackages() {
           </div>
         </div>
 
-        {/* Holiday Packages Carousel */}
+        {/* Holiday Packages Carousel (mobile/tablet) — full grid on desktop */}
         <div
           ref={leisureScrollRef}
-          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 mb-16"
+          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 mb-16 lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {holidayPackages.map((pkg, idx) => (
-            <div key={pkg.id} className="w-[285px] sm:w-[350px] md:w-[380px] shrink-0 snap-start">
+            <div key={pkg.id} className="w-[285px] sm:w-[350px] md:w-[380px] lg:w-auto shrink-0 snap-start lg:shrink">
               {renderCard(pkg, idx)}
             </div>
           ))}
@@ -263,8 +256,8 @@ export default function HolidayPackages() {
             </p>
           </div>
 
-          {/* Umrah Controls */}
-          <div className="flex items-center gap-2 self-end">
+          {/* Umrah Controls (mobile/tablet only — desktop shows a full grid) */}
+          <div className="flex items-center gap-2 self-end lg:hidden">
             <button
               onClick={() => handleScroll(umrahScrollRef, "left")}
               className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
@@ -282,33 +275,28 @@ export default function HolidayPackages() {
           </div>
         </div>
 
-        {/* Umrah Packages Carousel */}
+        {/* Umrah Packages Carousel (mobile/tablet) — full grid on desktop */}
         <div
           ref={umrahScrollRef}
-          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
+          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {umrahPackages.map((pkg, idx) => (
-            <div key={pkg.id} className="w-[285px] sm:w-[350px] md:w-[380px] shrink-0 snap-start">
+            <div key={pkg.id} className="w-[285px] sm:w-[350px] md:w-[380px] lg:w-auto shrink-0 snap-start lg:shrink">
               {renderCard(pkg, idx + 3)}
             </div>
           ))}
         </div>
 
         {/* Custom Customization CTA block */}
-        <div className="mt-24 text-center max-w-2xl mx-auto bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+        <div className="mt-16 lg:mt-24 text-center max-w-2xl mx-auto bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm">
           <p className="text-sm md:text-base font-semibold text-slate-700 mb-4">
             Do you require customized group departures or customized itineraries?
           </p>
-          <a
+          <InquireButton
             href={`https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodeURIComponent("Hi AirTixHolidays Team, I'm interested in arranging a customized Umrah or Holiday Package.")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-xl text-xs md:text-sm uppercase font-mono tracking-wider transition-colors min-h-[44px]"
-          >
-            <MessageSquare className="w-4 h-4" />
-            <span>Chat with Package Planners</span>
-          </a>
+            label="Chat with Package Planners"
+          />
         </div>
       </div>
     </section>

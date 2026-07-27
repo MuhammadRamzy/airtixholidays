@@ -2,8 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Globe, FileCheck, CheckCircle2, MessageSquare, ArrowUpRight } from "lucide-react";
+import { Globe, CheckCircle2, MessageSquare } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import InquireButton from "./InquireButton";
 
 interface VisaData {
   id: string;
@@ -213,15 +214,7 @@ export default function VisaServices() {
                     </div>
 
                     {/* WhatsApp Action Button */}
-                    <a
-                      href={waLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center gap-2 bg-slate-50 group-hover:bg-teal-50 text-slate-700 group-hover:text-teal-700 font-bold py-3 rounded-xl border border-slate-200/60 group-hover:border-teal-100 transition-colors text-xs font-mono uppercase tracking-wider min-h-[44px]"
-                    >
-                      <span>Inquire Visa</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
+                    <InquireButton href={waLink} fullWidth />
                   </motion.div>
                 );
               })}

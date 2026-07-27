@@ -2,22 +2,20 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  MoonStar, 
-  Plane, 
-  Ticket, 
-  Globe, 
-  Palmtree, 
-  Briefcase, 
-  FileCheck, 
-  Hotel, 
+import {
+  MoonStar,
+  Plane,
+  Ticket,
+  Globe,
+  Palmtree,
+  Briefcase,
+  FileCheck,
+  Hotel,
   FileText,
-  MessageSquare,
-  ArrowUpRight,
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import InquireButton from "./InquireButton";
 
 interface ServiceItem {
   id: string;
@@ -167,8 +165,8 @@ export default function Services() {
             <div className="editorial-line-gold w-1/3 mt-6" />
           </div>
 
-          {/* Carousel Control Buttons */}
-          <div className="flex items-center gap-2 self-end">
+          {/* Carousel Control Buttons (mobile/tablet only — desktop shows a full grid) */}
+          <div className="flex items-center gap-2 self-end lg:hidden">
             <button
               onClick={() => handleScroll("left")}
               className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
@@ -186,7 +184,7 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Services Carousel */}
+        {/* Services Carousel (mobile/tablet) — full grid on desktop so every service is visible at once */}
         <motion.div
           ref={scrollRef}
           variants={containerVariants}
@@ -195,7 +193,7 @@ export default function Services() {
           viewport={{ once: true, margin: "-100px" }}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
-          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
+          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {services.map((service, index) => {
@@ -209,7 +207,7 @@ export default function Services() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className="relative bg-white border border-slate-200/70 rounded-2xl p-6 md:p-8 flex flex-col justify-between group hover:-translate-y-1 hover:border-teal-650/45 hover:shadow-xl hover:shadow-slate-100 transition-all duration-300 w-[285px] sm:w-[350px] md:w-[380px] shrink-0 snap-start"
+                className="relative bg-white border border-slate-200/70 rounded-2xl p-6 md:p-8 flex flex-col justify-between group hover:-translate-y-1 hover:border-teal-650/45 hover:shadow-xl hover:shadow-slate-100 transition-all duration-300 w-[285px] sm:w-[350px] md:w-[380px] lg:w-auto shrink-0 snap-start lg:shrink"
               >
                 {/* Decorative index and Icon */}
                 <div className="flex items-center justify-between mb-6">
@@ -232,19 +230,11 @@ export default function Services() {
                 </div>
 
                 {/* Quick WhatsApp Inquiry Action */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-slate-400 tracking-widest uppercase">
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                  <span className="text-[10px] font-mono text-slate-400 tracking-widest uppercase hidden sm:inline">
                     Available Now
                   </span>
-                  <a
-                    href={waLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md hover:scale-[1.03]"
-                  >
-                    <MessageSquare className="w-3 h-3" />
-                    Inquire Now
-                  </a>
+                  <InquireButton href={waLink} className="!px-4 !py-2 !text-[11px] w-full sm:w-auto" />
                 </div>
               </motion.div>
             );

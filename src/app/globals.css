@@ -18,16 +18,37 @@
   --color-primary-50: #eef3fc;
 
   /* Primary Brand Accent (Formerly Gold) -> Re-mapped to Deep Red */
+  --color-gold-700: #7f1d1d; /* red-900 equivalent */
   --color-gold-600: #991b1b; /* red-800 equivalent */
+  --color-gold-550: #b72021;
   --color-gold-500: #dc2626; /* red-600 equivalent */
+  --color-gold-450: #e73535;
   --color-gold-400: #ef4444; /* red-500 equivalent */
   --color-gold-300: #f87171; /* red-400 equivalent */
+  --color-gold-200: #fecaca; /* red-200 equivalent */
+  --color-gold-100: #fee2e2; /* red-100 equivalent */
+  --color-gold-50: #fef2f2; /* red-50 equivalent */
 
   /* Secondary Accent (Formerly Teal) -> Re-mapped to Sleek Slate/Silver */
+  --color-teal-700: #1e293b; /* slate-800 equivalent (overrides default cyan-teal) */
+  --color-teal-650: #29394b;
   --color-teal-600: #334155; /* slate-700 equivalent */
   --color-teal-500: #475569; /* slate-600 equivalent */
   --color-teal-400: #94a3b8; /* slate-400 equivalent */
   --color-teal-300: #cbd5e1; /* slate-300 equivalent */
+  --color-teal-200: #e2e8f0; /* slate-200 equivalent */
+  --color-teal-100: #f1f5f9; /* slate-100 equivalent */
+  --color-teal-50: #f8fafc; /* slate-50 equivalent */
+
+  /* Slate half-steps used for fine-grained muted text tones */
+  --color-slate-650: #3d4b5f;
+  --color-slate-550: #56657a;
+  --color-slate-450: #7c8ca2;
+  --color-slate-350: #b0bccd;
+  --color-slate-250: #d7dfe9;
+
+  /* Emerald half-step used for WhatsApp CTA hover states */
+  --color-emerald-650: #048760;
 }
 
 :root {
