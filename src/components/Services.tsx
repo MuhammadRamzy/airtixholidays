@@ -234,16 +234,16 @@ export default function Services() {
                 {/* Quick WhatsApp Inquiry Action */}
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <span className="text-[10px] font-mono text-slate-400 tracking-widest uppercase">
-                    Available Live
+                    Available Now
                   </span>
                   <a
                     href={waLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-650 hover:text-teal-700 transition-colors"
+                    className="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md hover:scale-[1.03]"
                   >
-                    <span>Inquire</span>
-                    <MessageSquare className="w-3.5 h-3.5 text-teal-500 group-hover:scale-110 transition-transform" />
+                    <MessageSquare className="w-3 h-3" />
+                    Inquire Now
                   </a>
                 </div>
               </motion.div>

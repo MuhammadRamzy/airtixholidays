@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
-import { ArrowRight, ShieldCheck, Plane } from "lucide-react";
+import { ArrowRight, ShieldCheck, Plane, MessageCircle } from "lucide-react";
 import BookingButton from "./BookingButton";
 import { siteConfig } from "@/config/site";
 
@@ -13,7 +13,7 @@ const showcaseSlides = [
     badge: "Direct Routes",
     tagline: "Premium Flight Ticketing",
     title: "Connecting Kerala & The Gulf",
-    desc: "Special fares available for GCC to India & India to GCC bookings on all major carriers.",
+    desc: "Special fares for GCC ↔ India on all major carriers.",
   },
   {
     id: "visas",
@@ -21,7 +21,7 @@ const showcaseSlides = [
     badge: "Express Processing",
     tagline: "Global Visit Visas",
     title: "Hassle-Free Documentation",
-    desc: "Fast-tracked visa assistance for UAE, Saudi Arabia, Qatar, and worldwide.",
+    desc: "Fast-tracked visa assistance for UAE, Saudi Arabia, Qatar & more.",
   },
   {
     id: "umrah",
@@ -29,7 +29,7 @@ const showcaseSlides = [
     badge: "Spiritual Journeys",
     tagline: "Hajj & Umrah Services",
     title: "Meticulously Planned Pilgrimages",
-    desc: "Complete holy packages with premium stays, visa processing, and guidance.",
+    desc: "Complete holy packages with premium stays & visa processing.",
   },
   {
     id: "holidays",
@@ -37,31 +37,7 @@ const showcaseSlides = [
     badge: "Curated Escapes",
     tagline: "Bespoke Holiday Packages",
     title: "Crafting Seamless Leisure Trips",
-    desc: "Custom family itineraries, luxury resort stays, and corporate group tours.",
-  },
-  {
-    id: "bus-train",
-    image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=800&auto=format&fit=crop",
-    badge: "Domestic Transit",
-    tagline: "Bus & Train Tickets",
-    title: "Reliable Domestic Connections",
-    desc: "Seamless inter-city rail and premium bus ticketing across India.",
-  },
-  {
-    id: "emigration",
-    image: "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?q=80&w=800&auto=format&fit=crop",
-    badge: "Clearance Support",
-    tagline: "Emigration Services",
-    title: "Streamlined Emigration Check",
-    desc: "Complete assistance for ECR passport holders traveling for employment.",
-  },
-  {
-    id: "attestation",
-    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop",
-    badge: "Legal Documentation",
-    tagline: "Certificate Attestation",
-    title: "Verified Document Processing",
-    desc: "Embassy and HRD attestation for educational and professional certificates.",
+    desc: "Custom family itineraries, luxury resort stays, and group tours.",
   },
   {
     id: "resort",
@@ -72,13 +48,13 @@ const showcaseSlides = [
     desc: "Curated stays at the finest domestic and international properties.",
   },
   {
-    id: "passport",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Indian_Passport_2021_Edition.jpg",
-    badge: "Govt Services",
-    tagline: "Passport Application",
-    title: "Hassle-Free Passport Services",
-    desc: "End-to-end assistance for new passport applications and renewals.",
-  }
+    id: "attestation",
+    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop",
+    badge: "Legal Documentation",
+    tagline: "Certificate Attestation",
+    title: "Verified Document Processing",
+    desc: "Embassy and HRD attestation for all professional certificates.",
+  },
 ];
 
 export default function Hero() {
@@ -87,41 +63,31 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % showcaseSlides.length);
-    }, 4500);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
 
-  const handleScrollToPackages = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const target = document.querySelector("#services");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  // Staggered animation variants
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.08, delayChildren: 0.05 },
     },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+    hidden: { opacity: 0, y: 12 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
   };
+
+  const waLink = `https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodeURIComponent("Hi, I'd like to check special fares for GCC to India / India to GCC flights.")}`;
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-primary-950 text-white pt-28 pb-20 overflow-hidden"
+      className="relative h-screen min-h-[600px] max-h-[900px] flex items-center bg-primary-950 text-white overflow-hidden"
     >
-      {/* Background grid pattern */}
+      {/* Background grid */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <pattern id="hero-grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -131,242 +97,217 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Decorative colored glow circles - Updated to Brand Red */}
-      <div className="absolute top-1/4 left-1/4 w-[35rem] h-[35rem] bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[40rem] h-[40rem] bg-red-800/10 rounded-full blur-[140px] pointer-events-none" />
+      {/* Glow accents */}
+      <div className="absolute top-1/4 left-1/4 w-[30rem] h-[30rem] bg-red-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[35rem] h-[35rem] bg-red-800/8 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          {/* Left Column: Asymmetric Editorial copy */}
-          <motion.div 
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+          {/* ── LEFT COLUMN ── */}
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 text-left flex flex-col items-start relative"
+            className="lg:col-span-7 text-left flex flex-col items-start"
           >
-            {/* Brand Logo - Highly Animated Full-Width Airline Banner */}
-            <motion.div variants={itemVariants} className="mb-12 lg:mb-16 relative z-10 py-5 lg:py-6">
-              {/* Massive Full-Width White Strip with Dynamic Runway Entrance */}
-              <motion.div 
+            {/* Logo — compact strip */}
+            <motion.div variants={itemVariants} className="mb-5 relative z-10 py-3">
+              <motion.div
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={{ scaleX: 1, opacity: 1 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                className="absolute inset-y-0 -left-[100vw] -right-[100vw] bg-gradient-to-r from-slate-100 via-white to-slate-50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-t border-white overflow-hidden origin-left"
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                className="absolute inset-y-0 -left-[100vw] -right-[100vw] bg-gradient-to-r from-slate-100 via-white to-slate-50 shadow-[0_10px_30px_rgba(0,0,0,0.4)] overflow-hidden origin-left"
               >
-                {/* Subtle aviation micro-grid texture */}
-                <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:12px_12px]" />
-                
-                {/* Bold Red architectural accent line running the full length with a glowing pulse */}
-                <motion.div 
+                <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:10px_10px]" />
+                <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 1.5, ease: "easeOut", delay: 0.8 }}
-                  className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-red-700 via-red-500 to-red-700 origin-left shadow-[0_0_20px_rgba(220,38,38,0.8)]" 
+                  transition={{ duration: 1.2, ease: "easeOut", delay: 0.6 }}
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700 origin-left shadow-[0_0_16px_rgba(220,38,38,0.8)]"
                 />
-                
-                {/* Animated Futuristic Scanner / Sweeping Glare */}
-                <motion.div 
+                <motion.div
                   animate={{ x: ["-50vw", "150vw"] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
-                  className="absolute top-0 bottom-0 left-0 w-[50vw] bg-gradient-to-r from-transparent via-slate-300/40 to-transparent skew-x-12 mix-blend-overlay" 
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "linear", repeatDelay: 1.5 }}
+                  className="absolute top-0 bottom-0 left-0 w-[40vw] bg-gradient-to-r from-transparent via-slate-300/30 to-transparent skew-x-12 mix-blend-overlay"
                 />
               </motion.div>
-
-              {/* Cinematic Logo Reveal */}
               <motion.img
-                initial={{ opacity: 0, filter: "blur(10px)", x: -20 }}
+                initial={{ opacity: 0, filter: "blur(8px)", x: -16 }}
                 animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
-                transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
                 src="/logo.png"
                 alt="AirTix Holidays"
-                className="relative z-10 h-16 sm:h-20 md:h-24 lg:h-[7rem] w-auto object-contain origin-left drop-shadow-md"
+                className="relative z-10 h-12 sm:h-14 md:h-16 w-auto object-contain origin-left drop-shadow-md"
               />
             </motion.div>
 
-            {/* ── GCC ↔ INDIA SPECIAL FARES BOARD ── */}
-            <motion.div
-              variants={itemVariants}
-              className="w-full max-w-xl mb-8"
-            >
-              {/* Header label */}
-              <div className="flex items-center gap-2 mb-3">
+            {/* ── GCC ↔ INDIA FARES WIDGET ── */}
+            <motion.div variants={itemVariants} className="w-full max-w-xl mb-4">
+              <div className="flex items-center gap-2 mb-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
-                <span className="text-[9px] font-mono tracking-[0.25em] text-red-400 uppercase font-extrabold">
+                <span className="text-[9px] font-mono tracking-[0.22em] text-red-400 uppercase font-extrabold">
                   Live Offer · Special Fares Available
                 </span>
               </div>
-
-              {/* Route card */}
-              <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 sm:p-5 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-                <div className="flex items-center gap-3 sm:gap-4">
+              <div className="bg-white/[0.06] border border-white/10 rounded-xl p-3 sm:p-4 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.07)]">
+                <div className="flex items-center gap-2 sm:gap-3">
                   {/* Origin */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">Origin</p>
-                    <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight truncate">GCC Airports</p>
-                    <p className="text-[10px] font-mono text-red-400 mt-1 font-bold">DXB · DOH · MCT · RUH · KWI</p>
+                    <p className="text-[8px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">From</p>
+                    <p className="font-display font-black text-base sm:text-lg text-white leading-none tracking-tight">GCC Airports</p>
+                    <p className="text-[9px] font-mono text-red-400 mt-1 font-bold truncate">DXB · DOH · MCT · RUH · KWI</p>
                   </div>
-
-                  {/* Plane icon — animated flight path */}
-                  <div className="flex flex-col items-center gap-1 flex-shrink-0 px-1">
-                    <div className="w-full flex items-center gap-0.5">
-                      <div className="h-px bg-gradient-to-r from-transparent to-red-600/60 flex-1" />
+                  {/* Animated plane */}
+                  <div className="flex flex-col items-center gap-0.5 flex-shrink-0 px-1">
+                    <div className="flex items-center gap-0.5 w-16 sm:w-20">
+                      <div className="h-px bg-gradient-to-r from-transparent to-red-600/50 flex-1" />
                       <motion.div
-                        animate={{ x: ["-4px", "4px", "-4px"] }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                        animate={{ x: ["-3px", "3px", "-3px"] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                       >
-                        <Plane className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 rotate-90" />
+                        <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 rotate-90" />
                       </motion.div>
-                      <div className="h-px bg-gradient-to-l from-transparent to-red-600/60 flex-1" />
+                      <div className="h-px bg-gradient-to-l from-transparent to-red-600/50 flex-1" />
                     </div>
-                    <span className="text-[8px] text-slate-600 font-mono tracking-widest">BOTH WAYS</span>
+                    <span className="text-[7px] text-slate-600 font-mono tracking-widest">BOTH WAYS</span>
                   </div>
-
                   {/* Destination */}
                   <div className="flex-1 min-w-0 text-right">
-                    <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">Destination</p>
-                    <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight truncate">India Airports</p>
-                    <p className="text-[10px] font-mono text-red-400 mt-1 font-bold">CCJ · COK · TRV · MAA · BOM</p>
+                    <p className="text-[8px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">To</p>
+                    <p className="font-display font-black text-base sm:text-lg text-white leading-none tracking-tight">India Airports</p>
+                    <p className="text-[9px] font-mono text-red-400 mt-1 font-bold truncate">CCJ · COK · TRV · MAA · BOM</p>
                   </div>
                 </div>
-
                 {/* Bottom strip */}
-                <div className="mt-4 pt-3 border-t border-white/[0.07] flex items-center justify-between gap-4">
-                  <p className="text-[10px] text-slate-400 leading-snug font-medium">
-                    Lowest guaranteed fares on all major carriers for GCC–India routes
+                <div className="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between gap-3">
+                  <p className="text-[9px] text-slate-400 leading-snug font-medium">
+                    Lowest fares on all major carriers for GCC–India routes
                   </p>
                   <a
-                    href={`https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodeURIComponent("Hi, I'd like to check special fares for GCC to India / India to GCC flights.")}`}
+                    href={waLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-shrink-0 inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white font-bold text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-lg transition-colors"
+                    className="flex-shrink-0 inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white font-bold text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
                   >
-                    Get Fare
-                    <ArrowRight className="w-3 h-3" />
+                    Get Fare <ArrowRight className="w-2.5 h-2.5" />
                   </a>
                 </div>
               </div>
             </motion.div>
 
-            {/* Title */}
-            <motion.h1 variants={itemVariants} className="font-display font-black text-[2.4rem] sm:text-5xl md:text-6xl lg:text-[5rem] leading-[0.9] tracking-tighter mb-6 text-white">
-              Connecting <br />
-              <span className="serif-italic font-normal text-red-600 font-serif lowercase italic tracking-normal block my-1">
+            {/* Headline */}
+            <motion.h1 variants={itemVariants} className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] leading-[0.92] tracking-tighter mb-4 text-white">
+              Connecting{" "}
+              <span className="serif-italic font-normal text-red-600 font-serif lowercase italic tracking-normal">
                 kerala
-              </span>
+              </span>{" "}
               with your Gulf family.
             </motion.h1>
 
-            {/* Services grid */}
-            <motion.div variants={itemVariants} className="mb-8 max-w-xl w-full">
-              <span className="text-[9px] font-mono tracking-[0.25em] text-slate-500 uppercase font-extrabold block mb-4">
-                Our Core Services
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {/* Services chips */}
+            <motion.div variants={itemVariants} className="mb-5 w-full max-w-xl">
+              <p className="text-[9px] font-mono tracking-[0.22em] text-slate-500 uppercase font-extrabold mb-2.5">Our Services</p>
+              <div className="flex flex-wrap gap-1.5">
                 {[
-                  { label: "Flight Bookings", sub: "GCC & India" },
-                  { label: "Global Visit Visas", sub: "UAE · KSA · Qatar +" },
-                  { label: "Hajj & Umrah", sub: "Complete packages" },
-                  { label: "Holiday Packages", sub: "Family & group" },
-                  { label: "Resort & Hotel", sub: "Local & international" },
-                  { label: "Attestation & Passport", sub: "Govt. services" },
-                ].map((serv, i) => (
-                  <div
+                  "Flight Bookings",
+                  "Global Visit Visas",
+                  "Hajj & Umrah",
+                  "Holiday Packages",
+                  "Resort & Hotel",
+                  "Certificate Attestation",
+                  "Emigration Services",
+                  "Passport Assistance",
+                ].map((s, i) => (
+                  <span
                     key={i}
-                    className="bg-white/[0.04] hover:bg-white/[0.07] border border-white/[0.08] rounded-xl px-3 py-2.5 transition-colors group cursor-default"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/[0.09] text-[10px] text-slate-300 font-semibold hover:bg-white/10 hover:text-white transition-colors cursor-default"
                   >
-                    <p className="text-xs text-white font-bold leading-snug group-hover:text-red-400 transition-colors">{serv.label}</p>
-                    <p className="text-[10px] text-slate-500 mt-0.5 font-medium">{serv.sub}</p>
-                  </div>
+                    <span className="w-1 h-1 rounded-full bg-red-500 flex-shrink-0" />
+                    {s}
+                  </span>
                 ))}
               </div>
             </motion.div>
 
-            {/* Trust badges */}
-            <motion.div variants={itemVariants} className="flex items-center gap-5 mb-8 flex-wrap">
-              <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-slate-500 uppercase">
-                <ShieldCheck className="w-4 h-4 text-red-600" />
-                <span>IATA & TAFI Accredited</span>
-              </div>
-              <div className="w-px h-3 bg-slate-800" />
-              <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-slate-500 uppercase">
-                <ShieldCheck className="w-4 h-4 text-red-600" />
-                <span>24/7 Gulf Helpline</span>
-              </div>
+            {/* Trust + CTAs */}
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 w-full">
+              <BookingButton variant="primary" className="!px-8 !py-3.5 text-sm shadow-xl shadow-red-600/20 hover:scale-[1.02] transition-transform" />
+              <a
+                href={waLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-3.5 rounded-xl transition-colors shadow-lg shadow-emerald-900/20"
+              >
+                <MessageCircle className="w-4 h-4" />
+                WhatsApp Us
+              </a>
             </motion.div>
 
-            {/* CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 w-full">
-              <BookingButton variant="primary" className="!px-10 !py-4.5 text-sm shadow-2xl shadow-red-600/20 hover:scale-[1.02] transition-transform" />
-              <a
-                href="#resorts"
-                className="inline-flex items-center justify-center font-display font-bold border-b-2 border-white/20 hover:border-red-500 text-white hover:text-red-400 py-2 text-xs tracking-widest transition-all uppercase group"
-              >
-                <span>Explore Services</span>
-                <ArrowRight className="w-4 h-4 ml-2.5 text-red-500 group-hover:translate-x-1 transition-transform" />
-              </a>
+            {/* Accreditation */}
+            <motion.div variants={itemVariants} className="flex items-center gap-4 mt-3.5">
+              <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest text-slate-500 uppercase">
+                <ShieldCheck className="w-3.5 h-3.5 text-red-600" />
+                IATA & TAFI Accredited
+              </div>
+              <div className="w-px h-2.5 bg-slate-800" />
+              <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest text-slate-500 uppercase">
+                <ShieldCheck className="w-3.5 h-3.5 text-red-600" />
+                24/7 Gulf Helpline
+              </div>
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Dynamic Services Carousel */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
+          {/* ── RIGHT COLUMN: Showcase slideshow ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 w-full flex justify-center lg:justify-end xl:justify-center relative mt-12 lg:mt-0 z-30"
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:flex lg:col-span-5 w-full justify-end relative"
           >
-            {/* Extremely subtle backdrop glow to anchor it to the dark mode */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-red-600/10 blur-[100px] rounded-full pointer-events-none" />
-
-            <div className="relative w-full max-w-lg aspect-[3/4] lg:aspect-[4/5.5] rounded-[2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/10 group bg-slate-900 lg:-translate-y-8">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-red-600/8 blur-[80px] rounded-full pointer-events-none" />
+            <div className="relative w-full max-w-sm xl:max-w-md aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/10 bg-slate-900">
               <AnimatePresence initial={false} mode="wait">
                 <motion.div
                   key={currentSlide}
-                  initial={{ opacity: 0, scale: 1.05 }}
+                  initial={{ opacity: 0, scale: 1.04 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute inset-0"
                 >
-                  {/* Feature Image */}
                   <img
                     src={showcaseSlides[currentSlide].image}
                     alt={showcaseSlides[currentSlide].title}
                     className="w-full h-full object-cover"
                   />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
-                  
-                  {/* Editorial Badge */}
-                  <div className="absolute top-6 left-6 z-10 bg-black/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-red-600/30 shadow-md">
-                    <span className="text-[10px] font-mono font-bold tracking-widest text-red-400 uppercase">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-transparent" />
+                  <div className="absolute top-5 left-5 z-10 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-red-600/30">
+                    <span className="text-[9px] font-mono font-bold tracking-widest text-red-400 uppercase">
                       {showcaseSlides[currentSlide].badge}
                     </span>
                   </div>
-
-                  {/* Editorial Frame Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 text-left z-10 space-y-3">
-                    <span className="text-[10px] font-mono tracking-widest text-red-500 uppercase font-extrabold block">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-left z-10 space-y-2">
+                    <span className="text-[9px] font-mono tracking-widest text-red-500 uppercase font-extrabold block">
                       {showcaseSlides[currentSlide].tagline}
                     </span>
-                    <h3 className="font-display font-black text-2xl uppercase leading-tight tracking-tight text-white drop-shadow-md">
+                    <h3 className="font-display font-black text-xl uppercase leading-tight tracking-tight text-white">
                       {showcaseSlides[currentSlide].title}
                     </h3>
-                    <p className="text-xs text-slate-300 leading-relaxed font-medium drop-shadow-sm">
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-medium">
                       {showcaseSlides[currentSlide].desc}
                     </p>
                   </div>
                 </motion.div>
               </AnimatePresence>
-              
-              {/* Carousel Indicators - Updated to Brand Red */}
-              <div className="absolute bottom-4 right-8 z-20 flex items-center gap-2">
+              {/* Slide dots */}
+              <div className="absolute bottom-3.5 right-6 z-20 flex items-center gap-1.5">
                 {showcaseSlides.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentSlide(idx)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      currentSlide === idx ? "w-6 bg-red-600 shadow-[0_0_8px_rgba(220,38,38,0.8)]" : "w-1.5 bg-white/40 hover:bg-white/70"
+                    className={`h-1 rounded-full transition-all duration-300 ${
+                      currentSlide === idx ? "w-5 bg-red-600 shadow-[0_0_6px_rgba(220,38,38,0.8)]" : "w-1 bg-white/35 hover:bg-white/60"
                     }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
@@ -378,8 +319,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative Editorial line transitions */}
-      <div className="absolute bottom-0 left-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-600/20 to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 w-full h-px bg-gradient-to-r from-transparent via-red-600/20 to-transparent z-10" />
     </section>
   );
 }
