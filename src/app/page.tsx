@@ -4,8 +4,11 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import AboutUs from "@/components/AboutUs";
 import Services from "@/components/Services";
+import ResortsHotels from "@/components/ResortsHotels";
+import HolidayPackages from "@/components/HolidayPackages";
 import VisaServices from "@/components/VisaServices";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import Testimonials from "@/components/Testimonials";
 import BookingDeskSection from "@/components/BookingDeskSection";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
@@ -23,8 +26,11 @@ export default function Home() {
         <TrustBar />
         <AboutUs />
         <Services />
+        <ResortsHotels />
+        <HolidayPackages />
         <VisaServices />
         <WhyChooseUs />
+        <Testimonials />
         <BookingDeskSection />
         <CTABanner />
       </main>

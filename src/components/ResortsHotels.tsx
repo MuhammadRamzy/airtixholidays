@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Star, MapPin, Bed, Ship, Compass, ArrowUpRight } from "lucide-react";
+import { Star, MapPin, Bed, Ship, Compass, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 interface StayData {
@@ -20,48 +20,48 @@ interface StayData {
 export default function ResortsHotels() {
   const stays: StayData[] = [
     {
-      id: "stay-houseboat",
-      title: "Premium Backwater Houseboat Cruise",
-      category: "Luxury Houseboat",
-      location: "Alleppey & Kumarakom, Kerala",
-      image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+      id: "stay-beach",
+      title: "Luxury Beach Resorts & Wellness Stays",
+      category: "Beach & Wellness",
+      location: "Coastal Destinations",
+      image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
       rating: 4.9,
-      reviews: 185,
-      inclusions: "Private A/C Bedrooms + Onboard Chef + All Meals + Village Canoeing",
-      highlights: ["Traditional Wood & Bamboo Craft", "Overnight Backwater Stay", "Fresh Pearl Spot Fish Dinner", "Premium Sun Deck Lounge"],
+      reviews: 240,
+      inclusions: "Direct Bookings + Airport Transfers + Custom Spa Packages",
+      highlights: ["Clifftop & beachfront property access", "Curated wellness & Ayurvedic treatments", "Infinity pool and sunset lounges", "Strategic partnership discounts"],
     },
     {
-      id: "stay-munnar",
-      title: "Mist Valley Boutique Tea Resort",
-      category: "Hill Resort",
-      location: "Munnar, Kerala",
+      id: "stay-hill",
+      title: "Premium Hill Station Resorts & Tea Bungalows",
+      category: "Mountain Stays",
+      location: "Munnar, Wayanad & GCC Heights",
       image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80",
       rating: 4.8,
-      reviews: 124,
-      inclusions: "Valley View Suite + Guided Plantation Trek + Campfire + Breakfast",
-      highlights: ["Tea-Garden View Balconies", "Mist & Sunrise Vantage Point", "Campfire & Barbecue Nights", "Spice Plantation Tours"],
+      reviews: 190,
+      inclusions: "Resort Suites + Guided Plantation Tours + Campfires",
+      highlights: ["Misty tea-garden view balconies", "Sunrise valley view boutique cottages", "Guided forest safaris & treks", "Private campfire & barbecue nights"],
     },
     {
-      id: "stay-wayanad",
-      title: "Rainforest Canopy Pool Villa",
-      category: "Forest Resort",
-      location: "Wayanad, Kerala",
-      image: "https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80",
+      id: "stay-houseboat",
+      title: "Traditional Backwater Houseboat Cruise Bookings",
+      category: "Houseboats",
+      location: "Alleppey & Kumarakom",
+      image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
       rating: 4.9,
-      reviews: 92,
-      inclusions: "Private Pool Villa + Forest Jeep Safari + Organic Dining + Spa Discount",
-      highlights: ["Luxury Treehouse Access", "Private Infinity Plunge Pool", "Wilderness Jeep Safari", "Ayurvedic Wellness Spa"],
+      reviews: 310,
+      inclusions: "Private A/C Bedrooms + Onboard Chef + All Meals",
+      highlights: ["Traditional wooden craftsmanship", "Full backwater cruise itineraries", "Authentic Kerala traditional meals", "Exclusive family/couple charters"],
     },
     {
-      id: "stay-varkala",
-      title: "Ocean Breeze Cliff Resort & Spa",
-      category: "Beach Resort",
-      location: "Varkala Cliff, Kerala",
-      image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
+      id: "stay-city",
+      title: "Star-Class Business & Leisure City Hotels",
+      category: "Luxury City Hotels",
+      location: "Major GCC & Indian Cities",
+      image: "https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80",
       rating: 4.7,
-      reviews: 110,
-      inclusions: "Arabian Sea View Suite + Daily Yoga Class + Wellness Consultation",
-      highlights: ["Direct Beach Access", "Clifftop Sunset Pool", "Daily Morning Hatha Yoga", "Seafood Speciality Restaurant"],
+      reviews: 165,
+      inclusions: "Luxury Suite Reservations + Airport Shuttle + Breakfast",
+      highlights: ["Prime downtown city locations", "Corporate GDS business rate access", "Modern amenities & fitness centers", "Flexible check-in/check-out options"],
     }
   ];
 
@@ -83,6 +83,19 @@ export default function ResortsHotels() {
     },
   };
 
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const handleScroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollAmount = clientWidth * 0.75;
+      scrollRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <section id="resorts" className="py-10 md:py-12 bg-[#FAF9F6] relative overflow-hidden border-b border-slate-200/60">
       {/* Repeating background grid */}
@@ -98,30 +111,52 @@ export default function ResortsHotels() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-10 lg:mb-12">
-          <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
-            Premium Stays // Local & International
-          </span>
-          <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-950 leading-[0.95] tracking-tighter">
-            Resorts, Hotels & Houseboats <br />
-            <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
-              tailored stays for standard luxury and family getaways
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div className="max-w-3xl">
+            <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
+              Premium Stays // Local & International
             </span>
-          </h2>
-          <div className="editorial-line-gold w-1/3 mt-6" />
+            <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-950 leading-[0.95] tracking-tighter">
+              Resort & Hotel Services <br />
+              <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
+                tailored stays for standard luxury and family getaways
+              </span>
+            </h2>
+            <div className="editorial-line-gold w-1/3 mt-6" />
+          </div>
+
+          {/* Carousel Control Buttons */}
+          <div className="flex items-center gap-2 self-end">
+            <button
+              onClick={() => handleScroll("left")}
+              className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => handleScroll("right")}
+              className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
-        {/* Stays Grid */}
+        {/* Stays Carousel */}
         <motion.div
+          ref={scrollRef}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12"
+          className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {stays.map((stay) => {
             const encodedMsg = encodeURIComponent(
-              `Hi AirTixHolidays Team, I would like to inquire about booking the "${stay.title}" (${stay.category}) in ${stay.location}.`
+              `Hi AirTixHolidays Team, I would like to inquire about booking a stays package for "${stay.title}" (${stay.category}).`
             );
             const waLink = `https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodedMsg}`;
 
@@ -129,7 +164,7 @@ export default function ResortsHotels() {
               <motion.div
                 key={stay.id}
                 variants={cardVariants}
-                className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100/80 transition-all duration-500 group flex flex-col justify-between"
+                className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100/80 transition-all duration-500 group flex flex-col justify-between h-full w-[290px] sm:w-[380px] md:w-[420px] shrink-0 snap-start"
               >
                 {/* Stay Card Image Frame */}
                 <div className="h-72 sm:h-80 relative overflow-hidden">

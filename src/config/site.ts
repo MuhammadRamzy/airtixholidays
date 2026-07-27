@@ -48,6 +48,8 @@ export const siteConfig = {
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
+    { label: "Resorts & Hotels", href: "#resorts" },
+    { label: "Packages", href: "#packages" },
     { label: "Visas", href: "#visas" },
     { label: "Why Choose Us", href: "#why-us" },
   ],

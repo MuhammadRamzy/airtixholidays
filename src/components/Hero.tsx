@@ -13,7 +13,7 @@ const showcaseSlides = [
     badge: "Direct Routes",
     tagline: "Premium Flight Ticketing",
     title: "Connecting Kerala & The Gulf",
-    desc: "Instant low-fare bookings on all major domestic and international carriers.",
+    desc: "Special fares available for GCC to India & India to GCC bookings on all major carriers.",
   },
   {
     id: "visas",
@@ -184,6 +184,15 @@ export default function Hero() {
               />
             </motion.div>
 
+            {/* Special Fares Banner Badge */}
+            <motion.div 
+              variants={itemVariants} 
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-650/15 border border-red-500/30 text-red-400 font-mono text-[10px] uppercase tracking-widest mb-6"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+              <span>Special Fares Available: GCC to India & India to GCC</span>
+            </motion.div>
+
             {/* Title - Updated highlight to Brand Red */}
             <motion.h1 variants={itemVariants} className="font-display font-black text-[2.6rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.9] tracking-tighter mb-6 text-white">
               Connecting <br />
@@ -194,7 +203,7 @@ export default function Hero() {
             </motion.h1>
 
             {/* Geographic Marker coordinates - Updated accents */}
-            <motion.div variants={itemVariants} className="flex gap-6 mb-6 font-mono text-[10px] text-slate-550 tracking-wider">
+            <motion.div variants={itemVariants} className="flex gap-6 mb-6 font-mono text-[10px] text-slate-555 tracking-wider">
               <div>
                 <span className="text-red-500/80 block font-bold">CCJ / COK / TRV</span>
                 <span>Kozhikode / Kochi / Trivandrum</span>
@@ -206,12 +215,34 @@ export default function Hero() {
             </motion.div>
 
             {/* Description */}
-            <motion.p variants={itemVariants} className="text-base sm:text-lg text-slate-350 font-medium max-w-xl leading-relaxed mb-8">
-              Premium travel portal for global expatriates. Secure immediate low-fare flight ticketing, fast-tracked visit visas, and curated family holiday packages.
+            <motion.p variants={itemVariants} className="text-base sm:text-lg text-slate-350 font-medium max-w-xl leading-relaxed mb-6">
+              Premium travel portal for global expatriates. Special fares available for GCC to India and India to GCC bookings, along with complete leisure and ticketing services.
             </motion.p>
 
+            {/* Core Services Quick Checklist */}
+            <motion.div variants={itemVariants} className="mb-8 max-w-xl w-full">
+              <span className="text-[9px] font-mono tracking-widest text-slate-500 uppercase font-extrabold block mb-3">
+                Core Travel Offerings
+              </span>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-4">
+                {[
+                  "Flight Bookings (GCC & India)",
+                  "Global Visit Visas",
+                  "Hajj & Umrah Packages",
+                  "Holiday Packages",
+                  "Resorts & Hotel Booking",
+                  "Certificate Attestation"
+                ].map((serv, i) => (
+                  <div key={i} className="flex items-center gap-1.5 text-xs text-slate-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-600 flex-shrink-0" />
+                    <span>{serv}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
             {/* Trust features */}
-            <motion.div variants={itemVariants}>
+            <motion.div variants={itemVariants} className="mb-6">
               <div className="flex items-center gap-6 pt-2 overflow-x-auto no-scrollbar pb-2 whitespace-nowrap" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
                 <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-slate-500 uppercase flex-shrink-0">
                   <ShieldCheck className="w-4 h-4 text-red-600" />
