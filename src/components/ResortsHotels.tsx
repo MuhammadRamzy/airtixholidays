@@ -2,66 +2,76 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Star, MapPin, Bed, Ship, Compass, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Hotel, Briefcase, Bed, Ship } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
-interface StayData {
+interface StayService {
   id: string;
   title: string;
   category: string;
-  location: string;
-  image: string;
-  rating: number;
-  reviews: number;
+  description: string;
+  iconType: "resort" | "hotel" | "houseboat" | "group";
+  features: string[];
   inclusions: string;
-  highlights: string[];
 }
 
 export default function ResortsHotels() {
-  const stays: StayData[] = [
+  const stays: StayService[] = [
     {
-      id: "stay-beach",
-      title: "Luxury Beach Resorts & Wellness Stays",
-      category: "Beach & Wellness",
-      location: "Coastal Destinations",
-      image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
-      rating: 4.9,
-      reviews: 240,
-      inclusions: "Direct Bookings + Airport Transfers + Custom Spa Packages",
-      highlights: ["Clifftop & beachfront property access", "Curated wellness & Ayurvedic treatments", "Infinity pool and sunset lounges", "Strategic partnership discounts"],
+      id: "stay-resorts",
+      title: "Luxury Resort Bookings",
+      category: "Leisure Stays",
+      description: "Direct contracted rates and custom packages for premium beachfront, clifftop, and wellness resorts globally.",
+      iconType: "resort",
+      features: [
+        "Direct access to premium partner property inventory",
+        "Curated wellness, spa & Ayurvedic stay options",
+        "Bespoke premium amenities & dining packages",
+        "Strategic price discounts for families & groups"
+      ],
+      inclusions: "Resort Stays + Custom Activities + Transfers"
     },
     {
-      id: "stay-hill",
-      title: "Premium Hill Station Resorts & Tea Bungalows",
-      category: "Mountain Stays",
-      location: "Munnar, Wayanad & GCC Heights",
-      image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80",
-      rating: 4.8,
-      reviews: 190,
-      inclusions: "Resort Suites + Guided Plantation Tours + Campfires",
-      highlights: ["Misty tea-garden view balconies", "Sunrise valley view boutique cottages", "Guided forest safaris & treks", "Private campfire & barbecue nights"],
+      id: "stay-hotels",
+      title: "Premium & Business Hotel Bookings",
+      category: "City & Business",
+      description: "Exclusive corporate tariffs and reservations at star-rated hotels located in prime city centers.",
+      iconType: "hotel",
+      features: [
+        "Exclusive negotiated corporate room rates",
+        "Complementary high-speed internet & breakfast options",
+        "Strategic locations near airports & transit hubs",
+        "Flexible room check-in & check-out availability"
+      ],
+      inclusions: "Room Reservations + Standard Amenities + Priority Booking"
     },
     {
-      id: "stay-houseboat",
-      title: "Traditional Backwater Houseboat Cruise Bookings",
-      category: "Houseboats",
-      location: "Alleppey & Kumarakom",
-      image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
-      rating: 4.9,
-      reviews: 310,
-      inclusions: "Private A/C Bedrooms + Onboard Chef + All Meals",
-      highlights: ["Traditional wooden craftsmanship", "Full backwater cruise itineraries", "Authentic Kerala traditional meals", "Exclusive family/couple charters"],
+      id: "stay-houseboats",
+      title: "Traditional Houseboat Charters",
+      category: "Waterway Cruises",
+      description: "Private cruise bookings on traditional wooden houseboats traversing Kumarakom & Alleppey backwaters.",
+      iconType: "houseboat",
+      features: [
+        "Private charters for families and corporate events",
+        "Onboard professional chef preparing local delicacies",
+        "Scenic guided day-trips & overnight cruise routes",
+        "Air-conditioned premium deluxe rooms & sun decks"
+      ],
+      inclusions: "Private Vessel Charter + Onboard Meals + Cruise Tour"
     },
     {
-      id: "stay-city",
-      title: "Star-Class Business & Leisure City Hotels",
-      category: "Luxury City Hotels",
-      location: "Major GCC & Indian Cities",
-      image: "https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80",
-      rating: 4.7,
-      reviews: 165,
-      inclusions: "Luxury Suite Reservations + Airport Shuttle + Breakfast",
-      highlights: ["Prime downtown city locations", "Corporate GDS business rate access", "Modern amenities & fitness centers", "Flexible check-in/check-out options"],
+      id: "stay-groups",
+      title: "Group Stays & Bulk Room Allocations",
+      category: "Group Departures",
+      description: "Meticulous room blocks and custom stay coordination for family events, corporate groups, and tour groups.",
+      iconType: "group",
+      features: [
+        "Specialized bulk bookings and discount benefits",
+        "Dedicated destination manager for group check-in",
+        "Event space reservations and customized meal plans",
+        "Flexible group cancellation & allocation schemes"
+      ],
+      inclusions: "Bulk Allocations + Dedicated Event Coordination"
     }
   ];
 
@@ -69,7 +79,7 @@ export default function ResortsHotels() {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -96,6 +106,21 @@ export default function ResortsHotels() {
     }
   };
 
+  const renderIcon = (type: "resort" | "hotel" | "houseboat" | "group") => {
+    switch (type) {
+      case "resort":
+        return <Bed className="w-8 h-8" />;
+      case "hotel":
+        return <Hotel className="w-8 h-8" />;
+      case "houseboat":
+        return <Ship className="w-8 h-8" />;
+      case "group":
+        return <Briefcase className="w-8 h-8" />;
+      default:
+        return <Bed className="w-8 h-8" />;
+    }
+  };
+
   return (
     <section id="resorts" className="py-10 md:py-12 bg-[#FAF9F6] relative overflow-hidden border-b border-slate-200/60">
       {/* Repeating background grid */}
@@ -119,7 +144,7 @@ export default function ResortsHotels() {
             <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary-950 leading-[0.95] tracking-tighter">
               Resort & Hotel Services <br />
               <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">
-                tailored stays for standard luxury and family getaways
+                tailored accommodation bookings for standard luxury and family getaways
               </span>
             </h2>
             <div className="editorial-line-gold w-1/3 mt-6" />
@@ -166,47 +191,45 @@ export default function ResortsHotels() {
                 variants={cardVariants}
                 className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100/80 transition-all duration-500 group flex flex-col justify-between h-full w-[290px] sm:w-[380px] md:w-[420px] shrink-0 snap-start"
               >
-                {/* Stay Card Image Frame */}
-                <div className="h-72 sm:h-80 relative overflow-hidden">
+                {/* Stay Card Decorative Header - Replaced image with high-end graphic pattern */}
+                <div className="h-44 relative overflow-hidden bg-gradient-to-br from-primary-950 to-primary-900 flex items-center justify-center border-b border-slate-200/20">
+                  {/* Decorative background vectors */}
+                  <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                      <pattern id={`stay-pat-${stay.id}`} width="20" height="20" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="1" fill="currentColor" className="text-white" />
+                      </pattern>
+                      <rect width="100%" height="100%" fill={`url(#stay-pat-${stay.id})`} />
+                    </svg>
+                  </div>
                   <div className="absolute top-6 left-6 z-10">
-                    <span className="px-3.5 py-1.5 rounded-xl text-[9px] font-mono tracking-widest uppercase bg-primary-950 text-white border border-white/10 shadow-md">
+                    <span className="px-3.5 py-1.5 rounded-xl text-[9px] font-mono tracking-widest uppercase bg-teal-650 text-white shadow-md">
                       {stay.category}
                     </span>
                   </div>
-                  <div className="absolute top-6 right-6 z-10 px-3 py-1.5 rounded-xl text-xs font-bold bg-white/95 text-slate-800 shadow-md flex items-center gap-1">
-                    <Star className="w-3.5 h-3.5 fill-gold-500 text-gold-500" />
-                    <span>{stay.rating}</span>
-                    <span className="text-[10px] text-slate-400 font-normal">({stay.reviews})</span>
+                  
+                  {/* Icon Representation */}
+                  <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-teal-400 group-hover:scale-105 transition-transform duration-500 shadow-inner">
+                    {renderIcon(stay.iconType)}
                   </div>
-                  <img
-                    src={stay.image}
-                    alt={stay.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  {/* Atmospheric overlay */}
-                  <div className="absolute inset-0 bg-primary-950/10 mix-blend-multiply pointer-events-none" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 {/* Stay Card Body */}
                 <div className="p-8 flex flex-col justify-between flex-1">
                   <div>
-                    <div className="flex items-center gap-2 text-xs font-semibold text-teal-650 mb-3">
-                      <MapPin className="w-3.5 h-3.5" />
-                      <span>{stay.location}</span>
-                    </div>
-
-                    <h3 className="font-display font-black text-xl sm:text-2xl text-primary-950 mb-4 group-hover:text-teal-650 transition-colors leading-tight">
+                    <h3 className="font-display font-black text-xl sm:text-2xl text-primary-950 mb-3 group-hover:text-teal-650 transition-colors leading-tight">
                       {stay.title}
                     </h3>
+                    <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed mb-6">
+                      {stay.description}
+                    </p>
 
-                    {/* Bullet Highlights */}
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
-                      {stay.highlights.map((highlight, index) => (
-                        <li key={index} className="flex items-center gap-2 text-xs md:text-sm text-slate-600 font-medium">
-                          <span className="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0" />
-                          <span>{highlight}</span>
+                    {/* Features list */}
+                    <ul className="grid grid-cols-1 gap-2.5 mb-6">
+                      {stay.features.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-2.5 text-xs text-slate-600 font-semibold leading-tight">
+                          <span className="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0 mt-1.5" />
+                          <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -216,7 +239,7 @@ export default function ResortsHotels() {
                   <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-auto">
                     <div>
                       <span className="text-[9px] text-slate-450 uppercase font-black tracking-widest block">
-                        Included Services
+                        Service Scope
                       </span>
                       <span className="text-xs sm:text-sm font-bold text-slate-650 block mt-0.5 max-w-[280px]">
                         {stay.inclusions}
@@ -229,7 +252,7 @@ export default function ResortsHotels() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 bg-teal-50 hover:bg-teal-600 text-teal-650 hover:text-white font-bold py-3 px-5 rounded-xl text-xs md:text-sm tracking-wide transition-all duration-300 min-h-[44px] hover:scale-[1.02]"
                     >
-                      <span>Book Stay</span>
+                      <span>Inquire Booking</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </a>
                   </div>

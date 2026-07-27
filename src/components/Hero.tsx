@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck, Plane } from "lucide-react";
 import BookingButton from "./BookingButton";
 import { siteConfig } from "@/config/site";
 
@@ -184,84 +184,122 @@ export default function Hero() {
               />
             </motion.div>
 
-            {/* Special Fares Banner Badge */}
-            <motion.div 
-              variants={itemVariants} 
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-650/15 border border-red-500/30 text-red-400 font-mono text-[10px] uppercase tracking-widest mb-6"
+            {/* ── GCC ↔ INDIA SPECIAL FARES BOARD ── */}
+            <motion.div
+              variants={itemVariants}
+              className="w-full max-w-xl mb-8"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span>Special Fares Available: GCC to India & India to GCC</span>
+              {/* Header label */}
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
+                <span className="text-[9px] font-mono tracking-[0.25em] text-red-400 uppercase font-extrabold">
+                  Live Offer · Special Fares Available
+                </span>
+              </div>
+
+              {/* Route card */}
+              <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-4 sm:p-5 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  {/* Origin */}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">Origin</p>
+                    <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight truncate">GCC Airports</p>
+                    <p className="text-[10px] font-mono text-red-400 mt-1 font-bold">DXB · DOH · MCT · RUH · KWI</p>
+                  </div>
+
+                  {/* Plane icon — animated flight path */}
+                  <div className="flex flex-col items-center gap-1 flex-shrink-0 px-1">
+                    <div className="w-full flex items-center gap-0.5">
+                      <div className="h-px bg-gradient-to-r from-transparent to-red-600/60 flex-1" />
+                      <motion.div
+                        animate={{ x: ["-4px", "4px", "-4px"] }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <Plane className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 rotate-90" />
+                      </motion.div>
+                      <div className="h-px bg-gradient-to-l from-transparent to-red-600/60 flex-1" />
+                    </div>
+                    <span className="text-[8px] text-slate-600 font-mono tracking-widest">BOTH WAYS</span>
+                  </div>
+
+                  {/* Destination */}
+                  <div className="flex-1 min-w-0 text-right">
+                    <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">Destination</p>
+                    <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight truncate">India Airports</p>
+                    <p className="text-[10px] font-mono text-red-400 mt-1 font-bold">CCJ · COK · TRV · MAA · BOM</p>
+                  </div>
+                </div>
+
+                {/* Bottom strip */}
+                <div className="mt-4 pt-3 border-t border-white/[0.07] flex items-center justify-between gap-4">
+                  <p className="text-[10px] text-slate-400 leading-snug font-medium">
+                    Lowest guaranteed fares on all major carriers for GCC–India routes
+                  </p>
+                  <a
+                    href={`https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodeURIComponent("Hi, I'd like to check special fares for GCC to India / India to GCC flights.")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-shrink-0 inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white font-bold text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-lg transition-colors"
+                  >
+                    Get Fare
+                    <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
             </motion.div>
 
-            {/* Title - Updated highlight to Brand Red */}
-            <motion.h1 variants={itemVariants} className="font-display font-black text-[2.6rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.9] tracking-tighter mb-6 text-white">
+            {/* Title */}
+            <motion.h1 variants={itemVariants} className="font-display font-black text-[2.4rem] sm:text-5xl md:text-6xl lg:text-[5rem] leading-[0.9] tracking-tighter mb-6 text-white">
               Connecting <br />
               <span className="serif-italic font-normal text-red-600 font-serif lowercase italic tracking-normal block my-1">
                 kerala
-              </span> 
+              </span>
               with your Gulf family.
             </motion.h1>
 
-            {/* Geographic Marker coordinates - Updated accents */}
-            <motion.div variants={itemVariants} className="flex gap-6 mb-6 font-mono text-[10px] text-slate-555 tracking-wider">
-              <div>
-                <span className="text-red-500/80 block font-bold">CCJ / COK / TRV</span>
-                <span>Kozhikode / Kochi / Trivandrum</span>
-              </div>
-              <div className="border-l border-slate-800 pl-6">
-                <span className="text-red-500/80 block font-bold">DXB / DOH / MCT / RUH</span>
-                <span>UAE / Qatar / Oman / Saudi</span>
-              </div>
-            </motion.div>
-
-            {/* Description */}
-            <motion.p variants={itemVariants} className="text-base sm:text-lg text-slate-350 font-medium max-w-xl leading-relaxed mb-6">
-              Premium travel portal for global expatriates. Special fares available for GCC to India and India to GCC bookings, along with complete leisure and ticketing services.
-            </motion.p>
-
-            {/* Core Services Quick Checklist */}
+            {/* Services grid */}
             <motion.div variants={itemVariants} className="mb-8 max-w-xl w-full">
-              <span className="text-[9px] font-mono tracking-widest text-slate-500 uppercase font-extrabold block mb-3">
-                Core Travel Offerings
+              <span className="text-[9px] font-mono tracking-[0.25em] text-slate-500 uppercase font-extrabold block mb-4">
+                Our Core Services
               </span>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {[
-                  "Flight Bookings (GCC & India)",
-                  "Global Visit Visas",
-                  "Hajj & Umrah Packages",
-                  "Holiday Packages",
-                  "Resorts & Hotel Booking",
-                  "Certificate Attestation"
+                  { label: "Flight Bookings", sub: "GCC & India" },
+                  { label: "Global Visit Visas", sub: "UAE · KSA · Qatar +" },
+                  { label: "Hajj & Umrah", sub: "Complete packages" },
+                  { label: "Holiday Packages", sub: "Family & group" },
+                  { label: "Resort & Hotel", sub: "Local & international" },
+                  { label: "Attestation & Passport", sub: "Govt. services" },
                 ].map((serv, i) => (
-                  <div key={i} className="flex items-center gap-1.5 text-xs text-slate-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-600 flex-shrink-0" />
-                    <span>{serv}</span>
+                  <div
+                    key={i}
+                    className="bg-white/[0.04] hover:bg-white/[0.07] border border-white/[0.08] rounded-xl px-3 py-2.5 transition-colors group cursor-default"
+                  >
+                    <p className="text-xs text-white font-bold leading-snug group-hover:text-red-400 transition-colors">{serv.label}</p>
+                    <p className="text-[10px] text-slate-500 mt-0.5 font-medium">{serv.sub}</p>
                   </div>
                 ))}
               </div>
             </motion.div>
 
-            {/* Trust features */}
-            <motion.div variants={itemVariants} className="mb-6">
-              <div className="flex items-center gap-6 pt-2 overflow-x-auto no-scrollbar pb-2 whitespace-nowrap" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-slate-500 uppercase flex-shrink-0">
-                  <ShieldCheck className="w-4 h-4 text-red-600" />
-                  <span>IATA & TAFI Accredited</span>
-                </div>
-                <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-slate-500 uppercase flex-shrink-0">
-                  <ShieldCheck className="w-4 h-4 text-red-600" />
-                  <span>24/7 Gulf Helpline Desk</span>
-                </div>
+            {/* Trust badges */}
+            <motion.div variants={itemVariants} className="flex items-center gap-5 mb-8 flex-wrap">
+              <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-slate-500 uppercase">
+                <ShieldCheck className="w-4 h-4 text-red-600" />
+                <span>IATA & TAFI Accredited</span>
+              </div>
+              <div className="w-px h-3 bg-slate-800" />
+              <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-slate-500 uppercase">
+                <ShieldCheck className="w-4 h-4 text-red-600" />
+                <span>24/7 Gulf Helpline</span>
               </div>
             </motion.div>
 
             {/* CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-6 w-full">
-              {/* Primary button is styled via its own component, but we will ensure it matches red/black globally later if needed */}
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 w-full">
               <BookingButton variant="primary" className="!px-10 !py-4.5 text-sm shadow-2xl shadow-red-600/20 hover:scale-[1.02] transition-transform" />
               <a
-                href="#services"
-                onClick={handleScrollToPackages}
+                href="#resorts"
                 className="inline-flex items-center justify-center font-display font-bold border-b-2 border-white/20 hover:border-red-500 text-white hover:text-red-400 py-2 text-xs tracking-widest transition-all uppercase group"
               >
                 <span>Explore Services</span>

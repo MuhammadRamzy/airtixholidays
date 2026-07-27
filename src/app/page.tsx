@@ -24,13 +24,13 @@ export default function Home() {
       <main className="flex flex-col flex-1">
         <Hero />
         <TrustBar />
-        <AboutUs />
-        <Services />
         <ResortsHotels />
         <HolidayPackages />
         <VisaServices />
+        <Services />
         <WhyChooseUs />
         <Testimonials />
+        <AboutUs />
         <BookingDeskSection />
         <CTABanner />
       </main>

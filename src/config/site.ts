@@ -46,12 +46,12 @@ export const siteConfig = {
   // Navigation menu items
   navItems: [
     { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
     { label: "Resorts & Hotels", href: "#resorts" },
     { label: "Packages", href: "#packages" },
     { label: "Visas", href: "#visas" },
+    { label: "Services", href: "#services" },
     { label: "Why Choose Us", href: "#why-us" },
+    { label: "About Us", href: "#about" },
   ],
 
   // Core Services List (From Signboard)
