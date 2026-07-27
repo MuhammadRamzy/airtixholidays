@@ -283,7 +283,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:flex lg:col-span-5 w-full justify-end relative"
+            className="hidden lg:flex lg:col-span-5 w-full justify-end relative z-20"
           >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-red-600/8 blur-[80px] rounded-full pointer-events-none" />
             <div className="relative w-full max-w-sm xl:max-w-md aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/10 bg-slate-900">
