@@ -93,7 +93,7 @@ export default function CTABanner() {
             </a>
 
             <p className="text-[10px] text-slate-600 font-mono text-center tracking-wider uppercase pt-1">
-              IATA & TAFI Accredited · Kerala's Trusted Gulf Partner
+              IATA & TAFI Accredited · Kerala&apos;s Trusted Gulf Partner
             </p>
           </div>
 

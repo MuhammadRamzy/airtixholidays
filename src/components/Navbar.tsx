@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion as motionBase, AnimatePresence as AnimatePresenceBase } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { Menu, X, Phone, MessageSquare, ChevronDown, Sparkles, Building, Compass, Globe, ArrowRight, Mail } from "lucide-react";
@@ -275,9 +276,11 @@ export default function Navbar() {
             <div className="space-y-8 mt-2 relative z-10">
               <div className="flex items-center justify-start pb-4 border-b border-white/10 relative">
                 <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-4 py-2 border border-white/20 shadow-lg inline-flex">
-                  <img
+                  <Image
                     src="/logo.png"
                     alt="AirTix Holidays"
+                    width={612}
+                    height={408}
                     className="relative z-10 h-10 w-auto object-contain"
                   />
                 </div>

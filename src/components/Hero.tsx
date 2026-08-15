@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import { ArrowRight, ShieldCheck, Plane, MessageCircle, Sparkles } from "lucide-react";
 import BookingButton from "./BookingButton";
@@ -296,10 +297,13 @@ export default function Hero() {
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute inset-0"
                 >
-                  <img
+                  <Image
                     src={showcaseSlides[currentSlide].image}
                     alt={showcaseSlides[currentSlide].title}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(min-width: 1280px) 448px, 384px"
+                    className="object-cover"
+                    priority={currentSlide === 0}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-transparent" />
                   <div className="absolute top-5 left-5 z-10 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-red-600/30">

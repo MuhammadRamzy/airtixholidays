@@ -91,7 +91,7 @@ export default function WhyChooseUs() {
           <div className="lg:col-span-5 space-y-8 sticky top-24">
             <div className="editorial-line-gold w-1/2" />
             <blockquote className="text-2xl sm:text-3xl text-primary-950 font-serif serif-italic leading-relaxed">
-              "Travel is more than moving from one place to another. For the global Malayali, it is a bridge to family, built on absolute trust, direct routing, and premium care."
+              &ldquo;Travel is more than moving from one place to another. For the global Malayali, it is a bridge to family, built on absolute trust, direct routing, and premium care.&rdquo;
             </blockquote>
             <div>
               <p className="font-display font-bold text-sm tracking-wider uppercase text-slate-800">

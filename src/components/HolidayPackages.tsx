@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -68,7 +69,7 @@ export default function HolidayPackages() {
       duration: "14 Days Spiritual Journey",
       rating: 5.0,
       reviews: 320,
-      image: "https://images.unsplash.com/photo-1580418826893-67e1f7210ff1?auto=format&fit=crop&w=800&q=80",
+      image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Kaaba_mirror_edit_jj.jpg",
       tag: "Luxury Pilgrimage",
       highlights: ["5-Star Hotel close to Makkah Haram", "Luxury Hotel in Madinah", "Detailed Ziyarah Tours", "Specialized Spiritual Guides"],
       inclusions: "Flights + 5★ Hotels + Visa + Guided Tours + Luxury Transfers",
@@ -113,11 +114,12 @@ export default function HolidayPackages() {
             <span>{pkg.rating}</span>
             <span className="text-[10px] text-slate-400">({pkg.reviews})</span>
           </div>
-          <img
+          <Image
             src={pkg.image}
             alt={pkg.title}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            fill
+            sizes="(min-width: 768px) 380px, 285px"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           />
           <div className="absolute inset-0 bg-primary-950/15 mix-blend-multiply pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
@@ -208,7 +210,7 @@ export default function HolidayPackages() {
               </span>
             </h2>
             <p className="text-slate-500 mt-6 text-base md:text-lg leading-relaxed font-medium">
-              Handpicked itineraries by our travel directors. From Kerala's green waterways to the landmarks of the Gulf and luxury island retreats.
+              Handpicked itineraries by our travel directors. From Kerala&apos;s green waterways to the landmarks of the Gulf and luxury island retreats.
             </p>
           </div>
 

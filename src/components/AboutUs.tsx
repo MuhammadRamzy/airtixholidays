@@ -1,9 +1,25 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Shield, Sparkles, CheckCircle2, Compass, Users } from "lucide-react";
 import { Cloud } from "./decor/SkyBackdrop";
+
+// Director headshot with a graceful fallback if the local photo is missing.
+function DirectorPhoto({ src, fallback, alt }: { src: string; fallback: string; alt: string }) {
+  const [imgSrc, setImgSrc] = useState(src);
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      fill
+      sizes="144px"
+      className="object-cover rounded-full bg-slate-50 transition-transform duration-150 ease-out group-hover:scale-105"
+      onError={() => setImgSrc(fallback)}
+    />
+  );
+}
 
 export default function AboutUs() {
   const missionPoints = [
@@ -62,10 +78,12 @@ export default function AboutUs() {
                 Who We Are // Executive Team
               </span>
               <div className="mb-4">
-                <img
+                <Image
                   src="/logo.png"
                   alt="AirTix Holidays"
-                  className="h-16 sm:h-20 md:h-24 object-contain"
+                  width={612}
+                  height={408}
+                  className="h-16 sm:h-20 md:h-24 w-auto object-contain"
                 />
               </div>
             </div>
@@ -86,7 +104,7 @@ export default function AboutUs() {
                 </span>
               </div>
               <blockquote className="font-serif text-xl sm:text-2xl text-primary-950 italic leading-snug">
-                "Experience. Value. Trust. Together We Make Every Journey Better."
+                &ldquo;Experience. Value. Trust. Together We Make Every Journey Better.&rdquo;
               </blockquote>
             </div>
 
@@ -184,14 +202,11 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Director 1: MUHAMMED AZHAR AK */}
             <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
-              <div className="w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
-                <img
+              <div className="relative w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
+                <DirectorPhoto
                   src="/directors/MUHAMMED AZHAR AK.png"
+                  fallback="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80"
                   alt="MUHAMMED AZHAR AK"
-                  className="w-full h-full object-cover rounded-full bg-slate-50 transition-transform duration-500 group-hover:scale-105"
-                  onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80";
-                  }}
                 />
               </div>
               <h4 className="font-display font-black text-lg text-primary-950 uppercase tracking-tight mb-1">
@@ -210,14 +225,11 @@ export default function AboutUs() {
 
             {/* Director 2: ISHAQ VANIMAL */}
             <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
-              <div className="w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
-                <img
+              <div className="relative w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
+                <DirectorPhoto
                   src="/directors/ISHAQ VANIMAL.png"
+                  fallback="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80"
                   alt="ISHAQ VANIMAL"
-                  className="w-full h-full object-cover rounded-full bg-slate-50 transition-transform duration-500 group-hover:scale-105"
-                  onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80";
-                  }}
                 />
               </div>
               <h4 className="font-display font-black text-lg text-primary-950 uppercase tracking-tight mb-1">
@@ -236,14 +248,11 @@ export default function AboutUs() {
 
             {/* Director 3: SAMEER VP */}
             <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
-              <div className="w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
-                <img
+              <div className="relative w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
+                <DirectorPhoto
                   src="/directors/SAMEER VP.png"
+                  fallback="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
                   alt="SAMEER VP"
-                  className="w-full h-full object-cover rounded-full bg-slate-50 transition-transform duration-500 group-hover:scale-105"
-                  onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80";
-                  }}
                 />
               </div>
               <h4 className="font-display font-black text-lg text-primary-950 uppercase tracking-tight mb-1">
@@ -262,14 +271,11 @@ export default function AboutUs() {
 
             {/* Director 4: MUHAMMED SAFVAN TP */}
             <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
-              <div className="w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
-                <img
+              <div className="relative w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
+                <DirectorPhoto
                   src="/directors/Muhammad Safvan TP.png"
+                  fallback="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
                   alt="MUHAMMED SAFVAN TP"
-                  className="w-full h-full object-cover rounded-full bg-slate-50 transition-transform duration-500 group-hover:scale-105"
-                  onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80";
-                  }}
                 />
               </div>
               <h4 className="font-display font-black text-lg text-primary-950 uppercase tracking-tight mb-1">
@@ -305,9 +311,11 @@ export default function AboutUs() {
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 max-w-5xl mx-auto mt-8 bg-[#FAF9F6] border border-slate-200/50 p-8 rounded-3xl">
             {/* MKTA */}
             <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-300 group">
-              <img
+              <Image
                 src="/accreditation/mkta.png"
                 alt="MKTA Logo"
+                width={447}
+                height={447}
                 className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               />
               <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-2 block">MKTA</span>
@@ -315,9 +323,11 @@ export default function AboutUs() {
 
             {/* SETAK */}
             <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-300 group">
-              <img
+              <Image
                 src="/accreditation/setak.png"
                 alt="SETAK Logo"
+                width={1079}
+                height={632}
                 className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               />
               <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-2 block">SETAK</span>
@@ -325,9 +335,11 @@ export default function AboutUs() {
 
             {/* MTC */}
             <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-300 group">
-              <img
+              <Image
                 src="/accreditation/MTC LOGO.png"
                 alt="MTC Logo"
+                width={673}
+                height={451}
                 className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               />
               <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-2 block">MTC</span>
@@ -335,9 +347,11 @@ export default function AboutUs() {
 
             {/* TASK */}
             <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-300 group">
-              <img
+              <Image
                 src="/accreditation/task.png"
                 alt="TASK Logo"
+                width={1600}
+                height={951}
                 className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               />
               <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-2 block">TASK</span>

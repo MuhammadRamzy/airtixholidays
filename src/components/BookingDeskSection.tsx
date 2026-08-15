@@ -91,7 +91,7 @@ export default function BookingDeskSection() {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id as any)}
+                  onClick={() => setActiveTab(tab.id as "flights" | "visas" | "holidays")}
                   className={`flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-bold transition-all ${
                     isActive 
                       ? "bg-gold-50 text-slate-950 shadow" 

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Info, Database, RefreshCw, Radio } from "lucide-react";
+import { ArrowUpRight, Info, RefreshCw, Radio } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { flightDirectory, FlightStatus } from "@/data/flights";
 
@@ -59,7 +59,7 @@ export default function RouteHighlights() {
               <span className="serif-italic font-normal font-serif text-teal-650 italic lowercase">departures directory</span>
             </h2>
             <p className="text-slate-600 mt-6 text-base md:text-lg leading-relaxed font-medium max-w-2xl">
-              Real-time route schedules between Kerala's international hubs and the Arabian Gulf. Syncs directly with global distribution systems (GDS) to secure priority expat seats.
+              Real-time route schedules between Kerala&apos;s international hubs and the Arabian Gulf. Syncs directly with global distribution systems (GDS) to secure priority expat seats.
             </p>
           </div>
           

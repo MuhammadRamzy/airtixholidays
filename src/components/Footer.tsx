@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { Phone, MapPin, MessageSquare, Facebook, Instagram, Twitter, ArrowUp } from "lucide-react";
@@ -103,9 +104,11 @@ export default function Footer() {
             onClick={handleScrollToTop}
             className="inline-block group cursor-pointer"
           >
-            <img
+            <Image
               src="/logo.png"
               alt="AirTix Holidays"
+              width={612}
+              height={408}
               className="h-16 md:h-20 w-auto object-contain transition-transform group-hover:scale-[1.03] origin-left drop-shadow-md"
             />
           </a>
@@ -120,7 +123,7 @@ export default function Footer() {
           <div className="md:col-span-5 space-y-6">
             
             <p className="text-sm md:text-base font-medium text-slate-400 leading-relaxed max-w-md">
-              Kerala's premium flights and holiday specialist. Connecting families, tourists, and Gulf expatriates with premium travel solutions since 2011.
+              Kerala&apos;s premium flights and holiday specialist. Connecting families, tourists, and Gulf expatriates with premium travel solutions since 2011.
             </p>
             
             {/* Social Icons */}

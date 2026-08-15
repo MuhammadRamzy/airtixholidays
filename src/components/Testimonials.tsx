@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight, Quote, Route, Star, Plane } from "lucide-react";
+import { ChevronLeft, ChevronRight, Route, Star, Plane } from "lucide-react";
 import { Cloud } from "./decor/SkyBackdrop";
 
 interface Testimonial {
@@ -86,6 +86,9 @@ export default function Testimonials() {
 
   useEffect(() => {
     if (!emblaApi) return;
+    // Sync initial selected slide from the Embla instance (Embla's documented
+    // React setup pattern) — safe to run once on mount, not state we can derive otherwise.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     onSelect();
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
@@ -198,7 +201,7 @@ export default function Testimonials() {
 
                       {/* Quote Content */}
                       <blockquote className="text-base sm:text-lg md:text-xl font-medium text-slate-700 leading-relaxed italic mb-8 serif-italic font-serif">
-                        "{test.quote}"
+                        &ldquo;{test.quote}&rdquo;
                       </blockquote>
 
                       {/* Passenger Details Footer */}
