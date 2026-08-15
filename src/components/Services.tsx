@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import InquireButton from "./InquireButton";
 import { Cloud } from "./decor/SkyBackdrop";
+import { Train } from "./decor/Transports";
 
 interface ServiceItem {
   id: string;
@@ -149,8 +150,9 @@ export default function Services() {
         </svg>
       </div>
 
-      {/* Sky story: a quiet cloud low in the corner */}
+      {/* Sky story: a quiet cloud low in the corner, a train for the Bus & Train service */}
       <Cloud className="absolute bottom-0 left-[2%] w-48 sm:w-60 opacity-[0.35] hidden md:block" duration={34} />
+      <Train className="absolute top-4 right-[4%] w-48 sm:w-60 opacity-30 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

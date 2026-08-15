@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, Hotel, Briefcase, Bed, Ship } from "lucide-r
 import { siteConfig } from "@/config/site";
 import InquireButton from "./InquireButton";
 import { Cloud, Birds } from "./decor/SkyBackdrop";
+import { Houseboat } from "./decor/Transports";
 
 interface StayService {
   id: string;
@@ -135,9 +136,10 @@ export default function ResortsHotels() {
         </svg>
       </div>
 
-      {/* Sky story: quiet clouds drifting behind the stays */}
+      {/* Sky story: quiet clouds drifting behind the stays, a houseboat for the backwater charters */}
       <Cloud className="absolute -top-4 left-[6%] w-44 sm:w-60 opacity-40 hidden md:block" duration={32} />
       <Birds className="absolute top-24 right-[10%] w-16 opacity-70 hidden lg:block" />
+      <Houseboat className="absolute bottom-4 right-[3%] w-40 sm:w-52 opacity-50 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

@@ -3,29 +3,38 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Cloud } from "./decor/SkyBackdrop";
+import { Cloud, SunRays, PlaneTrail } from "./decor/SkyBackdrop";
 
-// Re-renders the photo in the exact two tones used by the painted clouds
-// elsewhere on the page (navy shadow -> pale sky-blue highlight), so the
-// "realistic" flight sequence reads as the same illustrated world instead
-// of a separate photographic medium bolted onto the front of the site.
+// Re-paints the photo through the same soft tonal range as the painted clouds
+// (navy shadow -> periwinkle midtone -> warm cream highlight), then blurs it
+// slightly so it reads as an atmospheric painted sky rather than a crisp,
+// separate photographic medium. The window frame gets the tone mapping only
+// (it needs to stay legible as an object), the open sky gets the blur too.
 const SKY_DUOTONE_ID = "sky-duotone";
+const SKY_DUOTONE_SOFT_ID = "sky-duotone-soft";
 function SkyDuotoneFilter() {
+  const stops = (
+    <>
+      <feColorMatrix
+        type="matrix"
+        values="0.33 0.33 0.33 0 0
+                0.33 0.33 0.33 0 0
+                0.33 0.33 0.33 0 0
+                0 0 0 1 0"
+      />
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.035 0.63 0.98" />
+        <feFuncG type="table" tableValues="0.06 0.73 0.93" />
+        <feFuncB type="table" tableValues="0.16 0.92 0.85" />
+      </feComponentTransfer>
+    </>
+  );
   return (
     <svg width="0" height="0" className="absolute" aria-hidden="true">
-      <filter id={SKY_DUOTONE_ID}>
-        <feColorMatrix
-          type="matrix"
-          values="0.33 0.33 0.33 0 0
-                  0.33 0.33 0.33 0 0
-                  0.33 0.33 0.33 0 0
-                  0 0 0 1 0"
-        />
-        <feComponentTransfer>
-          <feFuncR type="table" tableValues="0.039 0.816" />
-          <feFuncG type="table" tableValues="0.067 0.871" />
-          <feFuncB type="table" tableValues="0.157 0.969" />
-        </feComponentTransfer>
+      <filter id={SKY_DUOTONE_ID}>{stops}</filter>
+      <filter id={SKY_DUOTONE_SOFT_ID} x="-10%" y="-10%" width="120%" height="120%">
+        {stops}
+        <feGaussianBlur stdDeviation="3.5" />
       </filter>
     </svg>
   );
@@ -72,32 +81,38 @@ export default function FlightWindowScroll() {
       {/* The sticky container that holds the scene viewport */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
 
-        {/* 1. Background Sky Image (Video-like Parallax) — re-toned to the site's
-             own navy/sky-blue duotone so it reads as illustrated, not photographic */}
+        {/* 1. Background Sky Image (Video-like Parallax) — re-painted through the
+             same soft tonal range as the illustrated clouds, then gently blurred
+             so it reads as atmosphere rather than a crisp separate photograph */}
         <motion.div
           className="absolute inset-0 w-full h-full z-0 origin-bottom"
           style={{ scale: skyScale, y: skyY }}
         >
-          <div className="absolute inset-0 bg-slate-900/20 mix-blend-overlay z-10" />
           <Image
             src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?q=80&w=2500&auto=format&fit=crop"
             alt="Beautiful sky view from airplane window - AirTixHolidays"
             fill
             sizes="100vw"
-            className="object-cover"
-            style={{ filter: `url(#${SKY_DUOTONE_ID})` }}
+            className="object-cover scale-105"
+            style={{ filter: `url(#${SKY_DUOTONE_SOFT_ID})` }}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/15 via-transparent to-primary-950/25" />
         </motion.div>
 
-        {/* 1b. Painted clouds drifting across the re-toned sky — the bridge
-             between the flight sequence and the illustrated page below */}
-        <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
-          <Cloud className="absolute top-[18%] left-[8%] w-64 sm:w-80 opacity-90" duration={40} />
-          <Cloud className="absolute top-[55%] right-[6%] w-56 sm:w-72 opacity-80" duration={46} flip />
-          <Cloud className="absolute bottom-[8%] left-[30%] w-48 sm:w-64 opacity-70" duration={36} />
-        </div>
+        {/* Warm light breaking through, upper-left, like sun through cloud */}
+        <SunRays className="absolute -top-[10%] -left-[5%] w-[70%] h-[70%] z-[3]" />
 
-        {/* 2. The Window Cutout Layer (Realistic Image), same re-toning */}
+        {/* 1b. Painted clouds and a distant plane drifting across the re-toned sky —
+             blended (not stickered) into the photo via a soft screen blend */}
+        <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden mix-blend-screen">
+          <Cloud className="absolute top-[16%] left-[6%] w-72 sm:w-96 opacity-70" duration={42} />
+          <Cloud className="absolute top-[52%] right-[4%] w-64 sm:w-80 opacity-60" duration={48} flip />
+          <Cloud className="absolute bottom-[6%] left-[28%] w-56 sm:w-72 opacity-55" duration={38} />
+        </div>
+        <PlaneTrail className="top-[30%] z-[6]" colorClassName="text-primary-100" duration={60} />
+
+        {/* 2. The Window Cutout Layer (Realistic Image), same re-toning, no blur — a
+             foreground object still needs to read clearly as a window frame */}
         <motion.div
           style={{ scale: windowScale, opacity: windowOpacity }}
           className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none origin-center"
@@ -107,7 +122,7 @@ export default function FlightWindowScroll() {
             alt="Airplane interior window view looking out into the sky"
             fill
             sizes="100vw"
-            className="object-cover drop-shadow-[0_0_30px_rgba(0,0,0,0.95)]"
+            className="object-cover drop-shadow-[0_0_30px_rgba(0,0,0,0.7)]"
             style={{ transform: "scale(1.15)", filter: `url(#${SKY_DUOTONE_ID})` }}
           />
           {/* Glass reflection glare precisely in the center over the hole */}
