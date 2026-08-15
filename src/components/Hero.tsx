@@ -6,6 +6,7 @@ import { motion, Variants, AnimatePresence } from "framer-motion";
 import { ArrowRight, ShieldCheck, Plane, MessageCircle, Sparkles } from "lucide-react";
 import BookingButton from "./BookingButton";
 import { siteConfig } from "@/config/site";
+import { Cloud, PhotoWash, PHOTO_FILTER } from "./decor/SkyBackdrop";
 
 const showcaseSlides = [
   {
@@ -287,6 +288,7 @@ export default function Hero() {
             className="hidden lg:flex lg:col-span-5 w-full justify-end relative z-20"
           >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-red-600/8 blur-[80px] rounded-full pointer-events-none" />
+            <Cloud className="absolute -top-8 -left-10 w-40 opacity-50 pointer-events-none" duration={32} />
             <div className="relative w-full max-w-sm xl:max-w-md aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/10 bg-slate-900">
               <AnimatePresence initial={false} mode="wait">
                 <motion.div
@@ -302,9 +304,10 @@ export default function Hero() {
                     alt={showcaseSlides[currentSlide].title}
                     fill
                     sizes="(min-width: 1280px) 448px, 384px"
-                    className="object-cover"
+                    className={`object-cover ${PHOTO_FILTER}`}
                     priority={currentSlide === 0}
                   />
+                  <PhotoWash />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-transparent" />
                   <div className="absolute top-5 left-5 z-10 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-red-600/30">
                     <span className="text-[9px] font-mono font-bold tracking-widest text-red-400 uppercase">

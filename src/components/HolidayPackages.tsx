@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import InquireButton from "./InquireButton";
-import { Cloud, SoftGlow } from "./decor/SkyBackdrop";
+import { Cloud, SoftGlow, PhotoWash, PHOTO_FILTER } from "./decor/SkyBackdrop";
 
 interface PackageData {
   id: string;
@@ -119,8 +119,9 @@ export default function HolidayPackages() {
             alt={pkg.title}
             fill
             sizes="(min-width: 768px) 380px, 285px"
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            className={`object-cover transition-transform duration-700 group-hover:scale-[1.04] ${PHOTO_FILTER}`}
           />
+          <PhotoWash />
           <div className="absolute inset-0 bg-primary-950/15 mix-blend-multiply pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
         </div>

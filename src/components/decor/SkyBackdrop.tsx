@@ -69,6 +69,25 @@ export function SoftGlow({
 }
 
 /**
+ * Shared color-grade for every photograph on the page (Hero showcase slides,
+ * the flight-window sequence, destination cards) — a touch less saturated and
+ * a touch warmer, so real photography reads as part of the same soft,
+ * storybook world as the painted clouds rather than a jarring separate medium.
+ * Apply alongside <PhotoWash /> for the full effect.
+ */
+export const PHOTO_FILTER = "saturate-[0.85] contrast-[0.94] brightness-[1.04]";
+
+/** The warm/cool tint wash that sits on top of a photo — pair with PHOTO_FILTER. */
+export function PhotoWash({ className = "" }: { className?: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute inset-0 bg-gradient-to-b from-primary-100/20 via-transparent to-gold-300/15 mix-blend-soft-light ${className}`}
+    />
+  );
+}
+
+/**
  * A cloud-bumped horizon silhouette used at section seams so the page transitions
  * feel like descending through a cloud layer rather than a hard straight edge.
  * `fillClassName` should match the section background painted beneath it.
