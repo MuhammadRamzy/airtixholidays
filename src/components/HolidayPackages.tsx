@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import InquireButton from "./InquireButton";
+import { Cloud, SoftGlow } from "./decor/SkyBackdrop";
 
 interface PackageData {
   id: string;
@@ -187,6 +188,10 @@ export default function HolidayPackages() {
       <div className="absolute left-6 top-1/4 z-10 hidden xl:block select-none font-mono text-[9px] text-slate-300 tracking-[0.3em] uppercase origin-left rotate-90">
         CURATED ESCAPES // HAJJ & UMRAH PILGRIMAGE DEPT
       </div>
+
+      {/* Sky story: a drifting cloud over leisure escapes, warm light over the pilgrimage division */}
+      <Cloud className="absolute top-6 right-[8%] w-48 sm:w-64 opacity-40 hidden md:block" duration={28} flip />
+      <SoftGlow tone="warm" className="absolute bottom-10 left-[4%] w-64 h-64" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         

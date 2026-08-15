@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { MessageCircle, Phone, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { SoftGlow, Birds } from "./decor/SkyBackdrop";
 
 export default function CTABanner() {
   const waGeneral = `https://wa.me/${siteConfig.departments.holidays.phoneDial}?text=${encodeURIComponent("Hi AirTix Holidays Team, I'd like to inquire about your travel services.")}`;
@@ -17,6 +18,10 @@ export default function CTABanner() {
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[20rem] bg-red-600/15 rounded-full blur-[80px] pointer-events-none"
       />
+
+      {/* Sky story: golden-hour light as the journey nears its destination */}
+      <SoftGlow tone="warm" className="absolute -top-16 right-[8%] w-72 h-72 opacity-70" />
+      <Birds className="absolute top-10 left-[10%] w-16 opacity-40 hidden md:block" colorClassName="text-white" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">

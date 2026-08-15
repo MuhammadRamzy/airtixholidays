@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import CountUp from "./CountUp";
 import { Calendar, Route, Heart, Plane } from "lucide-react";
+import { Cloud, SoftGlow } from "./decor/SkyBackdrop";
 
 export default function TrustBar() {
   const stats = [
@@ -41,8 +42,11 @@ export default function TrustBar() {
     },
   ];
   return (
-    <section className="bg-white border-y border-slate-200/80 py-6 md:py-8 relative z-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white border-y border-slate-200/80 py-6 md:py-8 relative z-20 overflow-hidden">
+      {/* Sky story: soft daylight glow and a drifting cloud, low and quiet */}
+      <SoftGlow tone="cool" className="absolute -top-10 left-8 w-56 h-56" />
+      <Cloud className="absolute top-2 right-4 w-40 sm:w-52 opacity-[0.55] hidden sm:block" duration={30} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-4 gap-6 lg:gap-0 pb-6 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 no-scrollbar" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
           {stats.map((stat, index) => (
             <motion.div

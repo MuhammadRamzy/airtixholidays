@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Hotel, Briefcase, Bed, Ship } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import InquireButton from "./InquireButton";
+import { Cloud, Birds } from "./decor/SkyBackdrop";
 
 interface StayService {
   id: string;
@@ -133,6 +134,10 @@ export default function ResortsHotels() {
           <rect width="100%" height="100%" fill="url(#resort-grid)" />
         </svg>
       </div>
+
+      {/* Sky story: quiet clouds drifting behind the stays */}
+      <Cloud className="absolute -top-4 left-[6%] w-44 sm:w-60 opacity-40 hidden md:block" duration={32} />
+      <Birds className="absolute top-24 right-[10%] w-16 opacity-70 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

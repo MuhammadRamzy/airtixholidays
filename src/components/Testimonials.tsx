@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Quote, Route, Star, Plane } from "lucide-react";
+import { Cloud } from "./decor/SkyBackdrop";
 
 interface Testimonial {
   id: string;
@@ -111,6 +112,9 @@ export default function Testimonials() {
       <div className="absolute top-12 right-12 font-mono text-[9px] text-slate-400 tracking-[0.3em] uppercase hidden lg:block">
         Verification: GDS Registered
       </div>
+
+      {/* Sky story: the boarding passes float past a passing cloud */}
+      <Cloud className="absolute top-2 right-[8%] w-40 sm:w-52 opacity-[0.35] hidden md:block" duration={29} flip />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

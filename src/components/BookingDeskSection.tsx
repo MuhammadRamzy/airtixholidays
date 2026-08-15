@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plane, Calendar, Globe, ChevronDown, MessageSquare, MapPin } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { Cloud, CloudHorizon } from "./decor/SkyBackdrop";
 
 export default function BookingDeskSection() {
   const [activeTab, setActiveTab] = useState<"flights" | "visas" | "holidays">("flights");
@@ -44,6 +45,10 @@ export default function BookingDeskSection() {
       {/* Background design accents */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+      {/* Sky story: a cloud drifting behind the desk, then dusk falls as we near the final approach */}
+      <Cloud className="absolute top-10 left-[6%] w-40 sm:w-52 opacity-[0.3] hidden lg:block" duration={27} />
+      <CloudHorizon fillClassName="text-primary-950" className="absolute bottom-0 left-0 right-0 z-0 opacity-90" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
         {/* Section Header */}

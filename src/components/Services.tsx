@@ -16,6 +16,7 @@ import {
   ChevronRight
 } from "lucide-react";
 import InquireButton from "./InquireButton";
+import { Cloud } from "./decor/SkyBackdrop";
 
 interface ServiceItem {
   id: string;
@@ -147,6 +148,9 @@ export default function Services() {
           <line x1="5%" y1="10%" x2="95%" y2="90%" stroke="#eab308" strokeWidth="1" strokeDasharray="6 6" />
         </svg>
       </div>
+
+      {/* Sky story: a quiet cloud low in the corner */}
+      <Cloud className="absolute bottom-0 left-[2%] w-48 sm:w-60 opacity-[0.35] hidden md:block" duration={34} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

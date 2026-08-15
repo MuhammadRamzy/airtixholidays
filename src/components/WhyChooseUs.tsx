@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, PhoneCall, FileCheck, Compass } from "lucide-react";
+import { Cloud, SoftGlow } from "./decor/SkyBackdrop";
 
 interface Benefit {
   id: string;
@@ -67,8 +68,12 @@ export default function WhyChooseUs() {
         </svg>
       </div>
 
+      {/* Sky story: warm light behind the philosophy quote, a cloud passing above */}
+      <SoftGlow tone="warm" className="absolute top-1/3 left-0 -translate-x-1/3 w-72 h-72" />
+      <Cloud className="absolute top-8 right-[6%] w-40 sm:w-52 opacity-[0.35] hidden lg:block" duration={26} />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header - Editorial placement */}
         <div className="max-w-3xl mb-10 lg:mb-12">
           <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">

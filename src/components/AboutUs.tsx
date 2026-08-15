@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Shield, Sparkles, CheckCircle2, Compass, Users } from "lucide-react";
+import { Cloud } from "./decor/SkyBackdrop";
 
 export default function AboutUs() {
   const missionPoints = [
@@ -45,7 +46,10 @@ export default function AboutUs() {
       <div className="absolute top-12 left-12 font-mono text-[9px] text-slate-400 tracking-[0.3em] uppercase hidden lg:block">
         AIRTIX STATEMENT // FOUNDATION & POLICY
       </div>
-      
+
+      {/* Sky story: one quiet cloud, kept light so it never competes with the team photos */}
+      <Cloud className="absolute top-0 right-[3%] w-40 sm:w-52 opacity-[0.3] hidden lg:block" duration={31} />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Asymmetric 2-Column Grid */}

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Globe, CheckCircle2, MessageSquare } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import InquireButton from "./InquireButton";
+import { Cloud, Birds } from "./decor/SkyBackdrop";
 
 interface VisaData {
   id: string;
@@ -93,6 +94,10 @@ export default function VisaServices() {
           <circle cx="90%" cy="10%" r="200" fill="none" stroke="#eab308" strokeWidth="1" strokeDasharray="8 8" />
         </svg>
       </div>
+
+      {/* Sky story: distant birds crossing borders, a cloud drifting past */}
+      <Birds className="absolute top-16 left-[12%] w-20 opacity-70 hidden lg:block" />
+      <Cloud className="absolute bottom-6 right-[4%] w-44 sm:w-56 opacity-[0.35] hidden md:block" duration={30} flip />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
