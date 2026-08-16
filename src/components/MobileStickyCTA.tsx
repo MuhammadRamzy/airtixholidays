@@ -29,7 +29,7 @@ export default function MobileStickyCTA() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", damping: 20, stiffness: 200 }}
-          className="fixed bottom-4 left-4 right-4 z-50 md:hidden pointer-events-auto"
+          className="fixed bottom-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:w-full sm:max-w-sm z-50 xl:hidden pointer-events-auto"
         >
           <div className="flex w-full bg-slate-900/95 backdrop-blur-xl rounded-full p-1.5 shadow-[0_15px_40px_rgba(0,0,0,0.5)] border border-white/10">
             {/* Left Button: WhatsApp Live Support */}

@@ -8,7 +8,6 @@ import ResortsHotels from "@/components/ResortsHotels";
 import HolidayPackages from "@/components/HolidayPackages";
 import VisaServices from "@/components/VisaServices";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Testimonials from "@/components/Testimonials";
 import BookingDeskSection from "@/components/BookingDeskSection";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
@@ -29,7 +28,6 @@ export default function Home() {
         <VisaServices />
         <Services />
         <WhyChooseUs />
-        <Testimonials />
         <AboutUs />
         <BookingDeskSection />
         <CTABanner />

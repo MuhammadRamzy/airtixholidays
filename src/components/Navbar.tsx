@@ -75,13 +75,13 @@ export default function Navbar() {
             {/* Left alignment space / Editorial Nav */}
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-7">
+            <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
               {siteConfig.navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavLinkClick(e, item.href)}
-                  className={`font-bold text-[10px] sm:text-xs uppercase tracking-widest transition-all duration-200 hover:scale-[1.03] ${
+                  className={`font-bold text-[10px] sm:text-xs uppercase tracking-widest whitespace-nowrap transition-all duration-200 hover:scale-[1.03] ${
                     isScrolled
                       ? "text-slate-700 hover:text-teal-650"
                       : "text-white/80 hover:text-gold-400"
@@ -93,7 +93,7 @@ export default function Navbar() {
             </nav>
 
             {/* Desktop Action Buttons */}
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden xl:flex items-center gap-4">
               {/* Direct Booking Button */}
               <a
                 href="#booking-desk"
@@ -239,15 +239,17 @@ export default function Navbar() {
             </div>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button — always the sole visible flex child below xl, so it
+                needs its own backdrop rather than relying on justify-between spacing
+                or on whatever page content happens to sit behind a transparent header */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden p-2 focus:outline-none transition-colors duration-300 relative z-50 ${
+              className={`xl:hidden ml-auto p-2 rounded-lg focus:outline-none transition-colors duration-300 relative z-50 ${
                 isMobileMenuOpen
                   ? "text-white hover:text-gold-450"
                   : isScrolled
                   ? "text-primary-950 hover:text-teal-650"
-                  : "text-white hover:text-gold-400"
+                  : "text-white hover:text-gold-400 bg-black/25 backdrop-blur-sm border border-white/10"
               }`}
               aria-label="Toggle mobile menu"
             >
@@ -265,7 +267,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-slate-950/98 backdrop-blur-2xl text-white pt-24 px-6 flex flex-col justify-between pb-8 lg:hidden overflow-y-auto"
+            className="fixed inset-0 z-40 bg-slate-950/98 backdrop-blur-2xl text-white pt-24 px-6 flex flex-col justify-between pb-8 xl:hidden overflow-y-auto"
           >
             {/* Background design accents */}
             <div className="absolute inset-0 pointer-events-none opacity-5 overflow-hidden">
