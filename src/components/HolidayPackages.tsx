@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import InquireButton from "./InquireButton";
 import { Cloud, SoftGlow, PhotoWash, PHOTO_FILTER } from "./decor/SkyBackdrop";
@@ -13,8 +13,6 @@ interface PackageData {
   title: string;
   location: string;
   duration: string;
-  rating: number;
-  reviews: number;
   image: string;
   tag: string;
   highlights: string[];
@@ -28,8 +26,6 @@ export default function HolidayPackages() {
       title: "Munnar Hills & Alleppey Houseboat",
       location: "Kerala, India",
       duration: "4 Nights / 5 Days",
-      rating: 4.9,
-      reviews: 142,
       image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
       tag: "Domestic Best Seller",
       highlights: ["Hill Station Resort Stay", "Premium Backwater Houseboat", "Waterfall & Tea Garden Trekking", "Spice Plantation Tours"],
@@ -40,8 +36,6 @@ export default function HolidayPackages() {
       title: "Dubai & Abu Dhabi Grand Explorer",
       location: "United Arab Emirates",
       duration: "5 Nights / 6 Days",
-      rating: 4.8,
-      reviews: 218,
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
       tag: "Expat Favorite",
       highlights: ["Burj Khalifa Sky View", "Desert Safari with BBQ Dinner", "Sheikh Zayed Mosque Visit", "Premium Hotel stays"],
@@ -52,8 +46,6 @@ export default function HolidayPackages() {
       title: "Maldives Luxury Bliss Getaway",
       location: "Maldives",
       duration: "3 Nights / 4 Days",
-      rating: 4.9,
-      reviews: 95,
       image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80",
       tag: "Premium Beach Resort",
       highlights: ["Overwater Villa Upgrade", "Speedboat Airport Transfers", "All-Inclusive Dining", "Snorkeling & Water Sports"],
@@ -67,8 +59,6 @@ export default function HolidayPackages() {
       title: "Premium 5-Star Umrah Package",
       location: "Makkah & Madinah (Saudi Arabia)",
       duration: "14 Days Spiritual Journey",
-      rating: 5.0,
-      reviews: 320,
       image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Kaaba_mirror_edit_jj.jpg",
       tag: "Luxury Pilgrimage",
       highlights: ["5-Star Hotel close to Makkah Haram", "Luxury Hotel in Madinah", "Detailed Ziyarah Tours", "Specialized Spiritual Guides"],
@@ -79,8 +69,6 @@ export default function HolidayPackages() {
       title: "Economy Deluxe Umrah Package",
       location: "Makkah & Madinah (Saudi Arabia)",
       duration: "14 Days Spiritual Journey",
-      rating: 4.9,
-      reviews: 245,
       image: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=800&q=80",
       tag: "Affordable Pilgrimage",
       highlights: ["Comfortable Hotel stays", "Spiritual Guidance lectures", "Holy Site Ziyarah Tours", "Express Visa processing"],
@@ -108,11 +96,6 @@ export default function HolidayPackages() {
             <span className="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary-900 text-white shadow-md">
               {pkg.tag}
             </span>
-          </div>
-          <div className="absolute top-6 right-6 z-10 px-3 py-1.5 rounded-full text-xs font-bold bg-white/95 text-slate-800 shadow-md flex items-center gap-1.5">
-            <Star className="w-3.5 h-3.5 fill-gold-500 text-gold-500" />
-            <span>{pkg.rating}</span>
-            <span className="text-[10px] text-slate-400">({pkg.reviews})</span>
           </div>
           <Image
             src={pkg.image}

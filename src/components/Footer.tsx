@@ -219,13 +219,21 @@ export default function Footer() {
       <div className="border-t border-white/10 bg-black/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500 font-medium">
           <p>
-            &copy; {new Date().getFullYear()} AirTix. All rights reserved. 
+            &copy; {new Date().getFullYear()} AirTix. All rights reserved.
             <span className="block md:inline md:ml-2 text-[10px] text-slate-600">
               (Designed for Kerala/Gulf travel corridor operations)
             </span>
           </p>
 
           <div className="flex items-center gap-6">
+            <a
+              href="https://systemiq.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[9px] text-slate-600 hover:text-red-400 tracking-widest uppercase transition-colors"
+            >
+              Designed by systemiq.in
+            </a>
             <span className="font-mono text-[9px] text-slate-600 hidden md:inline tracking-widest uppercase">
               GDS SYNC INTERACTION v4.0
             </span>
