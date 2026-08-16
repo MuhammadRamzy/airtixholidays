@@ -114,7 +114,7 @@ export default function Hero() {
             className="lg:col-span-7 text-left flex flex-col items-start"
           >
             {/* Logo — compact strip */}
-            <motion.div variants={itemVariants} className="mb-3 relative z-10 py-3">
+            <motion.div variants={itemVariants} className="mb-6 relative z-10 py-3">
               <motion.div
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={{ scaleX: 1, opacity: 1 }}
@@ -161,7 +161,7 @@ export default function Hero() {
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                 />
 
-                <div className="relative bg-white/[0.06] border border-gold-400/40 rounded-2xl p-3 sm:p-4 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] overflow-hidden">
+                <div className="relative bg-white/[0.06] border border-gold-400/40 rounded-2xl p-4 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] overflow-hidden">
                   {/* Corner ribbon badge */}
                   <div className="absolute top-0 right-0">
                     <div className="flex items-center gap-1 bg-gradient-to-r from-gold-500 to-gold-450 text-white text-[8px] sm:text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-bl-xl rounded-tr-2xl shadow-[0_2px_10px_rgba(220,38,38,0.4)]">
@@ -219,7 +219,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Headline */}
-            <motion.h1 variants={itemVariants} className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3rem] leading-[0.92] tracking-tighter mb-3 text-white">
+            <motion.h1 variants={itemVariants} className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3rem] leading-[0.92] tracking-tighter mb-4 text-white">
               Connecting{" "}
               <span className="serif-italic font-normal text-red-600 font-serif lowercase italic tracking-normal">
                 kerala
@@ -228,7 +228,7 @@ export default function Hero() {
             </motion.h1>
 
             {/* Services chips */}
-            <motion.div variants={itemVariants} className="mb-3 w-full max-w-xl">
+            <motion.div variants={itemVariants} className="mb-5 w-full max-w-xl">
               <p className="text-[9px] font-mono tracking-[0.22em] text-slate-500 uppercase font-extrabold mb-2.5">Our Services</p>
               <div className="flex flex-wrap gap-1.5">
                 {[
@@ -253,7 +253,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Trust + CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 w-full">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 w-full mb-5">
               <BookingButton variant="primary" className="!px-8 !py-3.5 text-sm shadow-xl shadow-red-600/20 hover:scale-[1.02] transition-transform" />
               <a
                 href={waLink}
@@ -267,7 +267,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Accreditation */}
-            <motion.div variants={itemVariants} className="flex items-center gap-4 mt-3">
+            <motion.div variants={itemVariants} className="flex items-center gap-4 mt-2">
               <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest text-slate-500 uppercase">
                 <ShieldCheck className="w-3.5 h-3.5 text-red-600" />
                 IATA & TAFI Accredited
