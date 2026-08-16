@@ -141,7 +141,7 @@ export default function FlightWindowScroll() {
           className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none origin-center"
         >
           <Image
-            src="/airplane-window.png"
+            src="/airplane-window.webp"
             alt="Airplane interior window view looking out into the sky"
             fill
             sizes="100vw"

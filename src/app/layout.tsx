@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/config/site";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -71,7 +70,7 @@ export const metadata: Metadata = {
     images: ["/logo.png"],
   },
   alternates: {
-    canonical: "https://airtixholiday.com",
+    canonical: "/",
   }
 };
 
@@ -80,50 +79,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": siteConfig.name,
-    "url": "https://airtixholiday.com",
-    "logo": "https://airtixholiday.com/logo.png",
-    "image": "https://airtixholiday.com/logo.png",
-    "description": siteConfig.description,
-    "telephone": siteConfig.contact.officePhoneDial,
-    "email": siteConfig.contact.email,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "2nd Floor, Skyline Plaza, Marine Drive",
-      "addressLocality": "Kochi",
-      "addressRegion": "Kerala",
-      "postalCode": "682031",
-      "addressCountry": "IN"
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
-      "opens": "09:00",
-      "closes": "19:00"
-    },
-    "priceRange": "$$"
-  };
-
   return (
     <html
       lang="en"
       className={`${plusJakartaSans.variable} ${outfit.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full flex flex-col font-sans text-primary-900 bg-white">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
         {children}
       </body>
     </html>
