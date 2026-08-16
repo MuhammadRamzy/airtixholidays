@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Cloud, SunRays, PlaneTrail } from "./decor/SkyBackdrop";
 
 // Two separate tone-maps: the SKY gets pushed hard toward the site's painted
@@ -51,46 +51,44 @@ export default function FlightWindowScroll() {
     offset: ["start start", "end end"],
   });
 
-  // Snappier, tightly-tracking spring — the previous overdamped config
-  // (damping 25 / stiffness 120 / mass 0.5) lagged visibly behind the actual
-  // scroll position, which read as disconnected rather than fluid.
-  const smoothProgress = useSpring(scrollYProgress, {
-    damping: 30,
-    stiffness: 260,
-    mass: 0.15,
-  });
+  // Driven directly off scrollYProgress — no spring smoothing. A spring on a
+  // scroll-scrubbed value is, by definition, always chasing the actual
+  // scroll position (that lag is what "buggy and laggy" was), and on a fast
+  // scroll or direction change it can overshoot and wobble. Tracking scroll
+  // 1:1 makes every transform frame-perfect and removes both problems.
+  const progress = scrollYProgress;
 
   // ─── WINDOW ───
   // Gentle scale (was 1 -> 25, which pixelated the raster frame badly well
   // before the fade even started) and a wide, early, overlapping fade so the
   // frame dissolves smoothly into the sky rather than zooming into a blur
-  // and then vanishing abruptly.
-  const windowScale = useTransform(smoothProgress, [0, 0.5], [1, 2.3]);
-  const windowOpacity = useTransform(smoothProgress, [0.15, 0.5], [1, 0]);
-  const windowBlur = useTransform(smoothProgress, [0.15, 0.5], [0, 14]);
-  const windowBlurFilter = useTransform(windowBlur, (v) => `blur(${v}px)`);
+  // and then vanishing abruptly. No animated blur filter here — recomputing
+  // a CSS blur() every scroll frame (on top of the layer's own SVG filter)
+  // is expensive to repaint and was the other big source of jank.
+  const windowScale = useTransform(progress, [0, 0.5], [1, 2.3]);
+  const windowOpacity = useTransform(progress, [0.15, 0.5], [1, 0]);
 
   // ─── SKY ───
   // Subtler parallax than before (was 1.1 -> 1.4) so the motion feels like a
   // slow, premium drift rather than a rushed zoom.
-  const skyScale = useTransform(smoothProgress, [0, 1], [1.08, 1.22]);
-  const skyY = useTransform(smoothProgress, [0, 1], ["0%", "10%"]);
+  const skyScale = useTransform(progress, [0, 1], [1.08, 1.22]);
+  const skyY = useTransform(progress, [0, 1], ["0%", "10%"]);
 
   // Illustrated clouds drift in gradually as the frame dissolves, thickening
   // through the middle of the scroll so the photographic sky is increasingly
   // read through a layer of painted cloud rather than seen directly.
-  const cloudsOpacity = useTransform(smoothProgress, [0.1, 0.4], [0, 1]);
+  const cloudsOpacity = useTransform(progress, [0.1, 0.4], [0, 1]);
 
   // ─── CONTENT ───
   // Starts before the window has fully dissolved so the two overlap instead
   // of leaving a dead gap in the middle of the scroll.
-  const contentOpacity = useTransform(smoothProgress, [0.42, 0.62], [0, 1]);
-  const contentY = useTransform(smoothProgress, [0.42, 0.62], [30, 0]);
+  const contentOpacity = useTransform(progress, [0.42, 0.62], [0, 1]);
+  const contentY = useTransform(progress, [0.42, 0.62], [30, 0]);
 
   // ─── HANDOFF ───
   // The last stretch of scroll fades a solid wash over the whole scene so the
   // cut into TrustBar (white) feels like arriving somewhere, not a hard clip.
-  const handoffOpacity = useTransform(smoothProgress, [0.82, 1], [0, 1]);
+  const handoffOpacity = useTransform(progress, [0.82, 1], [0, 1]);
 
   return (
     <section ref={containerRef} className="relative h-[300vh] bg-slate-950">
@@ -137,7 +135,7 @@ export default function FlightWindowScroll() {
              wrong) and a blur that grows as it fades, so it dissolves into
              the scene instead of pixelating from an extreme zoom */}
         <motion.div
-          style={{ scale: windowScale, opacity: windowOpacity, filter: windowBlurFilter }}
+          style={{ scale: windowScale, opacity: windowOpacity }}
           className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none origin-center"
         >
           <Image
