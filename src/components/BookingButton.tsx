@@ -17,7 +17,7 @@ export default function BookingButton({
   showIcon = true,
 }: BookingButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-display font-semibold transition-all duration-300 rounded-full px-8 py-3.5 text-sm md:text-base relative overflow-hidden tracking-wide focus:outline-none focus:ring-2 focus:ring-offset-2 group";
+    "inline-flex items-center justify-center font-display font-semibold transition-all duration-150 ease-out rounded-full px-8 py-3.5 text-sm md:text-base relative overflow-hidden tracking-wide focus:outline-none focus:ring-2 focus:ring-offset-2 group";
   
   const variants = {
     primary:
@@ -30,13 +30,9 @@ export default function BookingButton({
 
   return (
     <div className="relative group inline-block">
-      {/* Intense pulsing halo for primary button to grab maximum attention */}
+      {/* Static halo for primary button (removed infinite pulse) */}
       {variant === "primary" && (
-        <motion.div 
-          className="absolute -inset-1.5 bg-red-600/40 rounded-full blur-lg -z-10"
-          animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        />
+        <div className="absolute -inset-1.5 bg-red-600/30 rounded-full blur-lg -z-10" />
       )}
 
       <motion.a
@@ -44,27 +40,13 @@ export default function BookingButton({
         target="_blank"
         rel="noopener noreferrer"
         className={`${baseStyles} ${variants[variant]} ${className}`}
-        whileHover={{ y: -2, scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}
       >
-        {/* Continuous Shimmer Sweep Animation using Framer Motion */}
-        {variant === "primary" && (
-          <motion.span
-            className="absolute top-0 bottom-0 w-[50%] bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 z-0"
-            initial={{ left: "-100%" }}
-            animate={{ left: "200%" }}
-            transition={{ repeat: Infinity, duration: 2.5, ease: "linear", repeatDelay: 0.5 }}
-          />
-        )}
-        
         <span className="relative z-10 flex items-center gap-2">
           {variant === "primary" && (
-            <motion.div
-              animate={{ y: [0, -3, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            >
-              <Plane className="w-5 h-5 mr-1" />
-            </motion.div>
+            <Plane className="w-5 h-5 mr-1" />
           )}
           <span className="font-black tracking-widest uppercase">Book Tickets Now</span>
           {showIcon && <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />}

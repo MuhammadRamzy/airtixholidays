@@ -186,7 +186,7 @@ export default function AboutUs() {
         </div>
 
         {/* Managing Directors Section */}
-        <div className="mt-12 pt-8 border-t border-slate-200/60">
+        <div id="directors" className="mt-12 pt-8 border-t border-slate-200/60">
           <div className="max-w-3xl mb-12">
             <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
               Leadership Team // Board of Directors
@@ -201,12 +201,12 @@ export default function AboutUs() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Director 1: MUHAMMED AZHAR AK */}
-            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.02] hover:border-gold-500/30 transition-all duration-150 ease-out flex flex-col items-center text-center group">
               <div className="relative w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
                 <DirectorPhoto
                   src="/directors/MUHAMMED AZHAR AK.png"
                   fallback="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80"
-                  alt="MUHAMMED AZHAR AK"
+                  alt="Muhammed Azhar AK - Managing Director"
                 />
               </div>
               <h4 className="font-display font-black text-lg text-primary-950 uppercase tracking-tight mb-1">
@@ -224,12 +224,12 @@ export default function AboutUs() {
             </div>
 
             {/* Director 2: ISHAQ VANIMAL */}
-            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.02] hover:border-gold-500/30 transition-all duration-150 ease-out flex flex-col items-center text-center group">
               <div className="relative w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
                 <DirectorPhoto
                   src="/directors/ISHAQ VANIMAL.png"
                   fallback="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80"
-                  alt="ISHAQ VANIMAL"
+                  alt="Ishaq Vanimal - Managing Director"
                 />
               </div>
               <h4 className="font-display font-black text-lg text-primary-950 uppercase tracking-tight mb-1">
@@ -247,12 +247,12 @@ export default function AboutUs() {
             </div>
 
             {/* Director 3: SAMEER VP */}
-            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.02] hover:border-gold-500/30 transition-all duration-150 ease-out flex flex-col items-center text-center group">
               <div className="relative w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
                 <DirectorPhoto
                   src="/directors/SAMEER VP.png"
                   fallback="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
-                  alt="SAMEER VP"
+                  alt="Sameer VP - Managing Director"
                 />
               </div>
               <h4 className="font-display font-black text-lg text-primary-950 uppercase tracking-tight mb-1">
@@ -270,12 +270,12 @@ export default function AboutUs() {
             </div>
 
             {/* Director 4: MUHAMMED SAFVAN TP */}
-            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] hover:border-gold-500/30 transition-all duration-300 flex flex-col items-center text-center group">
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.02] hover:border-gold-500/30 transition-all duration-150 ease-out flex flex-col items-center text-center group">
               <div className="relative w-36 h-36 rounded-full overflow-hidden mb-6 border-2 border-gold-500/30 p-1 group-hover:border-gold-500 transition-colors">
                 <DirectorPhoto
                   src="/directors/Muhammad Safvan TP.png"
                   fallback="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
-                  alt="MUHAMMED SAFVAN TP"
+                  alt="Muhammed Safvan TP - Managing Director"
                 />
               </div>
               <h4 className="font-display font-black text-lg text-primary-950 uppercase tracking-tight mb-1">
@@ -310,49 +310,49 @@ export default function AboutUs() {
 
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 max-w-5xl mx-auto mt-8 bg-[#FAF9F6] border border-slate-200/50 p-8 rounded-3xl">
             {/* MKTA */}
-            <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-300 group">
+            <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-150 ease-out group hover:-translate-y-1">
               <Image
                 src="/accreditation/mkta.png"
-                alt="MKTA Logo"
+                alt="MKTA (Malabar Kerala Travel Association) Accreditation Logo"
                 width={447}
                 height={447}
-                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-150 ease-out"
               />
               <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-2 block">MKTA</span>
             </div>
 
             {/* SETAK */}
-            <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-300 group">
+            <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-150 ease-out group hover:-translate-y-1">
               <Image
                 src="/accreditation/setak.png"
-                alt="SETAK Logo"
+                alt="SETAK Accreditation Logo"
                 width={1079}
                 height={632}
-                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-150 ease-out"
               />
               <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-2 block">SETAK</span>
             </div>
 
             {/* MTC */}
-            <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-300 group">
+            <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-150 ease-out group hover:-translate-y-1">
               <Image
                 src="/accreditation/MTC LOGO.png"
-                alt="MTC Logo"
+                alt="MTC (Malabar Travel Consortium) Accreditation Logo"
                 width={673}
                 height={451}
-                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-150 ease-out"
               />
               <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-2 block">MTC</span>
             </div>
 
             {/* TASK */}
-            <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-300 group">
+            <div className="flex flex-col items-center justify-center w-36 h-28 p-4 bg-white border border-slate-200/40 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-150 ease-out group hover:-translate-y-1">
               <Image
                 src="/accreditation/task.png"
-                alt="TASK Logo"
+                alt="TASK Travel Association Logo"
                 width={1600}
                 height={951}
-                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-150 ease-out"
               />
               <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-2 block">TASK</span>
             </div>

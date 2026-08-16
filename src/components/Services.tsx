@@ -32,55 +32,55 @@ export default function Services() {
       id: "hajj-umrah",
       title: "Hajj & Umrah",
       desc: "Complete holy pilgrimage packages with premium hotel stays, visa processing, guided tours, and comfortable transport.",
-      icon: <MoonStar className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-300" />
+      icon: <MoonStar className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-150 ease-out" />
     },
     {
       id: "air-tickets",
       title: "Air Tickets",
       desc: "Priority flight bookings on all domestic and international carriers, specializing in high-demand Kerala-GCC routes.",
-      icon: <Plane className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-300" />
+      icon: <Plane className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-150 ease-out" />
     },
     {
       id: "bus-train",
       title: "Bus & Train Tickets",
       desc: "Instant reservation of bus and train tickets across India, ensuring convenient connectivity for your onward journeys.",
-      icon: <Ticket className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-300" />
+      icon: <Ticket className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-150 ease-out" />
     },
     {
       id: "visit-visa",
       title: "Global Visit Visa",
       desc: "Fast-tracked visa processing and document support for UAE, Qatar, Saudi Arabia, Oman, Europe, UK, and worldwide destinations.",
-      icon: <Globe className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-300" />
+      icon: <Globe className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-150 ease-out" />
     },
     {
       id: "holidays",
       title: "Holiday Packages",
       desc: "Bespoke domestic and international holiday itineraries designed for families, honeymooners, and corporate groups.",
-      icon: <Palmtree className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-300" />
+      icon: <Palmtree className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-150 ease-out" />
     },
     {
       id: "emigration",
       title: "Emigration",
       desc: "Hassle-free emigration clearance (POI/ECNR) and documentation support for professionals relocating overseas.",
-      icon: <Briefcase className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-300" />
+      icon: <Briefcase className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-150 ease-out" />
     },
     {
       id: "attestation",
       title: "Certificate Attestation",
       desc: "Secure certificate attestation services (HRD, MEA, Embassy) for educational, marriage, and birth certificates.",
-      icon: <FileCheck className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-300" />
+      icon: <FileCheck className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-150 ease-out" />
     },
     {
       id: "hotel-booking",
       title: "Resort & Hotel Booking",
       desc: "Curated hotel and resort reservations globally, ranging from budget-friendly stays to ultra-luxury beach resorts.",
-      icon: <Hotel className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-300" />
+      icon: <Hotel className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-150 ease-out" />
     },
     {
       id: "passport",
       title: "Passport Application",
       desc: "Complete assistance for new passport applications, renewals, tatkaal services, and correcting passport errors.",
-      icon: <FileText className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-300" />
+      icon: <FileText className="w-6 h-6 text-teal-650 group-hover:scale-110 transition-transform duration-150 ease-out" />
     }
   ];
 
@@ -213,7 +213,7 @@ export default function Services() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className="relative bg-white border border-slate-200/70 rounded-2xl p-6 md:p-8 flex flex-col justify-between group hover:-translate-y-1 hover:border-teal-650/45 hover:shadow-xl hover:shadow-slate-100 transition-all duration-300 w-[285px] sm:w-[350px] md:w-[380px] lg:w-auto shrink-0 snap-start lg:shrink"
+                className="relative bg-white border border-slate-200/70 rounded-2xl p-6 md:p-8 flex flex-col justify-between group hover:-translate-y-1 hover:border-teal-650/45 hover:shadow-xl hover:shadow-slate-100 transition-all duration-150 ease-out w-[285px] sm:w-[350px] md:w-[380px] lg:w-auto shrink-0 snap-start lg:shrink"
               >
                 {/* Decorative index and Icon */}
                 <div className="flex items-center justify-between mb-6">

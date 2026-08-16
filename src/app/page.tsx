@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FlightWindowScroll from "@/components/FlightWindowScroll";
@@ -13,6 +13,7 @@ import BookingDeskSection from "@/components/BookingDeskSection";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
+import TheatricalLaunch from "@/components/TheatricalLaunch";
 import { siteConfig } from "@/config/site";
 
 // Organization schema lives on the homepage only — keeping it out of the
@@ -53,7 +54,10 @@ const schema = {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="relative min-h-screen bg-white" id="main-app-container">
+      <Suspense fallback={null}>
+        <TheatricalLaunch />
+      </Suspense>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

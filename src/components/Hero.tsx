@@ -144,80 +144,6 @@ export default function Hero() {
               />
             </motion.div>
 
-            {/* ── GCC ↔ INDIA FARES WIDGET (Special Offer Highlight) ── */}
-            <motion.div variants={itemVariants} className="w-full max-w-xl mb-3">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
-                <span className="text-[9px] font-mono tracking-[0.22em] text-red-400 uppercase font-extrabold">
-                  Live Offer · Special Fares Available
-                </span>
-              </div>
-
-              <div className="relative">
-                {/* Animated promo glow ring */}
-                <motion.div
-                  className="absolute -inset-[2px] rounded-2xl bg-gradient-to-r from-gold-450 via-gold-300 to-gold-450 opacity-70 blur-[2px]"
-                  animate={{ opacity: [0.5, 0.9, 0.5] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                />
-
-                <div className="relative bg-white/[0.06] border border-gold-400/40 rounded-2xl p-4 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] overflow-hidden">
-                  {/* Corner ribbon badge */}
-                  <div className="absolute top-0 right-0">
-                    <div className="flex items-center gap-1 bg-gradient-to-r from-gold-500 to-gold-450 text-white text-[8px] sm:text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-bl-xl rounded-tr-2xl shadow-[0_2px_10px_rgba(220,38,38,0.4)]">
-                      <Sparkles className="w-2.5 h-2.5" />
-                      Special Offer
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2 sm:gap-3 pr-2">
-                    {/* Origin */}
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[8px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">From</p>
-                      <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight">GCC Airports</p>
-                      <p className="text-[9px] font-mono text-red-400 mt-1 font-bold leading-snug">DXB · AUH · DOH · RUH · MCT · KWI</p>
-                    </div>
-                    {/* Animated plane */}
-                    <div className="flex flex-col items-center gap-0.5 flex-shrink-0 px-1">
-                      <div className="flex items-center gap-0.5 w-16 sm:w-20">
-                        <div className="h-px bg-gradient-to-r from-transparent to-red-600/50 flex-1" />
-                        <motion.div
-                          animate={{ x: ["-3px", "3px", "-3px"] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                          <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 rotate-90" />
-                        </motion.div>
-                        <div className="h-px bg-gradient-to-l from-transparent to-red-600/50 flex-1" />
-                      </div>
-                      <span className="text-[7px] text-slate-600 font-mono tracking-widest">BOTH WAYS</span>
-                    </div>
-                    {/* Destination */}
-                    <div className="flex-1 min-w-0 text-right">
-                      <p className="text-[8px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">To</p>
-                      <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight">India Airports</p>
-                      <p className="text-[9px] font-mono text-red-400 mt-1 font-bold leading-snug">CCJ · COK · TRV · MAA · BOM</p>
-                    </div>
-                  </div>
-                  {/* Bottom strip */}
-                  <div className="mt-3 pt-2.5 border-t border-white/[0.08] flex items-center justify-between gap-3">
-                    <p className="text-[9px] text-slate-400 leading-snug font-medium">
-                      Lowest fares on all major carriers for GCC–India routes
-                    </p>
-                    <motion.a
-                      href={waLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.04 }}
-                      whileTap={{ scale: 0.97 }}
-                      className="flex-shrink-0 inline-flex items-center gap-1.5 bg-gradient-to-r from-gold-500 to-gold-450 hover:from-gold-450 hover:to-gold-500 text-white font-black text-[10px] uppercase tracking-widest px-4 py-2 rounded-lg shadow-[0_4px_14px_rgba(220,38,38,0.35)] transition-all whitespace-nowrap"
-                    >
-                      Get Fare <ArrowRight className="w-3 h-3" />
-                    </motion.a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
             {/* Headline */}
             <motion.h1 variants={itemVariants} className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3rem] leading-[0.92] tracking-tighter mb-4 text-white">
               Connecting{" "}
@@ -229,7 +155,7 @@ export default function Hero() {
 
             {/* Services chips */}
             <motion.div variants={itemVariants} className="mb-5 w-full max-w-xl">
-              <p className="text-[9px] font-mono tracking-[0.22em] text-slate-500 uppercase font-extrabold mb-2.5">Our Services</p>
+              <p className="text-[9px] font-mono tracking-[0.22em] text-slate-500 uppercase font-extrabold mb-2">Our Services</p>
               <div className="flex flex-wrap gap-1.5">
                 {[
                   "Flight Bookings",
@@ -252,14 +178,82 @@ export default function Hero() {
               </div>
             </motion.div>
 
+            {/* ── GCC ↔ INDIA FARES WIDGET (Special Offer Highlight) ── */}
+            <motion.div variants={itemVariants} className="w-full max-w-xl mb-6">
+              <div className="flex items-center gap-2 mb-2 pl-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />
+                <span className="text-[10px] font-mono tracking-[0.22em] text-white uppercase font-bold">
+                  Live Offer · Special Fares Available
+                </span>
+              </div>
+
+              <div className="relative">
+                {/* Static promo glow ring */}
+                <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-r from-gold-450 via-gold-300 to-gold-450 opacity-70 blur-[2px]" />
+
+                <div className="relative bg-white/10 border border-gold-400/50 rounded-2xl p-4 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] overflow-hidden">
+                  {/* Corner ribbon badge */}
+                  <div className="absolute top-0 right-0">
+                    <div className="flex items-center gap-1 bg-gradient-to-r from-gold-500 to-gold-450 text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-bl-xl rounded-tr-2xl shadow-[0_2px_10px_rgba(220,38,38,0.4)]">
+                      <Sparkles className="w-2.5 h-2.5" />
+                      Special Offer
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 sm:gap-3 pr-2 mt-1 sm:mt-0">
+                    {/* Origin */}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[9px] font-mono text-white/70 uppercase tracking-widest mb-0.5 font-bold">From</p>
+                      <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight">GCC Airports</p>
+                      <p className="text-[9px] sm:text-[10px] font-mono text-gold-400 mt-1 font-bold leading-snug">DXB · AUH · DOH · RUH · MCT · KWI</p>
+                    </div>
+                    {/* Animated plane */}
+                    <div className="flex flex-col items-center gap-0.5 flex-shrink-0 px-1">
+                      <div className="flex items-center gap-0.5 w-16 sm:w-20">
+                        <div className="h-px bg-gradient-to-r from-transparent to-white/50 flex-1" />
+                        <div>
+                          <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white rotate-90 drop-shadow-md" />
+                        </div>
+                        <div className="h-px bg-gradient-to-l from-transparent to-white/50 flex-1" />
+                      </div>
+                      <span className="text-[8px] text-white/60 font-mono tracking-widest font-bold">BOTH WAYS</span>
+                    </div>
+                    {/* Destination */}
+                    <div className="flex-1 min-w-0 text-right">
+                      <p className="text-[9px] font-mono text-white/70 uppercase tracking-widest mb-0.5 font-bold">To</p>
+                      <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight">India Airports</p>
+                      <p className="text-[9px] sm:text-[10px] font-mono text-gold-400 mt-1 font-bold leading-snug">CCJ · COK · TRV · MAA · BOM</p>
+                    </div>
+                  </div>
+                  {/* Bottom strip */}
+                  <div className="mt-4 pt-3 border-t border-white/[0.15] flex items-center justify-between gap-3">
+                    <p className="text-[10px] text-white/90 leading-snug font-medium">
+                      Lowest fares on all major carriers for GCC–India routes
+                    </p>
+                    <motion.a
+                      href={waLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      className="flex-shrink-0 inline-flex items-center gap-1.5 bg-gradient-to-r from-gold-500 to-gold-450 hover:from-gold-450 hover:to-gold-500 text-white font-black text-[10px] uppercase tracking-widest px-4 py-2 rounded-lg shadow-[0_4px_14px_rgba(220,38,38,0.35)] transition-colors whitespace-nowrap"
+                    >
+                      Get Fare <ArrowRight className="w-3 h-3" />
+                    </motion.a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Trust + CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 w-full mb-5">
-              <BookingButton variant="primary" className="!px-8 !py-3.5 text-sm shadow-xl shadow-red-600/20 hover:scale-[1.02] transition-transform" />
+              <BookingButton variant="primary" className="!px-8 !py-3.5 text-sm shadow-xl shadow-red-600/20" />
               <a
                 href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-3.5 rounded-xl transition-colors shadow-lg shadow-emerald-900/20"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-5 py-3.5 rounded-full backdrop-blur-md transition-colors shadow-lg border border-white/20"
               >
                 <MessageCircle className="w-4 h-4" />
                 WhatsApp Us
@@ -268,13 +262,13 @@ export default function Hero() {
 
             {/* Accreditation */}
             <motion.div variants={itemVariants} className="flex items-center gap-4 mt-2">
-              <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest text-slate-500 uppercase">
-                <ShieldCheck className="w-3.5 h-3.5 text-red-600" />
+              <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest text-white/50 uppercase">
+                <ShieldCheck className="w-3.5 h-3.5 text-red-500" />
                 IATA & TAFI Accredited
               </div>
-              <div className="w-px h-2.5 bg-slate-800" />
-              <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest text-slate-500 uppercase">
-                <ShieldCheck className="w-3.5 h-3.5 text-red-600" />
+              <div className="w-px h-2.5 bg-white/10" />
+              <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest text-white/50 uppercase">
+                <ShieldCheck className="w-3.5 h-3.5 text-red-500" />
                 24/7 Gulf Helpline
               </div>
             </motion.div>
