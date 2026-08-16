@@ -47,9 +47,9 @@ export default function CTABanner() {
 
             {/* Route codes */}
             <div className="flex gap-4 font-mono text-[10px] text-slate-500 uppercase tracking-widest flex-wrap">
-              <span className="text-red-400 font-bold">CCJ · COK · TRV</span>
+              <span className="text-red-400 font-bold">CCJ · COK · TRV · CNN</span>
               <span>⇄</span>
-              <span className="text-red-400 font-bold">DXB · DOH · MCT · RUH</span>
+              <span className="text-red-400 font-bold">DXB · AUH · DOH · RUH · MCT · KWI</span>
             </div>
           </div>
 

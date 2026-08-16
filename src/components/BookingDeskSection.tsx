@@ -129,6 +129,7 @@ export default function BookingDeskSection() {
                           <option className="bg-slate-950 text-white" value="Kozhikode (CCJ)">Kozhikode (CCJ)</option>
                           <option className="bg-slate-950 text-white" value="Kochi (COK)">Kochi (COK)</option>
                           <option className="bg-slate-950 text-white" value="Trivandrum (TRV)">Trivandrum (TRV)</option>
+                          <option className="bg-slate-950 text-white" value="Kannur (CNN)">Kannur (CNN)</option>
                         </select>
                         <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
@@ -143,10 +144,15 @@ export default function BookingDeskSection() {
                           className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
                         >
                           <option className="bg-slate-950 text-white" value="Dubai (DXB)">Dubai (DXB)</option>
+                          <option className="bg-slate-950 text-white" value="Abu Dhabi (AUH)">Abu Dhabi (AUH)</option>
+                          <option className="bg-slate-950 text-white" value="Sharjah (SHJ)">Sharjah (SHJ)</option>
                           <option className="bg-slate-950 text-white" value="Doha (DOH)">Doha (DOH)</option>
-                          <option className="bg-slate-950 text-white" value="Muscat (MCT)">Muscat (MCT)</option>
                           <option className="bg-slate-950 text-white" value="Riyadh (RUH)">Riyadh (RUH)</option>
                           <option className="bg-slate-950 text-white" value="Jeddah (JED)">Jeddah (JED)</option>
+                          <option className="bg-slate-950 text-white" value="Dammam (DMM)">Dammam (DMM)</option>
+                          <option className="bg-slate-950 text-white" value="Muscat (MCT)">Muscat (MCT)</option>
+                          <option className="bg-slate-950 text-white" value="Kuwait City (KWI)">Kuwait City (KWI)</option>
+                          <option className="bg-slate-950 text-white" value="Bahrain (BAH)">Bahrain (BAH)</option>
                         </select>
                         <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>

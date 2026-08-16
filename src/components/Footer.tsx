@@ -234,9 +234,6 @@ export default function Footer() {
             >
               Designed by systemiq.in
             </a>
-            <span className="font-mono text-[9px] text-slate-600 hidden md:inline tracking-widest uppercase">
-              GDS SYNC INTERACTION v4.0
-            </span>
             <a
               href="#home"
               onClick={handleScrollToTop}

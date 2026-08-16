@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import InquireButton from "./InquireButton";
 import { Cloud, SoftGlow, PhotoWash, PHOTO_FILTER } from "./decor/SkyBackdrop";
@@ -12,67 +12,55 @@ interface PackageData {
   id: string;
   title: string;
   location: string;
-  duration: string;
   image: string;
   tag: string;
-  highlights: string[];
-  inclusions: string;
+  description: string;
 }
 
 export default function HolidayPackages() {
   const holidayPackages: PackageData[] = [
     {
       id: "pkg-kerala",
-      title: "Munnar Hills & Alleppey Houseboat",
+      title: "Kerala Holidays",
       location: "Kerala, India",
-      duration: "4 Nights / 5 Days",
       image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
-      tag: "Domestic Best Seller",
-      highlights: ["Hill Station Resort Stay", "Premium Backwater Houseboat", "Waterfall & Tea Garden Trekking", "Spice Plantation Tours"],
-      inclusions: "Resort Stay + Houseboat + Transfers",
+      tag: "Domestic",
+      description: "Hill stations, backwaters, and family getaways across Kerala, planned around your dates and budget.",
     },
     {
-      id: "pkg-dubai",
-      title: "Dubai & Abu Dhabi Grand Explorer",
-      location: "United Arab Emirates",
-      duration: "5 Nights / 6 Days",
+      id: "pkg-gulf",
+      title: "Gulf & International Holidays",
+      location: "UAE, Oman, Qatar & beyond",
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
       tag: "Expat Favorite",
-      highlights: ["Burj Khalifa Sky View", "Desert Safari with BBQ Dinner", "Sheikh Zayed Mosque Visit", "Premium Hotel stays"],
-      inclusions: "Flights + 4★ Hotels + Tours + Visa",
+      description: "City breaks and family holidays across the Gulf and other international destinations, with flights and stays arranged end-to-end.",
     },
     {
       id: "pkg-maldives",
-      title: "Maldives Luxury Bliss Getaway",
+      title: "Maldives & Island Getaways",
       location: "Maldives",
-      duration: "3 Nights / 4 Days",
       image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80",
-      tag: "Premium Beach Resort",
-      highlights: ["Overwater Villa Upgrade", "Speedboat Airport Transfers", "All-Inclusive Dining", "Snorkeling & Water Sports"],
-      inclusions: "Overwater Villa + All Meals + Transfers",
+      tag: "Beach & Resort",
+      description: "Resort stays and honeymoon packages across the Maldives' island properties, matched to your preferred travel style.",
     }
   ];
 
   const umrahPackages: PackageData[] = [
     {
       id: "pkg-umrah-premium",
-      title: "Premium 5-Star Umrah Package",
-      location: "Makkah & Madinah (Saudi Arabia)",
-      duration: "14 Days Spiritual Journey",
+      title: "Premium Umrah Package",
+      location: "Makkah & Madinah, Saudi Arabia",
       image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Kaaba_mirror_edit_jj.jpg",
       tag: "Luxury Pilgrimage",
-      highlights: ["5-Star Hotel close to Makkah Haram", "Luxury Hotel in Madinah", "Detailed Ziyarah Tours", "Specialized Spiritual Guides"],
-      inclusions: "Flights + 5★ Hotels + Visa + Guided Tours + Luxury Transfers",
+      description: "Hotel stays close to the Haram, guided Ziyarah tours, and full visa and flight arrangements for a comfortable pilgrimage.",
     },
     {
       id: "pkg-umrah-economy",
-      title: "Economy Deluxe Umrah Package",
-      location: "Makkah & Madinah (Saudi Arabia)",
-      duration: "14 Days Spiritual Journey",
+      title: "Economy Umrah Package",
+      location: "Makkah & Madinah, Saudi Arabia",
       image: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=800&q=80",
       tag: "Affordable Pilgrimage",
-      highlights: ["Comfortable Hotel stays", "Spiritual Guidance lectures", "Holy Site Ziyarah Tours", "Express Visa processing"],
-      inclusions: "Flights + Clean Budget Hotels + Visa + Group Transfers",
+      description: "Comfortable, budget-friendly hotel stays with the same complete visa, flight, and guided Ziyarah support.",
     }
   ];
 
@@ -111,41 +99,24 @@ export default function HolidayPackages() {
 
         <div className="p-8 flex flex-col justify-between flex-1">
           <div>
-            <div className="flex items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
-              <span className="flex items-center gap-1 text-teal-650">
-                <MapPin className="w-3.5 h-3.5" />
-                {pkg.location}
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                {pkg.duration}
-              </span>
+            <div className="flex items-center gap-1 text-xs font-bold text-teal-650 uppercase tracking-widest mb-4">
+              <MapPin className="w-3.5 h-3.5" />
+              {pkg.location}
             </div>
 
-            <h3 className="font-display font-black text-xl md:text-2xl text-primary-900 mb-6 group-hover:text-teal-650 transition-colors leading-tight">
+            <h3 className="font-display font-black text-xl md:text-2xl text-primary-900 mb-4 group-hover:text-teal-650 transition-colors leading-tight">
               {pkg.title}
             </h3>
 
-            <ul className="space-y-2.5 mb-8">
-              {pkg.highlights.map((highlight, index) => (
-                <li key={index} className="flex items-center gap-2.5 text-xs md:text-sm text-slate-650 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-teal-500 flex-shrink-0" />
-                  <span>{highlight}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="text-sm text-slate-600 leading-relaxed font-medium mb-8">
+              {pkg.description}
+            </p>
           </div>
 
           <div className="flex flex-col gap-4 pt-6 border-t border-slate-100 mt-auto">
-            <div>
-              <span className="text-[10px] text-slate-450 uppercase font-black tracking-widest block">
-                Included Services
-              </span>
-              <span className="text-xs font-bold text-slate-600 block mt-1">
-                {pkg.inclusions}
-              </span>
-            </div>
+            <span className="text-xs font-semibold text-slate-450">
+              Itinerary and pricing tailored on request — ask us for a custom quote.
+            </span>
 
             <InquireButton href={waLink} fullWidth />
           </div>

@@ -175,7 +175,7 @@ export default function Hero() {
                     <div className="flex-1 min-w-0">
                       <p className="text-[8px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">From</p>
                       <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight">GCC Airports</p>
-                      <p className="text-[9px] font-mono text-red-400 mt-1 font-bold truncate">DXB · DOH · MCT · RUH · KWI</p>
+                      <p className="text-[9px] font-mono text-red-400 mt-1 font-bold leading-snug">DXB · AUH · DOH · RUH · MCT · KWI</p>
                     </div>
                     {/* Animated plane */}
                     <div className="flex flex-col items-center gap-0.5 flex-shrink-0 px-1">
@@ -304,24 +304,25 @@ export default function Hero() {
                     alt={showcaseSlides[currentSlide].title}
                     fill
                     sizes="(min-width: 1280px) 448px, 384px"
-                    className={`object-cover ${PHOTO_FILTER}`}
+                    className={`object-cover opacity-60 ${PHOTO_FILTER}`}
                     priority={currentSlide === 0}
                   />
                   <PhotoWash />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-transparent" />
+                  <div className="absolute inset-0 bg-slate-950/35" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/75 to-slate-950/25" />
                   <div className="absolute top-5 left-5 z-10 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-red-600/30">
                     <span className="text-[9px] font-mono font-bold tracking-widest text-red-400 uppercase">
                       {showcaseSlides[currentSlide].badge}
                     </span>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-left z-10 space-y-2">
-                    <span className="text-[9px] font-mono tracking-widest text-red-500 uppercase font-extrabold block">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 pt-10 text-left z-10 space-y-2.5 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent">
+                    <span className="text-[10px] font-mono tracking-widest text-red-500 uppercase font-extrabold block">
                       {showcaseSlides[currentSlide].tagline}
                     </span>
-                    <h3 className="font-display font-black text-xl uppercase leading-tight tracking-tight text-white">
+                    <h3 className="font-display font-black text-2xl xl:text-[1.75rem] uppercase leading-[1.05] tracking-tight text-white drop-shadow-lg">
                       {showcaseSlides[currentSlide].title}
                     </h3>
-                    <p className="text-[11px] text-slate-300 leading-relaxed font-medium">
+                    <p className="text-xs text-slate-200 leading-relaxed font-medium max-w-[90%]">
                       {showcaseSlides[currentSlide].desc}
                     </p>
                   </div>
