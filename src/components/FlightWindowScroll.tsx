@@ -5,36 +5,39 @@ import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Cloud, SunRays, PlaneTrail } from "./decor/SkyBackdrop";
 
-// Re-paints the photo through the same soft tonal range as the painted clouds
-// (navy shadow -> periwinkle midtone -> warm cream highlight), then blurs it
-// slightly so it reads as an atmospheric painted sky rather than a crisp,
-// separate photographic medium. The window frame gets the tone mapping only
-// (it needs to stay legible as an object), the open sky gets the blur too.
+// Two separate tone-maps: the SKY gets pushed hard toward the site's painted
+// palette (navy -> periwinkle -> warm cream) and blurred so it reads as an
+// atmospheric backdrop, not a crisp separate photograph. The window FRAME is
+// a physical object (plastic, metal) — re-tinting it blue made it look wrong,
+// so it gets a much lighter neutral grade instead, just enough to feel like
+// it belongs in the same world.
 const SKY_DUOTONE_ID = "sky-duotone";
-const SKY_DUOTONE_SOFT_ID = "sky-duotone-soft";
-function SkyDuotoneFilter() {
-  const stops = (
-    <>
-      <feColorMatrix
-        type="matrix"
-        values="0.33 0.33 0.33 0 0
-                0.33 0.33 0.33 0 0
-                0.33 0.33 0.33 0 0
-                0 0 0 1 0"
-      />
-      <feComponentTransfer>
-        <feFuncR type="table" tableValues="0.035 0.63 0.98" />
-        <feFuncG type="table" tableValues="0.06 0.73 0.93" />
-        <feFuncB type="table" tableValues="0.16 0.92 0.85" />
-      </feComponentTransfer>
-    </>
-  );
+const FRAME_GRADE_ID = "frame-grade";
+function ToneFilters() {
   return (
     <svg width="0" height="0" className="absolute" aria-hidden="true">
-      <filter id={SKY_DUOTONE_ID}>{stops}</filter>
-      <filter id={SKY_DUOTONE_SOFT_ID} x="-10%" y="-10%" width="120%" height="120%">
-        {stops}
-        <feGaussianBlur stdDeviation="3.5" />
+      <filter id={SKY_DUOTONE_ID} x="-15%" y="-15%" width="130%" height="130%">
+        <feColorMatrix
+          type="matrix"
+          values="0.33 0.33 0.33 0 0
+                  0.33 0.33 0.33 0 0
+                  0.33 0.33 0.33 0 0
+                  0 0 0 1 0"
+        />
+        <feComponentTransfer>
+          <feFuncR type="table" tableValues="0.035 0.63 0.98" />
+          <feFuncG type="table" tableValues="0.06 0.73 0.93" />
+          <feFuncB type="table" tableValues="0.16 0.92 0.85" />
+        </feComponentTransfer>
+        <feGaussianBlur stdDeviation="6" />
+      </filter>
+      <filter id={FRAME_GRADE_ID}>
+        <feColorMatrix type="saturate" values="0.25" />
+        <feComponentTransfer>
+          <feFuncR type="linear" slope="0.85" intercept="0.08" />
+          <feFuncG type="linear" slope="0.85" intercept="0.09" />
+          <feFuncB type="linear" slope="0.87" intercept="0.11" />
+        </feComponentTransfer>
       </filter>
     </svg>
   );
@@ -42,48 +45,61 @@ function SkyDuotoneFilter() {
 
 export default function FlightWindowScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Track the scroll position relative to the container
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Apply a gentle spring physics to the scroll progress for an Apple-like fluid feel
+  // Snappier, tightly-tracking spring — the previous overdamped config
+  // (damping 25 / stiffness 120 / mass 0.5) lagged visibly behind the actual
+  // scroll position, which read as disconnected rather than fluid.
   const smoothProgress = useSpring(scrollYProgress, {
-    damping: 25,
-    stiffness: 120,
-    mass: 0.5,
+    damping: 30,
+    stiffness: 260,
+    mass: 0.15,
   });
 
-  // ─── WINDOW SCALE & OPACITY ───
-  // 0 to 0.5: Window scales up from 1 to 25 (massively blowing up the hole)
-  const windowScale = useTransform(smoothProgress, [0, 0.5], [1, 25]);
-  // 0.4 to 0.5: The physical window frame itself fades out so we only see the sky
-  const windowOpacity = useTransform(smoothProgress, [0.4, 0.5], [1, 0]);
+  // ─── WINDOW ───
+  // Gentle scale (was 1 -> 25, which pixelated the raster frame badly well
+  // before the fade even started) and a wide, early, overlapping fade so the
+  // frame dissolves smoothly into the sky rather than zooming into a blur
+  // and then vanishing abruptly.
+  const windowScale = useTransform(smoothProgress, [0, 0.5], [1, 2.3]);
+  const windowOpacity = useTransform(smoothProgress, [0.15, 0.5], [1, 0]);
+  const windowBlur = useTransform(smoothProgress, [0.15, 0.5], [0, 14]);
+  const windowBlurFilter = useTransform(windowBlur, (v) => `blur(${v}px)`);
 
-  // ─── SKY PARALLAX ───
-  // The background sky slowly scales and moves upward as you scroll, like flying forward
-  const skyScale = useTransform(smoothProgress, [0, 1], [1.1, 1.4]);
-  const skyY = useTransform(smoothProgress, [0, 1], ["0%", "15%"]);
+  // ─── SKY ───
+  // Subtler parallax than before (was 1.1 -> 1.4) so the motion feels like a
+  // slow, premium drift rather than a rushed zoom.
+  const skyScale = useTransform(smoothProgress, [0, 1], [1.08, 1.22]);
+  const skyY = useTransform(smoothProgress, [0, 1], ["0%", "10%"]);
 
-  // ─── CONTENT FADE IN ───
-  // 0.6 to 0.8: After passing through the window, the text fades in
-  const contentOpacity = useTransform(smoothProgress, [0.55, 0.75], [0, 1]);
-  const contentY = useTransform(smoothProgress, [0.55, 0.75], [40, 0]);
-  const contentScale = useTransform(smoothProgress, [0.55, 0.75], [0.95, 1]);
+  // Illustrated clouds drift in gradually as the frame dissolves, thickening
+  // through the middle of the scroll so the photographic sky is increasingly
+  // read through a layer of painted cloud rather than seen directly.
+  const cloudsOpacity = useTransform(smoothProgress, [0.1, 0.4], [0, 1]);
+
+  // ─── CONTENT ───
+  // Starts before the window has fully dissolved so the two overlap instead
+  // of leaving a dead gap in the middle of the scroll.
+  const contentOpacity = useTransform(smoothProgress, [0.42, 0.62], [0, 1]);
+  const contentY = useTransform(smoothProgress, [0.42, 0.62], [30, 0]);
+
+  // ─── HANDOFF ───
+  // The last stretch of scroll fades a solid wash over the whole scene so the
+  // cut into TrustBar (white) feels like arriving somewhere, not a hard clip.
+  const handoffOpacity = useTransform(smoothProgress, [0.82, 1], [0, 1]);
 
   return (
-    // Make the section tall so the user has to scroll for a while to complete the animation
     <section ref={containerRef} className="relative h-[300vh] bg-slate-950">
-      <SkyDuotoneFilter />
+      <ToneFilters />
 
-      {/* The sticky container that holds the scene viewport */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
 
-        {/* 1. Background Sky Image (Video-like Parallax) — re-painted through the
-             same soft tonal range as the illustrated clouds, then gently blurred
-             so it reads as atmosphere rather than a crisp separate photograph */}
+        {/* 1. Sky — heavily tone-mapped and blurred so it reads as a painted
+             backdrop, not a separate photographic medium */}
         <motion.div
           className="absolute inset-0 w-full h-full z-0 origin-bottom"
           style={{ scale: skyScale, y: skyY }}
@@ -93,28 +109,35 @@ export default function FlightWindowScroll() {
             alt="Beautiful sky view from airplane window - AirTixHolidays"
             fill
             sizes="100vw"
-            className="object-cover scale-105"
-            style={{ filter: `url(#${SKY_DUOTONE_SOFT_ID})` }}
+            className="object-cover scale-110"
+            style={{ filter: `url(#${SKY_DUOTONE_ID})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/15 via-transparent to-primary-950/25" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/20 via-transparent to-primary-950/30" />
         </motion.div>
 
         {/* Warm light breaking through, upper-left, like sun through cloud */}
         <SunRays className="absolute -top-[10%] -left-[5%] w-[70%] h-[70%] z-[3]" />
 
-        {/* 1b. Painted clouds and a distant plane drifting across the re-toned sky —
-             blended (not stickered) into the photo via a soft screen blend */}
-        <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden mix-blend-screen">
-          <Cloud className="absolute top-[16%] left-[6%] w-72 sm:w-96 opacity-70" duration={42} />
-          <Cloud className="absolute top-[52%] right-[4%] w-64 sm:w-80 opacity-60" duration={48} flip />
-          <Cloud className="absolute bottom-[6%] left-[28%] w-56 sm:w-72 opacity-55" duration={38} />
-        </div>
+        {/* 1b. Painted clouds thicken in as the window dissolves, and a
+             distant plane drifts through — the sky becomes visibly painted,
+             not just re-colored */}
+        <motion.div
+          style={{ opacity: cloudsOpacity }}
+          className="absolute inset-0 z-[5] pointer-events-none overflow-hidden mix-blend-screen"
+        >
+          <Cloud className="absolute top-[14%] left-[4%] w-80 sm:w-[26rem] opacity-85" duration={42} />
+          <Cloud className="absolute top-[50%] right-[2%] w-72 sm:w-96 opacity-75" duration={48} flip />
+          <Cloud className="absolute bottom-[4%] left-[24%] w-64 sm:w-80 opacity-70" duration={38} />
+          <Cloud className="absolute top-[2%] right-[22%] w-48 sm:w-64 opacity-55" duration={44} />
+        </motion.div>
         <PlaneTrail className="top-[30%] z-[6]" colorClassName="text-primary-100" duration={60} />
 
-        {/* 2. The Window Cutout Layer (Realistic Image), same re-toning, no blur — a
-             foreground object still needs to read clearly as a window frame */}
+        {/* 2. Window frame — a much lighter, near-neutral grade (re-tinting a
+             physical plastic/metal object with the sky's blue duotone looked
+             wrong) and a blur that grows as it fades, so it dissolves into
+             the scene instead of pixelating from an extreme zoom */}
         <motion.div
-          style={{ scale: windowScale, opacity: windowOpacity }}
+          style={{ scale: windowScale, opacity: windowOpacity, filter: windowBlurFilter }}
           className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none origin-center"
         >
           <Image
@@ -122,16 +145,16 @@ export default function FlightWindowScroll() {
             alt="Airplane interior window view looking out into the sky"
             fill
             sizes="100vw"
-            className="object-cover drop-shadow-[0_0_30px_rgba(0,0,0,0.7)]"
-            style={{ transform: "scale(1.15)", filter: `url(#${SKY_DUOTONE_ID})` }}
+            className="object-cover"
+            style={{ filter: `url(#${FRAME_GRADE_ID})` }}
           />
           {/* Glass reflection glare precisely in the center over the hole */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35%] h-[60%] min-w-[240px] min-h-[360px] max-w-[400px] max-h-[600px] rounded-[6rem] bg-gradient-to-tr from-white/10 via-white/5 to-transparent backdrop-blur-[2px] pointer-events-none" />
         </motion.div>
 
-        {/* 3. The Content Layer that appears when "outside" */}
+        {/* 3. Content, fading in as the frame dissolves rather than after a gap */}
         <motion.div
-          style={{ opacity: contentOpacity, y: contentY, scale: contentScale }}
+          style={{ opacity: contentOpacity, y: contentY }}
           className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 pointer-events-none"
         >
           <div className="bg-[#020617]/50 backdrop-blur-xl p-8 sm:p-12 rounded-[2rem] border border-white/10 shadow-2xl max-w-4xl w-full flex flex-col items-center pointer-events-auto">
@@ -141,19 +164,25 @@ export default function FlightWindowScroll() {
                 The Journey Begins
               </span>
             </div>
-            
+
             <h2 className="font-display font-black text-4xl sm:text-5xl md:text-7xl leading-[0.95] tracking-tighter mb-6 text-white drop-shadow-2xl">
               Experience the{" "}
               <span className="serif-italic font-normal text-red-500 font-serif lowercase italic tracking-normal drop-shadow-lg">
                 extraordinary
               </span>
             </h2>
-            
+
             <p className="text-base sm:text-lg text-slate-200 font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md">
               Step out of the ordinary and experience seamless journeys connecting Kerala to the world. We don&apos;t just book tickets; we craft experiences.
             </p>
           </div>
         </motion.div>
+
+        {/* 4. Handoff wash — softens the cut into the next (white) section */}
+        <motion.div
+          style={{ opacity: handoffOpacity }}
+          className="absolute inset-0 z-30 pointer-events-none bg-gradient-to-b from-transparent via-white/40 to-white"
+        />
 
       </div>
     </section>
