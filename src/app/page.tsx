@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import FlightWindowScroll from "@/components/FlightWindowScroll";
 import TrustBar from "@/components/TrustBar";
+import RouteHighlights from "@/components/RouteHighlights";
 import AboutUs from "@/components/AboutUs";
 import Services from "@/components/Services";
 import ResortsHotels from "@/components/ResortsHotels";
@@ -22,7 +24,9 @@ export default function Home() {
       {/* Main Sections */}
       <main className="flex flex-col flex-1">
         <Hero />
+        <FlightWindowScroll />
         <TrustBar />
+        <RouteHighlights />
         <ResortsHotels />
         <HolidayPackages />
         <VisaServices />

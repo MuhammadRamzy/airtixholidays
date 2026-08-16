@@ -17,10 +17,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "AirTixHolidays | Premium Flights & Packages from Kerala",
+    default: "AirTixHolidays | Kerala Flights, Visas & Holiday Packages",
     template: "%s | AirTixHolidays"
   },
-  description: "Kerala's most trusted travel partner since 2011. Get instant low-fare flight tickets to the Middle East, Global Visit Visas, Umrah packages, and premium holiday resorts.",
+  description: "Kerala's trusted travel partner since 2011. Instant low-fare flight tickets to the Gulf, visit visas, Umrah packages & premium holiday resorts.",
   metadataBase: new URL("https://airtixholiday.com"),
   keywords: [
     "AirTixHolidays",
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/logo.png",
-        width: 1200,
-        height: 630,
+        width: 612,
+        height: 408,
         alt: "AirTixHolidays Branding",
       },
     ],
@@ -80,12 +80,50 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": siteConfig.name,
+    "url": "https://airtixholiday.com",
+    "logo": "https://airtixholiday.com/logo.png",
+    "image": "https://airtixholiday.com/logo.png",
+    "description": siteConfig.description,
+    "telephone": siteConfig.contact.officePhoneDial,
+    "email": siteConfig.contact.email,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2nd Floor, Skyline Plaza, Marine Drive",
+      "addressLocality": "Kochi",
+      "addressRegion": "Kerala",
+      "postalCode": "682031",
+      "addressCountry": "IN"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    "priceRange": "$$"
+  };
+
   return (
     <html
       lang="en"
       className={`${plusJakartaSans.variable} ${outfit.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full flex flex-col font-sans text-primary-900 bg-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
         {children}
       </body>
     </html>
