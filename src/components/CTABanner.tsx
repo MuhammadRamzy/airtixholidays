@@ -28,7 +28,13 @@ export default function CTABanner() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Left: Copy */}
-          <div className="space-y-5">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-5"
+          >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/15 border border-red-500/25 text-red-400 font-mono text-[10px] uppercase tracking-widest">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
               Ready to Travel?
@@ -51,10 +57,15 @@ export default function CTABanner() {
               <span>⇄</span>
               <span className="text-red-400 font-bold">DXB · AUH · DOH · RUH · MCT · KWI</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Action box */}
-          <div className="flex flex-col gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col gap-4">
             {/* Primary WhatsApp CTA */}
             <a
               href={waGeneral}
@@ -96,7 +107,7 @@ export default function CTABanner() {
             <p className="text-[10px] text-slate-600 font-mono text-center tracking-wider uppercase pt-1">
               IATA & TAFI Accredited · Kerala&apos;s Trusted Gulf Partner
             </p>
-          </div>
+          </motion.div>
 
         </div>
       </div>

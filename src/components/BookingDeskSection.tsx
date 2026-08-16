@@ -52,7 +52,13 @@ export default function BookingDeskSection() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
         {/* Section Header */}
-        <div className="mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12"
+        >
           <span className="text-red-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
             Direct WhatsApp Inquiry Desk // Fast Responses
           </span>
@@ -62,10 +68,16 @@ export default function BookingDeskSection() {
           <p className="text-sm sm:text-base text-slate-650 font-medium max-w-2xl mx-auto leading-relaxed">
             Select your division, enter your travel parameters, and connect instantly with our specialized department desk to get current details via WhatsApp.
           </p>
-        </div>
+        </motion.div>
 
         {/* Form Container */}
-        <div className="max-w-2xl mx-auto bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-2xl relative border border-white/5">
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-2xl mx-auto bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-2xl relative border border-white/5"
+        >
           {/* Status Indicator */}
           <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
             <div className="flex items-center gap-2">
@@ -300,7 +312,7 @@ export default function BookingDeskSection() {
               <span>{getActionText()}</span>
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

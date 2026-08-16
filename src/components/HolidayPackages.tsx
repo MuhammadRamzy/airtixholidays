@@ -84,7 +84,13 @@ export default function HolidayPackages() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="max-w-3xl mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-12"
+        >
           <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
             Holiday & Pilgrimage Packages
           </span>
@@ -97,7 +103,7 @@ export default function HolidayPackages() {
           <p className="text-slate-500 mt-6 text-base md:text-lg leading-relaxed font-medium">
             Holiday and pilgrimage packages, custom-built for your dates and group. Reach out to our team for current itineraries and pricing.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {services.map((svc, idx) => renderCard(svc, idx))}

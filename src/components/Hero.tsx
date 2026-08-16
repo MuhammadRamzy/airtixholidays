@@ -195,7 +195,7 @@ export default function Hero() {
                     <div className="flex-1 min-w-0 text-right">
                       <p className="text-[8px] font-mono text-slate-500 uppercase tracking-widest mb-0.5">To</p>
                       <p className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight">India Airports</p>
-                      <p className="text-[9px] font-mono text-red-400 mt-1 font-bold truncate">CCJ · COK · TRV · MAA · BOM</p>
+                      <p className="text-[9px] font-mono text-red-400 mt-1 font-bold leading-snug">CCJ · COK · TRV · MAA · BOM</p>
                     </div>
                   </div>
                   {/* Bottom strip */}

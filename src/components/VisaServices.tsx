@@ -10,62 +10,16 @@ import { Cloud, Birds } from "./decor/SkyBackdrop";
 interface VisaData {
   id: string;
   country: string;
-  duration: string;
-  processingTime: string;
-  requirements: string[];
-  badge: string;
 }
 
 export default function VisaServices() {
   const visas: VisaData[] = [
-    {
-      id: "visa-uae",
-      country: "United Arab Emirates (UAE)",
-      duration: "14 / 30 / 60 Days Single & Multi-Entry",
-      processingTime: "24 - 48 Hours Express",
-      requirements: ["Passport Scan (6-Month Validity)", "White Background Passport Photo", "Onward Flight Booking"],
-      badge: "Express Processing",
-    },
-    {
-      id: "visa-saudi",
-      country: "Saudi Arabia (Tourist & Umrah)",
-      duration: "90 Days Multi-Entry / 1-Year Validity",
-      processingTime: "1 - 3 Working Days",
-      requirements: ["Passport Scan", "Passport Photo", "Valid Health Insurance", "Umrah Intentions Clearance"],
-      badge: "Umrah Ready",
-    },
-    {
-      id: "visa-qatar",
-      country: "Qatar Visa & Hayya Assistance",
-      duration: "30 Days Tourist Visa",
-      processingTime: "2 - 4 Working Days",
-      requirements: ["Passport Scan", "Passport Photo", "Confirmed Hotel Reservation", "Return Flight Ticket"],
-      badge: "Popular GCC",
-    },
-    {
-      id: "visa-oman",
-      country: "Oman Tourist Visa",
-      duration: "10 / 30 Days E-Visa",
-      processingTime: "24 - 72 Hours",
-      requirements: ["Passport Scan", "Passport Photo", "Gulf Country Resident Card (if applicable)"],
-      badge: "GCC Resident Special",
-    },
-    {
-      id: "visa-schengen",
-      country: "Europe (Schengen) & UK Assistance",
-      duration: "Short-stay Tourist & Business Visas",
-      processingTime: "10 - 15 Working Days",
-      requirements: ["Original Passport", "No Objection Certificate (NOC)", "6-Month Bank Statements", "Detailed Travel Itinerary"],
-      badge: "Complete Documentation Support",
-    },
-    {
-      id: "visa-southeast",
-      country: "Malaysia, Thailand & Singapore",
-      duration: "30 Days Tourist E-Visa",
-      processingTime: "2 - 4 Working Days",
-      requirements: ["Passport Copy", "Passport Photo", "Proof of Accommodation", "Financial Adequacy Proof"],
-      badge: "Holiday Corridor",
-    }
+    { id: "visa-uae", country: "United Arab Emirates (UAE)" },
+    { id: "visa-saudi", country: "Saudi Arabia (Tourist & Umrah)" },
+    { id: "visa-qatar", country: "Qatar Visa & Hayya Assistance" },
+    { id: "visa-oman", country: "Oman Tourist Visa" },
+    { id: "visa-schengen", country: "Europe (Schengen) & UK Assistance" },
+    { id: "visa-southeast", country: "Malaysia, Thailand & Singapore" },
   ];
 
   const containerVariants = {
@@ -102,7 +56,13 @@ export default function VisaServices() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-10 lg:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-10 lg:mb-12"
+        >
           <span className="text-gold-600 font-bold uppercase tracking-widest text-xs md:text-sm block mb-3 font-display">
             Global Visa Services // Hassle-Free Documentation
           </span>
@@ -113,7 +73,7 @@ export default function VisaServices() {
             </span>
           </h2>
           <div className="editorial-line-gold w-1/3 mt-6" />
-        </div>
+        </motion.div>
 
         {/* Asymmetric layout with visa list and document check */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -185,37 +145,17 @@ export default function VisaServices() {
                     className="flex-shrink-0 w-[85vw] sm:w-[350px] lg:w-auto snap-center bg-white border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between group hover:border-teal-650/45 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300"
                   >
                     <div>
-                      {/* Badge & Title */}
                       <div className="flex justify-between items-start gap-4 mb-4">
-                        <span className="px-2.5 py-1 rounded bg-teal-50 text-teal-700 text-[9px] font-mono font-bold uppercase tracking-wider border border-teal-100">
-                          {visa.badge}
-                        </span>
                         <Globe className="w-5 h-5 text-slate-350 group-hover:text-teal-600 transition-colors" />
                       </div>
 
                       <h3 className="font-display font-black text-lg text-primary-950 mb-2 leading-tight">
                         {visa.country}
                       </h3>
-                      
-                      <div className="mb-4 text-xs font-semibold text-slate-500 font-mono">
-                        <div className="mb-0.5">Validity: {visa.duration}</div>
-                        <div>Timeframe: {visa.processingTime}</div>
-                      </div>
 
-                      {/* Doc check for this specific visa */}
-                      <div className="border-t border-slate-100 pt-4 mb-6">
-                        <span className="text-[9px] text-slate-400 font-mono uppercase tracking-widest block mb-2">
-                          Specific Docs Required
-                        </span>
-                        <ul className="space-y-1.5">
-                          {visa.requirements.map((req, idx) => (
-                            <li key={idx} className="flex gap-2 items-start text-xs text-slate-650 font-medium">
-                              <span className="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0 mt-1.5" />
-                              <span>{req}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <p className="text-sm text-slate-500 font-medium leading-relaxed mb-6">
+                        Documentation support and visa processing assistance. Contact our visa team for current requirements and timelines.
+                      </p>
                     </div>
 
                     {/* WhatsApp Action Button */}
