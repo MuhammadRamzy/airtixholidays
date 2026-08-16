@@ -19,7 +19,7 @@ const showcaseSlides = [
   },
   {
     id: "visas",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1532188142562-df556b861e6a?q=80&w=800&auto=format&fit=crop",
     badge: "Express Processing",
     tagline: "Global Visit Visas",
     title: "Hassle-Free Documentation",
@@ -51,7 +51,7 @@ const showcaseSlides = [
   },
   {
     id: "attestation",
-    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1638636241638-aef5120c5153?q=80&w=800&auto=format&fit=crop",
     badge: "Legal Documentation",
     tagline: "Certificate Attestation",
     title: "Verified Document Processing",
